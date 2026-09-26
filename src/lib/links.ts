@@ -4,7 +4,8 @@
 export const LINKS = {
   // Apple's public catalog, artist id 1896614133, the id recorded in the band app's songs.json.
   appleMusic: "https://music.apple.com/us/artist/stoke-club/1896614133",
-  spotify: null,
+  // Confirmed on open.spotify.com: Newport Beach indie rock, members match, 7.9K monthly listeners.
+  spotify: "https://open.spotify.com/artist/7lJWtq1ziPVsOBlofMDEaY",
   music: null,
   polaroidVideo: null,
   instagram: null,
