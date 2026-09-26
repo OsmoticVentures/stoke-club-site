@@ -5,3 +5,6 @@ originals/
 node_modules/
 .DS_Store
 __pycache__/
+.next/
+next-env.d.ts
+tsconfig.tsbuildinfo

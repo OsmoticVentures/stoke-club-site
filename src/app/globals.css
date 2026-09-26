@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-heading), system-ui, sans-serif;
+  --font-body: var(--font-sans), system-ui, sans-serif;
+
+  /* Ground */
+  --color-ink: #050506;
+  --color-ink-soft: #0d0e10;
+  --color-paper: #ffffff;
+
+  /* The one accent: true light blue, reads on both black and white */
+  --color-stoke-blue: #2fc6ff;
+  --color-stoke-blue-deep: #14a6de;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: #ffffff;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-stoke-blue);
+  color: #050506;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-stoke-blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Press feedback: respond on the instant of touch, not on release */
+.press {
+  transition: transform 100ms ease-out;
+}
+.press:active {
+  transform: scale(0.97);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
