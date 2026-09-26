@@ -11,7 +11,7 @@ Usage:
   python3 scripts/media.py <slot> <input-file> [--audio] [--start SECONDS] [--length SECONDS]
   python3 scripts/media.py --list
 
-Raw originals belong in originals/ (gitignored). Only the outputs in assets/ are committed.
+Raw originals belong in originals/ (gitignored). Only the outputs in public/ are committed.
 """
 import argparse
 import json
@@ -24,8 +24,8 @@ from pathlib import Path
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
-IMG = ROOT / "assets" / "img"
-VID = ROOT / "assets" / "video"
+IMG = ROOT / "public" / "img"
+VID = ROOT / "public" / "video"
 
 # slot -> kind, aspect (w, h) or None to keep the source ratio, output widths
 SLOTS = {

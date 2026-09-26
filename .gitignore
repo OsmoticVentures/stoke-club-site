@@ -1,4 +1,4 @@
-# Raw photos and clips as handed over. Only compressed outputs in assets/ are committed.
+# Raw photos and clips as handed over. Only compressed outputs in public/ are committed.
 originals/
 .ui-review/
 .vercel/

@@ -1,18 +1,17 @@
 # Stoke Club site
 
-The band's public site: Home, About, Shows. Plain static HTML, CSS, and a little JS. No build step,
-no login, no framework. Any static host serves it as is.
+The band's public site: Home, About, Shows. Next.js, no login.
 
 ## Preview locally
 
 ```
-python3 -m http.server 4321
+pnpm install
+pnpm dev
 ```
-Then open http://localhost:4321.
 
 ## Links
 
-Every outbound link lives in `assets/js/links.js`. A link set to `null` renders as an inert button.
+Every outbound link lives in `src/lib/links.ts`. A link set to `null` renders as an inert button.
 Paste the real URL there and it goes live everywhere it appears.
 
 ## Media slots
@@ -26,16 +25,16 @@ python3 scripts/media.py --list
 ```
 
 The script crops to the slot's shape, resizes, strips all metadata, and writes the web files the
-pages already point at. Videos come out silent unless `--audio` is passed.
+pages already point at (served from `/img/` and `/video/`). Videos come out silent unless `--audio` is passed.
 
 | Slot | Kind | Shape | Output |
 |---|---|---|---|
-| `hero` | video | 16:9 | `assets/video/hero.mp4`, poster `assets/img/hero-poster-1920.*` |
-| `band` | photo | 3:2 (as shot) | `assets/img/band-{960,1600,2400}.{jpg,webp}` |
-| `polaroid-thumb` | photo | 16:9 | `assets/img/polaroid-thumb-{640,1280}.*` |
-| `your-friends-cover` | photo | 1:1 | `assets/img/your-friends-cover-{600,1200}.*` |
-| `show-video-1` to `3` | video | 9:16 | `assets/video/show-video-N.mp4`, poster `assets/img/show-video-N-poster-1080.*` |
-| `show-photo-1` to `3` | photo | 4:5 | `assets/img/show-photo-N-{600,1200}.*` |
+| `hero` | video | 16:9 | `public/video/hero.mp4`, poster `public/img/hero-poster-1920.*` |
+| `band` | photo | 3:2 (as shot) | `public/img/band-{960,1600,2400}.{jpg,webp}` |
+| `polaroid-thumb` | photo | 16:9 | `public/img/polaroid-thumb-{640,1280}.*` |
+| `your-friends-cover` | photo | 1:1 | `public/img/your-friends-cover-{600,1200}.*` |
+| `show-video-1` to `3` | video | 9:16 | `public/video/show-video-N.mp4`, poster `public/img/show-video-N-poster-1080.*` |
+| `show-photo-1` to `3` | photo | 4:5 | `public/img/show-photo-N-{600,1200}.*` |
 
 Until a slot has its file, the page shows the band photo (hero) or an empty frame of the same shape.
 
