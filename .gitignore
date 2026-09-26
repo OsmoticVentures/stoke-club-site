@@ -1,0 +1,7 @@
+# Raw photos and clips as handed over. Only compressed outputs in assets/ are committed.
+originals/
+.ui-review/
+.vercel/
+node_modules/
+.DS_Store
+__pycache__/
