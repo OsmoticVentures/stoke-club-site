@@ -8,8 +8,8 @@ export const LINKS = {
   spotify: "https://open.spotify.com/artist/7lJWtq1ziPVsOBlofMDEaY",
   music: null,
   polaroidVideo: null,
-  instagram: null,
-  tiktok: null,
+  instagram: "https://www.instagram.com/stokeclubband/",
+  tiktok: "https://www.tiktok.com/@stokeclubband",
 } as const satisfies Record<string, string | null>;
 
 export type LinkKey = keyof typeof LINKS;

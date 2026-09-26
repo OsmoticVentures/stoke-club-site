@@ -13,10 +13,10 @@ type InertButtonProps = {
 export default function InertButton({ label, icon, variant = "outline", linkKey }: InertButtonProps) {
   const href = linkKey ? LINKS[linkKey] : null;
   const base =
-    "press inline-flex items-center gap-2.5 rounded-full px-5 py-3 text-sm font-medium select-none";
+    "press inline-flex items-center gap-2.5 rounded-lg px-5 py-3 text-sm font-medium select-none shadow-[0_6px_16px_-8px_rgba(0,0,0,0.5)]";
   const styles =
     variant === "solid"
-      ? "bg-[var(--color-stoke-blue)] text-[#050506] opacity-90 hover:opacity-100"
+      ? "bg-[var(--color-paper)] text-[#0a0908] opacity-95 hover:opacity-100"
       : "border border-white/20 text-white/85 opacity-90 hover:opacity-100 hover:border-white/35";
 
   if (href) {

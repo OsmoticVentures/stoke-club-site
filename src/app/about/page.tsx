@@ -23,12 +23,12 @@ export default function About() {
       </div>
 
       <p className="mt-10 text-lg leading-relaxed text-white/80 sm:text-xl">
-        We&rsquo;re a band that lived together, and we each played music independently, but we
-        started playing together and figured we&rsquo;d make a good band. None of us had plans to
-        move out of Los Angeles after college, but the band brought us together, and now it&rsquo;s
-        a chance to bring our community, family, and friends together to share the stoke. Stoke
-        means excitement, happiness, and anticipation, the good feeling you get when something good
-        is about to happen. From SoCal to you, with love. Stay stoked.
+        We used to just live together and play music on our own. Somewhere along the way we
+        started playing together instead, and it turned out we were pretty good at it. None of us
+        planned to stay in Southern California after college, but the band gave us a reason to.
+        We write our own songs, we play a covers set too, and we&rsquo;d rather play a living room
+        full of friends than an empty room anywhere else. This is us, the five of us, doing the
+        thing we actually want to be doing. Come find us in Newport Beach.
       </p>
     </main>
   );

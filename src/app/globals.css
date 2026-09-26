@@ -4,14 +4,14 @@
   --font-display: var(--font-heading), system-ui, sans-serif;
   --font-body: var(--font-sans), system-ui, sans-serif;
 
-  /* Ground */
-  --color-ink: #050506;
-  --color-ink-soft: #0d0e10;
-  --color-paper: #ffffff;
+  /* Ground, warmed slightly off true black for a film feel */
+  --color-ink: #0a0908;
+  --color-ink-soft: #121110;
+  --color-paper: #f6f0e6;
 
-  /* The one accent: true light blue, reads on both black and white */
-  --color-stoke-blue: #2fc6ff;
-  --color-stoke-blue-deep: #14a6de;
+  /* The one accent: a muted, desaturated blue, reads on both black and white */
+  --color-stoke-blue: #6fa3c0;
+  --color-stoke-blue-deep: #4c7e99;
 }
 
 *,
@@ -44,12 +44,31 @@ body {
   border-radius: 2px;
 }
 
+/* Polaroid-style frame: a thick paper border around a photo */
+.polaroid-frame {
+  background: var(--color-paper);
+  padding: 0.6rem 0.6rem 1.6rem;
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.5);
+}
+
 /* Press feedback: respond on the instant of touch, not on release */
 .press {
   transition: transform 100ms ease-out;
 }
 .press:active {
   transform: scale(0.97);
+}
+
+/* A quiet film grain over everything, the polaroid/analog texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
 @keyframes rise {

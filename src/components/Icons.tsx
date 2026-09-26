@@ -7,7 +7,10 @@ export type IconName =
   | "camera"
   | "clip"
   | "chevronDown"
-  | "users";
+  | "users"
+  | "message"
+  | "check"
+  | "close";
 
 type IconProps = {
   name: IconName;
@@ -78,6 +81,14 @@ function Paths({ name }: { name: IconName }) {
       );
     case "chevronDown":
       return <path d="M6 9.5l6 6 6-6" />;
+    case "message":
+      return (
+        <path d="M4 5.5h16a1 1 0 011 1V16a1 1 0 01-1 1H9l-4.5 3.5V17H4a1 1 0 01-1-1V6.5a1 1 0 011-1z" />
+      );
+    case "check":
+      return <path d="M5 12.5l4.5 4.5L19 7" />;
+    case "close":
+      return <path d="M6 6l12 12M18 6L6 18" />;
     case "users":
       return (
         <>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import PlaceholderBlock from "@/components/PlaceholderBlock";
 import InertButton from "@/components/InertButton";
+import SignupButton from "@/components/signup/SignupButton";
 import { Icon } from "@/components/Icons";
 
 export default function Home() {
@@ -17,11 +18,11 @@ export default function Home() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(47,198,255,0.10),transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.12),transparent_60%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/45 to-black/80" />
         </div>
 
-        <div className="rise relative z-10 flex flex-col items-center gap-5 px-6 text-center">
+        <div className="rise relative z-10 flex flex-col items-center gap-8 px-6 text-center">
           <Image
             src="/img/stoke-club-logo.png"
             alt="Stoke Club"
@@ -30,10 +31,7 @@ export default function Home() {
             className="h-14 w-auto sm:h-20"
             priority
           />
-          <h1 className="font-[family-name:var(--font-display)] text-5xl font-bold tracking-tight text-white sm:text-7xl">
-            Stoke Club
-          </h1>
-          <p className="text-sm text-white/60 sm:text-base">Newport Beach surf rock</p>
+          <SignupButton />
         </div>
 
         <div className="rise absolute bottom-8 left-1/2 -translate-x-1/2" style={{ ["--d" as string]: "300ms" }}>
@@ -92,9 +90,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fold 4: new releases, the visual highlight */}
+      {/* Fold 4: what does STOKE mean, a few folds down, not right under the hero */}
+      <section className="w-full bg-ink-soft px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            What does STOKE mean?
+          </h2>
+          <p className="text-base leading-relaxed text-white/70">
+            Excitement, happiness, and anticipation. The good feeling you get when something good
+            is about to happen. From SoCal to you.
+          </p>
+        </div>
+      </section>
+
+      {/* Fold 5: new releases, the visual highlight */}
       <section className="relative w-full overflow-hidden bg-ink px-5 py-28 sm:px-8 sm:py-40">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(47,198,255,0.16),transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.16),transparent_65%)]" />
 
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
           <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
@@ -111,6 +122,21 @@ export default function Home() {
             <span className="-mt-2 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white sm:text-4xl">
               November 2026
             </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Fold 6: the phone-number magnet */}
+      <section className="w-full bg-ink px-5 py-24 sm:px-8 sm:py-32">
+        <div className="polaroid-frame mx-auto max-w-xl rounded-xl">
+          <div className="flex flex-col items-center gap-4 rounded-md bg-ink-soft px-6 py-12 text-center sm:px-10 sm:py-16">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Never miss a show
+            </h2>
+            <p className="max-w-sm text-sm text-white/60">
+              Real texts about our next show. No spam.
+            </p>
+            <SignupButton className="mt-2" />
           </div>
         </div>
       </section>

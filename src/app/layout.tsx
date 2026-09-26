@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import Nav from "@/components/Nav";
 import SiteFooter from "@/components/SiteFooter";
+import { SignupModalProvider } from "@/components/signup/SignupModalContext";
+import SignupModal from "@/components/signup/SignupModal";
 import "./globals.css";
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -36,9 +38,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${hankenGrotesk.variable} ${bricolage.variable} h-full`}>
       <body className="min-h-full">
-        <Nav />
-        {children}
-        <SiteFooter />
+        <SignupModalProvider>
+          <Nav />
+          {children}
+          <SiteFooter />
+          <SignupModal />
+        </SignupModalProvider>
       </body>
     </html>
   );
