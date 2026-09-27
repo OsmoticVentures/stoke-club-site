@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import PhotoCarousel from "@/components/PhotoCarousel";
 
 export const metadata: Metadata = {
@@ -23,14 +24,22 @@ export default function About() {
         />
       </div>
 
-      <p className="mt-10 text-lg leading-relaxed text-white/80 sm:text-xl">
-        We used to just live together and play music on our own. Somewhere along the way we
-        started playing together instead, and it turned out we were pretty good at it. None of us
-        planned to stay in Southern California after college, but the band gave us a reason to.
-        We write our own songs, we play a covers set too, and we&rsquo;d rather play a living room
-        full of friends than an empty room anywhere else. This is us, the five of us, doing the
-        thing we actually want to be doing. Come find us in Newport Beach.
-      </p>
+      <div className="mt-10 space-y-5 text-lg leading-relaxed text-white/80 sm:text-xl">
+        <p>Dear friends of the Stoke Club, here is our story.</p>
+        <p>
+          We are a surf rock band in Southern California. A group of friends that lived together in
+          college and shared the love for music. We started the band in 2025 and have been writing
+          and producing our own records since. We make music to create an atmosphere that you can
+          be part of. Come see us live to share the Stoke:{" "}
+          <Link
+            href="/shows"
+            className="text-[var(--color-stoke-blue)] underline underline-offset-4 hover:text-white"
+          >
+            upcoming shows
+          </Link>
+          .
+        </p>
+      </div>
 
       <PhotoCarousel
         className="mx-auto mt-10 max-w-2xl"
