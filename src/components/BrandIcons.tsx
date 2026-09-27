@@ -1,3 +1,6 @@
+import Image from "next/image";
+import appleMusicIcon from "@/assets/apple-music-icon.png";
+
 type BrandIconProps = {
   className?: string;
 };
@@ -14,23 +17,10 @@ export function SpotifyLogo({ className }: BrandIconProps) {
   );
 }
 
-// The real Apple Music mark: the pink gradient rounded square with the white cursive note.
+// The real Apple Music app icon: Apple's own App Store artwork, not a redraw. The anchor
+// around it rounds the corners the way iOS masks it.
 export function AppleMusicLogo({ className }: BrandIconProps) {
-  return (
-    <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
-      <defs>
-        <linearGradient id="apple-music-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FA5D69" />
-          <stop offset="100%" stopColor="#FC3C44" />
-        </linearGradient>
-      </defs>
-      <rect width="512" height="512" rx="115" fill="url(#apple-music-gradient)" />
-      <path
-        fill="#fff"
-        d="M348.6 120.9c-4 1-108.9 22.2-112.9 23.1-8.3 1.9-14.7 5.6-18.9 11.1-3.5 4.5-5.6 9.7-6.8 16.6-.4 2.3-.4 8.1-.5 91.9l-.1 89.4-2.1-.4c-13-2.6-27.8-1.1-39.7 4-19.8 8.5-32.9 25.4-35.4 45.6-.4 3.5-.4 10.9 0 14.3 1.6 12.8 7.5 24 17.2 32.6 7.5 6.7 16 11 26.5 13.5 5.9 1.4 8.9 1.7 15.7 1.7 7 0 10.1-.4 16.4-1.9 18.7-4.5 33.6-17.3 39.9-34.4 3.4-9.1 3.2-3.9 3.2-96.2v-83.1l.9-.3c.5-.1 34.6-7.1 75.9-15.4 41.3-8.4 75.2-15.2 75.5-15.2s.5 30.5.5 76.3v76.3l-2.1-.4c-6.1-1.2-15.7-1.4-21.5-.5-19.7 3.2-35.9 14.7-44.4 31.5-9.9 19.6-7.5 43 6.1 60.1 8.9 11.3 22.4 18.9 37.9 21.4 5.9 1 16.5.8 22.1-.4 20.9-4.3 37-18.7 42.7-38.3 1.1-3.6 1.8-7 2.4-11.6.2-1.8.3-46.2.3-136.5V121l-1.5.1c-.9 0-4.5.8-8.2 1.8z"
-      />
-    </svg>
-  );
+  return <Image src={appleMusicIcon} alt="" aria-hidden="true" sizes="48px" className={className} />;
 }
 
 // The real Instagram mark: the warm gradient squircle with the white camera outline.

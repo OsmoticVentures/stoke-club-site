@@ -5,10 +5,11 @@ import SignupButton from "@/components/signup/SignupButton";
 export default function Home() {
   return (
     <main>
-      {/* Fold 1: hero. On a phone the photo fills the whole fold between the nav and the
-          sticky bar, cropped to the five faces, with the logo large in the center. From sm up
-          it is the whole photo, never cropped, sized to the screen height with a blurred copy
-          filling any side space, and the logo sits small in the sky. */}
+      {/* Fold 1: hero. Keyed to screen shape, not width, so every size lands right. On a
+          portrait screen (a phone, a tablet upright, a narrow window) the photo fills the whole
+          fold between the nav and the sticky bar, cropped to the five faces, with the logo large
+          in the center. On a landscape screen it is the whole photo, never cropped, sized to the
+          screen height with a blurred copy filling any side space, and the logo small in the sky. */}
       <section className="relative w-full overflow-hidden bg-ink pt-16">
         <div className="absolute inset-0 top-16" aria-hidden="true">
           <Image
@@ -21,14 +22,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-ink/40" />
         </div>
 
-        <div className="relative mx-auto h-[calc(100svh-7rem)] w-full sm:aspect-[3/2] sm:h-auto sm:max-w-[calc((100svh-7rem)*1.5)]">
+        <div className="relative mx-auto h-[calc(100svh-7rem)] w-full landscape:aspect-[3/2] landscape:h-auto landscape:max-w-[calc((100svh-7rem)*1.5)]">
           <Image
             src="/img/band-2400.jpg"
             alt="Stoke Club"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[52%_50%] sm:object-center"
+            className="object-cover object-[52%_50%] landscape:object-center"
           />
           <h1 className="sr-only">Stoke Club</h1>
           <Image
@@ -37,7 +38,7 @@ export default function Home() {
             width={660}
             height={279}
             priority
-            className="rise absolute left-1/2 top-1/2 h-auto w-[64%] max-w-[300px] -translate-x-1/2 -translate-y-1/2 opacity-95 drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)] sm:top-[2.5%] sm:w-[20%] sm:max-w-none sm:translate-y-0 sm:opacity-85 sm:drop-shadow-[0_2px_10px_rgba(0,0,0,0.18)]"
+            className="rise absolute left-1/2 top-1/2 h-auto w-[64%] max-w-[300px] -translate-x-1/2 -translate-y-1/2 opacity-95 drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)] landscape:top-[2.5%] landscape:w-[20%] landscape:max-w-none landscape:translate-y-0 landscape:opacity-85 landscape:drop-shadow-[0_2px_10px_rgba(0,0,0,0.18)]"
           />
         </div>
       </section>
