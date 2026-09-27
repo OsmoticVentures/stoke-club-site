@@ -1,6 +1,7 @@
 import Image from "next/image";
 import PlaceholderBlock from "@/components/PlaceholderBlock";
 import InertButton from "@/components/InertButton";
+import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
 import { Icon } from "@/components/Icons";
 import { LINKS } from "@/lib/links";
@@ -105,25 +106,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fold 3: listen to our songs */}
+      {/* Fold 3: listen to our songs, each single's Spotify Canvas loop */}
       <section className="relative w-full overflow-hidden bg-ink px-5 py-24 sm:px-8 sm:py-32">
-        <div className="absolute inset-0 grid grid-cols-3">
-          <div className="relative">
-            <Image src="/img/cover-polaroid.jpg" alt="" fill sizes="33vw" className="object-cover opacity-60" />
-          </div>
-          <div className="relative">
-            <Image src="/img/cover-crocodile-tears.jpg" alt="" fill sizes="33vw" className="object-cover opacity-60" />
-          </div>
-          <div className="relative">
-            <Image src="/img/cover-dont-look-back-in-anger.jpg" alt="" fill sizes="33vw" className="object-cover opacity-60" />
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/55 to-ink" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.10),transparent_65%)]" />
 
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-10 text-center">
           <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
             Listen to our songs
           </h2>
+
+          <div className="flex items-start justify-center gap-4 sm:gap-6">
+            <CanvasCard title="Crocodile Tears" slug="crocodile-tears" linkKey="spotifyCrocodileTears" />
+            <CanvasCard title="Polaroid" slug="polaroid" linkKey="spotifyPolaroid" />
+          </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <InertButton label="Music" icon="headphones" linkKey="music" />

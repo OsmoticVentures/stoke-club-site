@@ -6,6 +6,9 @@ export const LINKS = {
   appleMusic: "https://music.apple.com/us/artist/stoke-club/1896614133",
   // Confirmed on open.spotify.com: Newport Beach indie rock, members match, 7.9K monthly listeners.
   spotify: "https://open.spotify.com/artist/7lJWtq1ziPVsOBlofMDEaY",
+  // Track pages on open.spotify.com, read from the artist's public track list.
+  spotifyCrocodileTears: "https://open.spotify.com/track/41uCe35OV5s7SL4WeW22lw",
+  spotifyPolaroid: "https://open.spotify.com/track/2ofd3d6W0sv6L1GEIdEKVe",
   music: null,
   polaroidVideo: null,
   instagram: "https://www.instagram.com/stokeclubband/",
