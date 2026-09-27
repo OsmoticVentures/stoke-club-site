@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import PhotoCarousel from "@/components/PhotoCarousel";
 
@@ -14,15 +13,16 @@ export default function About() {
         About
       </h1>
 
-      <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl">
-        <Image
-          src="/img/band-2400.jpg"
-          alt="Stoke Club, the five of us"
-          fill
-          sizes="(min-width: 896px) 896px, 100vw"
-          className="object-cover"
-        />
-      </div>
+      <PhotoCarousel
+        className="w-full"
+        aspectClassName="aspect-[3/2]"
+        photos={[
+          { src: "/img/band-2400.jpg", alt: "Stoke Club, the five of us" },
+          { src: "/img/studio-session.jpg", alt: "Stoke Club in the studio" },
+          { src: "/img/rooftop-polaroid.jpg", alt: "Stoke Club on a rooftop, Polaroid release" },
+          { src: "/img/band-jump.jpg", alt: "Stoke Club, jumping on the marsh trail" },
+        ]}
+      />
 
       <div className="mt-10 space-y-5 text-lg leading-relaxed text-white/80 sm:text-xl">
         <p>Dear friends of the Stoke Club, here is our story.</p>
@@ -40,16 +40,6 @@ export default function About() {
           .
         </p>
       </div>
-
-      <PhotoCarousel
-        className="mx-auto mt-10 max-w-2xl"
-        aspectClassName="aspect-[3/2]"
-        photos={[
-          { src: "/img/studio-session.jpg", alt: "Stoke Club in the studio" },
-          { src: "/img/rooftop-polaroid.jpg", alt: "Stoke Club on a rooftop, Polaroid release" },
-          { src: "/img/band-jump.jpg", alt: "Stoke Club, jumping on the marsh trail" },
-        ]}
-      />
     </main>
   );
 }
