@@ -38,7 +38,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${hankenGrotesk.variable} ${bricolage.variable} h-full`}>
-      <body className="min-h-full pb-12">
+      <body className="min-h-full">
         <SignupModalProvider>
           <Nav />
           {children}
