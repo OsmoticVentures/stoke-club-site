@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import PhotoCarousel from "@/components/PhotoCarousel";
 
 export const metadata: Metadata = {
   title: "About, Stoke Club",
@@ -31,26 +32,15 @@ export default function About() {
         thing we actually want to be doing. Come find us in Newport Beach.
       </p>
 
-      <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-        <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10">
-          <Image
-            src="/img/studio-session.jpg"
-            alt="Stoke Club in the studio"
-            fill
-            sizes="(min-width: 640px) 448px, 100vw"
-            className="object-cover"
-          />
-        </div>
-        <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10">
-          <Image
-            src="/img/rooftop-polaroid.jpg"
-            alt="Stoke Club on a rooftop, Polaroid release"
-            fill
-            sizes="(min-width: 640px) 448px, 100vw"
-            className="object-cover"
-          />
-        </div>
-      </div>
+      <PhotoCarousel
+        className="mx-auto mt-10 max-w-2xl"
+        aspectClassName="aspect-[3/2]"
+        photos={[
+          { src: "/img/studio-session.jpg", alt: "Stoke Club in the studio" },
+          { src: "/img/rooftop-polaroid.jpg", alt: "Stoke Club on a rooftop, Polaroid release" },
+          { src: "/img/band-jump.jpg", alt: "Stoke Club, jumping on the marsh trail" },
+        ]}
+      />
     </main>
   );
 }

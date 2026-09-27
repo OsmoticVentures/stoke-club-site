@@ -63,8 +63,18 @@ export default function Home() {
           </div>
 
           <div className="flex items-start justify-center gap-4 sm:gap-6">
-            <CanvasCard title="Crocodile Tears" slug="crocodile-tears" linkKey="spotifyCrocodileTears" />
-            <CanvasCard title="Polaroid" slug="polaroid" linkKey="spotifyPolaroid" />
+            <CanvasCard
+              title="Crocodile Tears"
+              slug="crocodile-tears"
+              spotifyLinkKey="spotifyCrocodileTears"
+              appleMusicLinkKey="appleMusicCrocodileTears"
+            />
+            <CanvasCard
+              title="Polaroid"
+              slug="polaroid"
+              spotifyLinkKey="spotifyPolaroid"
+              appleMusicLinkKey="appleMusicPolaroid"
+            />
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3">

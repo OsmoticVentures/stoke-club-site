@@ -9,6 +9,9 @@ export const LINKS = {
   // Track pages on open.spotify.com, read from the artist's public track list.
   spotifyCrocodileTears: "https://open.spotify.com/track/41uCe35OV5s7SL4WeW22lw",
   spotifyPolaroid: "https://open.spotify.com/track/2ofd3d6W0sv6L1GEIdEKVe",
+  // Per-song Apple Music links, from the band app's songs.json (release.apple_music).
+  appleMusicCrocodileTears: "https://music.apple.com/us/album/crocodile-tears/6789880531?i=6789880532",
+  appleMusicPolaroid: "https://music.apple.com/us/album/polaroid/6769295859?i=6769296073",
   music: null,
   polaroidVideo: null,
   instagram: "https://www.instagram.com/stokeclubband/",
