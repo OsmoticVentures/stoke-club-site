@@ -75,6 +75,18 @@ body {
   animation-delay: var(--d, 0ms);
 }
 
+/* STOKE flip card: a physical flip, interruptible mid-turn (a CSS transition retargets). */
+.stoke-flip-inner {
+  transition: transform 0.7s cubic-bezier(0.3, 1.2, 0.4, 1);
+}
+.stoke-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.stoke-flip {
+  -webkit-tap-highlight-color: transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
