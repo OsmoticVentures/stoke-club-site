@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { LINKS, type LinkKey } from "@/lib/links";
-import { Icon } from "@/components/Icons";
+import { SpotifyLogo, AppleMusicLogo } from "@/components/BrandIcons";
 
 type CanvasCardProps = {
   title: string;
@@ -53,24 +53,24 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      <div className="absolute right-2.5 top-2.5 flex flex-col gap-2 sm:right-3 sm:top-3">
+      <div className="absolute right-2.5 top-2.5 flex flex-row gap-2 sm:right-3 sm:top-3">
         <a
           href={spotifyHref}
           target="_blank"
           rel="noreferrer"
           aria-label={`${title} on Spotify`}
-          className="press flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white/85 backdrop-blur-sm hover:border-white/40 hover:text-white sm:h-9 sm:w-9"
+          className="press block h-10 w-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:h-12 sm:w-12"
         >
-          <Icon name="waveform" className="h-4 w-4" />
+          <SpotifyLogo className="h-full w-full" />
         </a>
         <a
           href={appleMusicHref}
           target="_blank"
           rel="noreferrer"
           aria-label={`${title} on Apple Music`}
-          className="press flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white/85 backdrop-blur-sm hover:border-white/40 hover:text-white sm:h-9 sm:w-9"
+          className="press block h-10 w-10 overflow-hidden rounded-[22%] drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:h-12 sm:w-12"
         >
-          <Icon name="note" className="h-4 w-4" />
+          <AppleMusicLogo className="h-full w-full" />
         </a>
       </div>
 

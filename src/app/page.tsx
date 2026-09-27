@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
-import InertButton from "@/components/InertButton";
 import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
 
@@ -75,12 +74,6 @@ export default function Home() {
               spotifyLinkKey="spotifyPolaroid"
               appleMusicLinkKey="appleMusicPolaroid"
             />
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <InertButton label="Music" icon="headphones" linkKey="music" />
-            <InertButton label="Apple Music" icon="note" linkKey="appleMusic" />
-            <InertButton label="Spotify" icon="waveform" linkKey="spotify" />
           </div>
         </div>
       </section>
