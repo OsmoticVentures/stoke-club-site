@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { getSupabaseAdmin } from "@/lib/supabase";
+import { appendSheetRow } from "@/lib/gsheets";
 
-const OPT_IN_KEYS = ["newMusic", "showsLA", "bigAnnouncements"] as const;
+const OPT_IN_KEYS = ["shows", "newMusic"] as const;
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -14,23 +14,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Enter a name and a valid phone number." }, { status: 400 });
   }
 
-  const supabase = getSupabaseAdmin();
-  if (!supabase) {
-    console.error("Stoke Club signup received, but STOKE_SUPABASE_URL / STOKE_SUPABASE_SERVICE_ROLE_KEY are not set.");
+  const sheetId = process.env.STOKE_GSHEET_ID;
+  const tab = process.env.STOKE_GSHEET_TAB || "Sign-ups";
+  if (!sheetId) {
+    console.error("Stoke Club signup received, but STOKE_GSHEET_ID is not set.");
     return NextResponse.json({ error: "Signups aren't connected yet. Try again soon." }, { status: 503 });
   }
 
-  const { error } = await supabase.from("stoke_club_signups").insert({
-    name,
-    phone,
-    opt_new_music: optIns.includes(OPT_IN_KEYS[0]),
-    opt_shows_la: optIns.includes(OPT_IN_KEYS[1]),
-    opt_big_announcements: optIns.includes(OPT_IN_KEYS[2]),
-    source: "site",
-  });
-
-  if (error) {
-    console.error("Stoke Club signup insert failed:", error.message);
+  try {
+    await appendSheetRow(sheetId, tab, [
+      name,
+      phone,
+      new Date().toISOString(),
+      optIns.includes(OPT_IN_KEYS[0]) ? "yes" : "",
+      optIns.includes(OPT_IN_KEYS[1]) ? "yes" : "",
+    ]);
+  } catch (err) {
+    console.error("Stoke Club signup sheet write failed:", err);
     return NextResponse.json({ error: "Could not save. Try again." }, { status: 500 });
   }
 

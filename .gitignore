@@ -9,3 +9,5 @@ __pycache__/
 next-env.d.ts
 tsconfig.tsbuildinfo
 .vercel
+.env*
+!.env.example
