@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import FooterTextsLink from "@/components/signup/FooterTextsLink";
 import { LINKS } from "@/lib/links";
 
-const columns = [
+const columns: {
+  title: string;
+  texts?: boolean;
+  links: { label: string; href: string }[];
+}[] = [
   {
     title: "Site",
     links: [
@@ -19,7 +24,8 @@ const columns = [
     ],
   },
   {
-    title: "Follow",
+    title: "Socials",
+    texts: true,
     links: [
       { label: "Instagram", href: LINKS.instagram },
       { label: "TikTok", href: LINKS.tiktok },
@@ -47,6 +53,11 @@ export default function SiteFooter() {
               <div key={col.title} className="flex flex-col gap-3">
                 <h3 className="text-xs font-medium text-white/40">{col.title}</h3>
                 <ul className="flex flex-col gap-2">
+                  {col.texts && (
+                    <li>
+                      <FooterTextsLink className="press inline-block text-left text-sm text-white/75 transition-colors hover:text-white" />
+                    </li>
+                  )}
                   {col.links.map((link) => {
                     const external = link.href.startsWith("http");
                     return (

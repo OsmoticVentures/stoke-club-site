@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Icon } from "@/components/Icons";
+import SignupButton from "@/components/signup/SignupButton";
 
 export const metadata: Metadata = {
   title: "Shows, Stoke Club",
@@ -28,15 +28,15 @@ export default function Shows() {
         <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
           Upcoming
         </span>
-        <div className="mt-4 flex items-center justify-between gap-6 rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-6 sm:px-8 sm:py-8">
+        <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-6 sm:px-8 sm:py-8">
           <div>
             <h2 className="font-[family-name:var(--font-display)] text-xl font-semibold tracking-tight text-white sm:text-2xl">
               Manhattan Beach house party
             </h2>
-            <p className="mt-1 text-sm text-white/55">Saturday, November 7, 2026</p>
+            <p className="mt-1 text-sm text-white/55">Saturday, November 7</p>
           </div>
-          <Icon name="waveform" className="h-8 w-8 shrink-0 text-[var(--color-stoke-blue)]" />
         </div>
+        <SignupButton className="mt-6" />
       </section>
     </main>
   );
