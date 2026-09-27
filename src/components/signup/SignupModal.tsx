@@ -25,7 +25,7 @@ export default function SignupModal() {
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [optIns, setOptIns] = useState<string[]>(["shows"]);
+  const [optIns, setOptIns] = useState<string[]>(["shows", "newMusic"]);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const nameRef = useRef<HTMLInputElement>(null);
@@ -36,7 +36,7 @@ export default function SignupModal() {
     setStatus("idle");
     setName("");
     setPhone("");
-    setOptIns(["shows"]);
+    setOptIns(["shows", "newMusic"]);
     setErrorMessage("");
   }
 
