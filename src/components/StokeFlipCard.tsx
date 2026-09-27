@@ -1,27 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Reenie_Beanie } from "next/font/google";
 
 const scrawl = Reenie_Beanie({ subsets: ["latin"], weight: "400", display: "swap" });
 
 // The STOKE card. Front is a scrawled question around the word, back is the answer.
-// A mouse flips it on hover; a tap or click (or Enter/Space) flips it anywhere. Both faces
+// A mouse flips it on hover or click. On a phone any touch flips it, a tap or a scroll that
+// starts on the card, the moment the finger lands. Enter/Space flip it too. Both faces
 // share one grid cell so the card is always as tall as the taller face.
 export default function StokeFlipCard() {
   const [hovered, setHovered] = useState(false);
   const [pinned, setPinned] = useState(false);
   const flipped = hovered !== pinned;
+  // A touch already flipped the card on pointerdown, so the click that follows a tap is skipped.
+  const touchFlip = useRef(false);
 
   return (
     <button
       type="button"
       aria-pressed={flipped}
       aria-label={flipped ? "Stoke: excitement, anticipation, happiness" : "So what does stoke mean?"}
-      onClick={() => setPinned((p) => !p)}
+      onPointerDown={(e) => {
+        if (e.pointerType === "mouse") return;
+        setPinned((p) => !p);
+        touchFlip.current = true;
+        window.setTimeout(() => (touchFlip.current = false), 700);
+      }}
+      onClick={() => {
+        if (touchFlip.current) {
+          touchFlip.current = false;
+          return;
+        }
+        setPinned((p) => !p);
+      }}
       onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(true)}
       onPointerLeave={(e) => e.pointerType === "mouse" && setHovered(false)}
-      className="stoke-flip block w-full cursor-pointer rounded-2xl text-left [perspective:1400px] focus-visible:outline-offset-4"
+      className="stoke-flip block w-full cursor-pointer touch-manipulation rounded-2xl text-left [perspective:1400px] focus-visible:outline-offset-4"
     >
       <div
         className="stoke-flip-inner grid [transform-style:preserve-3d]"
