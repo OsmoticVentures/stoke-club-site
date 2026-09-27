@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   // deployment. basePath makes this app's routes and assets resolve under
   // that subpath instead of root.
   basePath: "/stokeclub",
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
 };
 
 export default nextConfig;

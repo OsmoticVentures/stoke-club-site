@@ -25,10 +25,11 @@ export default function Home() {
 
         <div className="relative mx-auto h-[calc(100svh-7rem)] w-full landscape:aspect-[3/2] landscape:h-auto landscape:max-w-[calc((100svh-7rem)*1.5)]">
           <Image
-            src="/img/band-2400.jpg"
+            src="/img/band-3200.jpg"
             alt="Stoke Club"
             fill
             priority
+            quality={90}
             sizes="100vw"
             className="object-cover object-[52%_50%] landscape:object-center"
           />

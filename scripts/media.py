@@ -29,7 +29,7 @@ VID = ROOT / "public" / "video"
 
 # slot -> kind, aspect (w, h) or None to keep the source ratio, output widths
 SLOTS = {
-    "band":               {"kind": "image", "aspect": None,     "widths": [960, 1600, 2400]},
+    "band":               {"kind": "image", "aspect": None,     "widths": [960, 1600, 2400, 3200]},
     "polaroid-thumb":     {"kind": "image", "aspect": (16, 9),  "widths": [640, 1280]},
     "your-friends-cover": {"kind": "image", "aspect": (1, 1),   "widths": [600, 1200]},
     "show-photo-1":       {"kind": "image", "aspect": (4, 5),   "widths": [600, 1200]},
