@@ -80,17 +80,17 @@ export default function Home() {
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
           <StokeFlipCard />
 
-          <div className="mt-24 flex flex-col items-center sm:mt-32">
-            <div className="relative aspect-square w-full max-w-[360px] overflow-hidden rounded-xl shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)] sm:max-w-[420px]">
+          <div className="mt-24 flex w-full flex-col items-center sm:mt-32">
+            <div className="relative aspect-square w-[78%] max-w-[420px] overflow-hidden rounded-xl shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)]">
               <Image
                 src="/img/cover-your-friends.jpg"
                 alt="Your Friends cover"
                 fill
-                sizes="(min-width: 640px) 420px, 360px"
+                sizes="(min-width: 640px) 420px, 78vw"
                 className="object-cover"
               />
             </div>
-            <span className="mt-3 text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
+            <span className="mt-5 text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
               NEW RELEASE
             </span>
             <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
