@@ -6,29 +6,39 @@ import SignupButton from "@/components/signup/SignupButton";
 export default function Home() {
   return (
     <main>
-      {/* Fold 1: hero. No real hero video on file yet, the band photo stands in as the poster. */}
-      <section className="relative flex h-screen min-h-[680px] w-full flex-col items-center justify-center overflow-hidden bg-ink">
-        <div className="absolute inset-0">
+      {/* Fold 1: hero. The whole band photo, never cropped: it starts below the fixed nav and
+          sizes to fit the screen height, with a blurred copy of itself filling any side space.
+          The logo sits in the sky, above everyone's head. */}
+      <section className="relative w-full overflow-hidden bg-ink pt-16">
+        <div className="absolute inset-0 top-16" aria-hidden="true">
+          <Image
+            src="/img/band-960.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="scale-110 object-cover opacity-45 blur-2xl"
+          />
+          <div className="absolute inset-0 bg-ink/40" />
+        </div>
+
+        <div className="relative mx-auto aspect-[3/2] w-full max-w-[calc((100svh-4rem)*1.5)]">
           <Image
             src="/img/band-2400.jpg"
-            alt=""
+            alt="Stoke Club"
             fill
             priority
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.12),transparent_60%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/85" />
-        </div>
-
-        <div className="rise relative z-10 flex flex-col items-center gap-6 px-6 text-center">
-          <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
-            Latest single
-          </span>
-          <h1 className="font-[family-name:var(--font-display)] text-[15vw] font-bold uppercase leading-[0.88] tracking-tight text-white sm:text-8xl">
-            Crocodile Tears
-          </h1>
-          <InertButton label="Listen now" icon="waveform" linkKey="spotify" />
+          <h1 className="sr-only">Stoke Club</h1>
+          <Image
+            src="/img/stoke-club-logo.png"
+            alt=""
+            width={660}
+            height={279}
+            priority
+            className="rise absolute left-1/2 top-[2.5%] h-auto w-[20%] -translate-x-1/2 opacity-85 drop-shadow-[0_2px_10px_rgba(0,0,0,0.18)]"
+          />
         </div>
       </section>
 
