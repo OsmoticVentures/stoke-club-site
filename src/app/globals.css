@@ -97,3 +97,13 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Signup thread: each reply lands like an incoming text */
+.thread-in {
+  animation: rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .thread-in {
+    animation: none;
+  }
+}

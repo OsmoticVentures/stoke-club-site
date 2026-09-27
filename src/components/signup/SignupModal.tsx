@@ -9,7 +9,14 @@ const OPT_INS = [
   { key: "newMusic", label: "New songs" },
 ] as const;
 
-const ACTION_LABEL = "Hear from us";
+// The popup reads as the first text in the thread you are signing up for.
+const BUBBLE =
+  "max-w-[15rem] rounded-[1.25rem_1.25rem_1.25rem_0.375rem] bg-[var(--color-stoke-blue)] px-4 py-2.5 text-[15px] font-medium leading-snug text-[#0a0908]";
+const REPLY =
+  "max-w-[15rem] self-end rounded-[1.25rem_1.25rem_0.375rem_1.25rem] bg-[var(--color-paper)] px-4 py-2.5 text-[15px] font-medium leading-snug text-[#0a0908]";
+const OPENER = "hey it's Stoke Club. who's this?";
+const INPUT =
+  "rounded-lg border border-white/15 bg-white/[0.04] px-4 py-2.5 text-base text-white outline-none focus:border-[var(--color-stoke-blue)] sm:text-sm";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -85,12 +92,14 @@ export default function SignupModal() {
 
   useEffect(() => {
     if (status !== "success") return;
-    const t = setTimeout(requestClose, 2400);
+    const t = setTimeout(requestClose, 3200);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
   if (!open) return null;
+
+  const firstName = name.trim().split(/\s+/)[0] ?? "";
 
   function toggleOptIn(key: string) {
     setOptIns((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
@@ -144,24 +153,20 @@ export default function SignupModal() {
           visible ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-[0.96] opacity-0"
         }`}
       >
-        <div className="flex min-h-[26rem] flex-col rounded-md bg-[#0a0908] px-6 py-8 sm:px-7 sm:py-9">
+        <div className="flex flex-col rounded-md bg-[#0a0908] px-6 py-7 sm:px-7 sm:py-8">
           {status === "success" ? (
-            <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-stoke-blue)]">
-                <Icon name="check" className="h-5 w-5 text-[#0a0908]" />
-              </span>
-              <p className="text-balance text-sm font-medium text-white">
-                We&apos;ll text you for our next show. Stay Stoked.
+            <div role="status" className="flex flex-col items-start gap-2 py-1">
+              <p className={BUBBLE}>{OPENER}</p>
+              <p className={`${REPLY} thread-in`}>it&apos;s {firstName}</p>
+              <p className={`${BUBBLE} thread-in [animation-delay:600ms]`}>
+                you&apos;re in, {firstName}. stay stoked
               </p>
             </div>
           ) : (
             <>
               <div className="flex items-start justify-between gap-4">
-                <h2
-                  id="signup-heading"
-                  className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white"
-                >
-                  {ACTION_LABEL}
+                <h2 id="signup-heading" className={BUBBLE}>
+                  {OPENER}
                 </h2>
                 <button
                   type="button"
@@ -173,7 +178,7 @@ export default function SignupModal() {
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className="mt-6 flex flex-1 flex-col gap-4">
+              <form onSubmit={handleSubmit} className="mt-7 flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="signup-name" className="text-xs font-medium text-white/60">
                     Name
@@ -183,17 +188,16 @@ export default function SignupModal() {
                     id="signup-name"
                     type="text"
                     required
-                    autoComplete="name"
+                    autoComplete="given-name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="rounded-lg border border-white/15 bg-white/[0.04] px-4 py-2.5 text-base text-white outline-none focus:border-[var(--color-stoke-blue)] sm:text-sm"
-                    placeholder="Your name"
+                    className={INPUT}
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="signup-phone" className="text-xs font-medium text-white/60">
-                    Phone number
+                    Phone
                   </label>
                   <input
                     id="signup-phone"
@@ -203,36 +207,35 @@ export default function SignupModal() {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="rounded-lg border border-white/15 bg-white/[0.04] px-4 py-2.5 text-base text-white outline-none focus:border-[var(--color-stoke-blue)] sm:text-sm"
+                    className={INPUT}
                     placeholder="(555) 555-5555"
                   />
                 </div>
 
-                <div className="flex flex-col gap-1 pt-1">
-                  <span className="text-xs font-medium text-white/60">Send me</span>
-                  {OPT_INS.map((opt) => {
-                    const checked = optIns.includes(opt.key);
-                    return (
-                      <label
-                        key={opt.key}
-                        className="flex min-h-11 cursor-pointer items-center gap-3 text-sm text-white/85"
-                      >
-                        <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
-                          <input
-                            type="checkbox"
-                            checked={checked}
-                            onChange={() => toggleOptIn(opt.key)}
-                            className="peer absolute inset-0 h-full w-full cursor-pointer appearance-none rounded border border-white/30 bg-transparent checked:border-[var(--color-stoke-blue)] checked:bg-[var(--color-stoke-blue)]"
-                          />
-                          <Icon
-                            name="check"
-                            className="pointer-events-none relative h-3 w-3 text-[#0a0908] opacity-0 peer-checked:opacity-100"
-                          />
-                        </span>
-                        {opt.label}
-                      </label>
-                    );
-                  })}
+                <div className="flex flex-col gap-2 pt-1" role="group" aria-labelledby="signup-optins">
+                  <span id="signup-optins" className="text-xs font-medium text-white/60">
+                    Text me about
+                  </span>
+                  <div className="flex gap-2">
+                    {OPT_INS.map((opt) => {
+                      const on = optIns.includes(opt.key);
+                      return (
+                        <button
+                          key={opt.key}
+                          type="button"
+                          aria-pressed={on}
+                          onClick={() => toggleOptIn(opt.key)}
+                          className={`press min-h-11 rounded-full border px-4 text-sm font-medium transition-colors ${
+                            on
+                              ? "border-[var(--color-stoke-blue)] bg-[var(--color-stoke-blue)] text-[#0a0908]"
+                              : "border-white/20 text-white/70 hover:text-white"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 {status === "error" && (
@@ -244,9 +247,9 @@ export default function SignupModal() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="press mt-auto inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--color-paper)] px-5 py-3 text-sm font-semibold text-[#0a0908] disabled:opacity-60"
+                  className="press mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--color-paper)] px-5 py-3 text-sm font-semibold text-[#0a0908] disabled:opacity-60"
                 >
-                  {status === "submitting" ? "Sending..." : ACTION_LABEL}
+                  {status === "submitting" ? "Sending..." : "Send"}
                 </button>
               </form>
             </>
