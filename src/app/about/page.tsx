@@ -30,7 +30,7 @@ export default function About() {
           We are a surf rock band in Southern California. A group of friends that lived together in
           college and shared the love for music. We started the band in 2025 and have been writing
           and producing our own records since. We make music to create an atmosphere that you can
-          be part of. Come see us live to share the Stoke:{" "}
+          be part of. Share the stoke. Come see us live in one of our{" "}
           <Link
             href="/shows"
             className="text-[var(--color-stoke-blue)] underline underline-offset-4 hover:text-white"
