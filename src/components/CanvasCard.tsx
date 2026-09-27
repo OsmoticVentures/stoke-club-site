@@ -53,8 +53,16 @@ export default function CanvasCard({ title, slug, linkKey }: CanvasCardProps) {
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-4 pb-4 pt-12 text-left">
-        <span className="font-[family-name:var(--font-display)] text-base font-semibold tracking-tight text-white sm:text-lg">
+      <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-3 pb-3 pt-14 text-left sm:px-4 sm:pb-4">
+        {/* The single's cover, the way a player shows what's on */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/stokeclub/img/cover-${slug}.jpg`}
+          alt=""
+          loading="lazy"
+          className="h-10 w-10 shrink-0 rounded-[5px] shadow-[0_4px_12px_-4px_rgba(0,0,0,0.6)] sm:h-12 sm:w-12"
+        />
+        <span className="min-w-0 font-[family-name:var(--font-display)] text-sm font-semibold leading-tight tracking-tight text-white sm:text-lg">
           {title}
         </span>
       </div>
