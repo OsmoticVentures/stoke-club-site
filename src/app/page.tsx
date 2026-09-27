@@ -35,10 +35,10 @@ export default function Home() {
           />
           <h1 className="sr-only">Stoke Club</h1>
           <Image
-            src="/img/stoke-club-logo.png"
+            src="/img/stoke-club-logo-small.png"
             alt=""
             width={660}
-            height={279}
+            height={280}
             priority
             className="rise absolute left-1/2 top-1/2 h-auto w-[64%] max-w-[300px] -translate-x-1/2 -translate-y-1/2 opacity-95 drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)] landscape:top-[2.5%] landscape:w-[20%] landscape:max-w-none landscape:translate-y-0 landscape:opacity-85 landscape:drop-shadow-[0_2px_10px_rgba(0,0,0,0.18)]"
           />

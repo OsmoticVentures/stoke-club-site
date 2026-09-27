@@ -40,10 +40,10 @@ export default function SiteFooter() {
         <div className="flex flex-col gap-12 sm:flex-row sm:items-start sm:justify-between">
           <Link href="/" className="press self-start" aria-label="Stoke Club, home">
             <Image
-              src="/img/stoke-club-logo.png"
+              src="/img/stoke-club-logo-small.png"
               alt="Stoke Club"
               width={660}
-              height={279}
+              height={280}
               className="h-12 w-auto sm:h-16"
             />
           </Link>

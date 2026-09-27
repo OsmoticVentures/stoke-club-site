@@ -18,10 +18,10 @@ export default function Nav() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="press flex items-center" aria-label="Stoke Club, home">
           <Image
-            src="/img/stoke-club-logo.png"
+            src="/img/stoke-club-logo-mini.png"
             alt="Stoke Club"
-            width={660}
-            height={279}
+            width={320}
+            height={136}
             className="h-6 w-auto sm:h-7"
             priority
           />
