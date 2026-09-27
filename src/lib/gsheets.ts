@@ -26,21 +26,6 @@ async function getAccessToken(): Promise<string> {
   return data.access_token as string;
 }
 
-export async function readSheetRows(sheetId: string, tab: string): Promise<string[][]> {
-  const accessToken = await getAccessToken();
-  const range = encodeURIComponent(`${tab}!A2:Z`);
-  const res = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}`,
-    { headers: { Authorization: `Bearer ${accessToken}` } }
-  );
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    throw new Error(`Sheets read failed: ${res.status} ${body.slice(0, 300)}`);
-  }
-  const data = await res.json();
-  return data.values ?? [];
-}
-
 export async function appendSheetRow(sheetId: string, tab: string, values: (string | number)[]) {
   const accessToken = await getAccessToken();
   const range = encodeURIComponent(`${tab}!A1`);
