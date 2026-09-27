@@ -1,6 +1,7 @@
 import Image from "next/image";
 import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
+import StokeFlipCard from "@/components/StokeFlipCard";
 
 export default function Home() {
   return (
@@ -70,40 +71,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fold 3: who we are, then what's next. STOKE first, on its own white card, well
-          clear of the new release under it. */}
+      {/* Fold 3: who we are, then what's next. STOKE first, a white flip card (the question
+          in scrawl, the answer on the back), well clear of the new release under it. */}
       <section className="relative w-full overflow-hidden bg-ink px-5 py-24 sm:px-8 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.16),transparent_65%)]" />
 
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
-          <div className="w-full rounded-2xl bg-white px-6 py-10 sm:px-10 sm:py-14">
-            <h2 className="font-[family-name:var(--font-display)] text-5xl font-bold tracking-tight text-black sm:text-7xl">
-              STOKE
-            </h2>
-            <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-black sm:text-xl">
-              <span className="font-semibold text-[var(--color-stoke-blue-deep)]">Excitement.</span>
-              <br />
-              The feeling you get when something good is about to happen.
-            </p>
-          </div>
+          <StokeFlipCard />
 
-          <div className="mt-24 flex flex-col items-center gap-4 sm:mt-32">
-            <div className="relative aspect-square w-full max-w-[280px] overflow-hidden rounded-xl shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)]">
+          <div className="mt-24 flex flex-col items-center sm:mt-32">
+            <div className="relative aspect-square w-full max-w-[360px] overflow-hidden rounded-xl shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)] sm:max-w-[420px]">
               <Image
                 src="/img/cover-your-friends.jpg"
                 alt="Your Friends cover"
                 fill
-                sizes="280px"
+                sizes="(min-width: 640px) 420px, 360px"
                 className="object-cover"
               />
             </div>
-            <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
+            <span className="mt-3 text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
               NEW RELEASE
             </span>
-            <h3 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+            <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
               Your Friends
             </h3>
-            <span className="text-base text-white/60 sm:text-lg">November 2026</span>
+            <span className="mt-1 text-base text-white/45 sm:text-lg">November 2026</span>
           </div>
         </div>
       </section>
