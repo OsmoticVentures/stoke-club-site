@@ -3,12 +3,13 @@ import PlaceholderBlock from "@/components/PlaceholderBlock";
 import InertButton from "@/components/InertButton";
 import SignupButton from "@/components/signup/SignupButton";
 import { Icon } from "@/components/Icons";
+import { LINKS } from "@/lib/links";
 
 export default function Home() {
   return (
     <main>
       {/* Fold 1: hero. No real hero video on file yet, the band photo stands in as the poster. */}
-      <section className="relative flex h-screen min-h-[640px] w-full items-center justify-center overflow-hidden bg-ink">
+      <section className="relative flex h-screen min-h-[680px] w-full flex-col items-center justify-center overflow-hidden bg-ink">
         <div className="absolute inset-0">
           <Image
             src="/img/band-2400.jpg"
@@ -19,23 +20,65 @@ export default function Home() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.12),transparent_60%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/45 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/85" />
         </div>
 
-        <div className="rise relative z-10 flex flex-col items-center gap-8 px-6 text-center">
-          <Image
-            src="/img/stoke-club-logo.png"
-            alt="Stoke Club"
-            width={660}
-            height={279}
-            className="h-14 w-auto sm:h-20"
-            priority
-          />
-          <SignupButton />
+        <div className="rise relative z-10 flex flex-col items-center gap-6 px-6 text-center">
+          <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
+            Latest single
+          </span>
+          <h1 className="font-[family-name:var(--font-display)] text-[15vw] font-bold uppercase leading-[0.88] tracking-tight text-white sm:text-8xl">
+            Crocodile Tears
+          </h1>
+          <InertButton label="Listen now" icon="waveform" linkKey="spotify" />
         </div>
 
-        <div className="rise absolute bottom-8 left-1/2 -translate-x-1/2" style={{ ["--d" as string]: "300ms" }}>
-          <Icon name="chevronDown" className="h-5 w-5 text-white/30" />
+        <div
+          className="rise absolute inset-x-0 bottom-8 z-10 flex flex-col items-center gap-4 px-6"
+          style={{ ["--d" as string]: "220ms" }}
+        >
+          <span className="text-[11px] font-medium tracking-wide text-white/45">
+            Follow Stoke Club on
+          </span>
+          <div className="flex items-center gap-5">
+            <a
+              href={LINKS.instagram}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Stoke Club on Instagram"
+              className="press text-white/70 hover:text-white"
+            >
+              <Icon name="instagram" className="h-5 w-5" />
+            </a>
+            <a
+              href={LINKS.tiktok}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Stoke Club on TikTok"
+              className="press text-white/70 hover:text-white"
+            >
+              <Icon name="tiktok" className="h-5 w-5" />
+            </a>
+            <a
+              href={LINKS.spotify}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Stoke Club on Spotify"
+              className="press text-white/70 hover:text-white"
+            >
+              <Icon name="waveform" className="h-5 w-5" />
+            </a>
+            <a
+              href={LINKS.appleMusic}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Stoke Club on Apple Music"
+              className="press text-white/70 hover:text-white"
+            >
+              <Icon name="note" className="h-5 w-5" />
+            </a>
+          </div>
+          <span className="text-[11px] text-white/30">© 2026 Stoke Club</span>
         </div>
       </section>
 

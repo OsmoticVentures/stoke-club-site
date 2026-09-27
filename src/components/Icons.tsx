@@ -10,7 +10,9 @@ export type IconName =
   | "users"
   | "message"
   | "check"
-  | "close";
+  | "close"
+  | "instagram"
+  | "tiktok";
 
 type IconProps = {
   name: IconName;
@@ -89,6 +91,22 @@ function Paths({ name }: { name: IconName }) {
       return <path d="M5 12.5l4.5 4.5L19 7" />;
     case "close":
       return <path d="M6 6l12 12M18 6L6 18" />;
+    case "instagram":
+      return (
+        <>
+          <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+          <circle cx="12" cy="12" r="4.2" />
+          <circle cx="16.6" cy="7.4" r="0.9" fill="currentColor" stroke="none" />
+        </>
+      );
+    case "tiktok":
+      return (
+        <>
+          <circle cx="9.5" cy="15.5" r="3.2" />
+          <path d="M12.7 15.5V4.5" />
+          <path d="M12.7 8.2c0 2.4 2 4.3 4.4 4.4" />
+        </>
+      );
     case "users":
       return (
         <>
