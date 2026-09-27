@@ -9,7 +9,7 @@ const OPT_INS = [
   { key: "newMusic", label: "New songs" },
 ] as const;
 
-const ACTION_LABEL = "Get show texts";
+const ACTION_LABEL = "Hear from us";
 
 type Status = "idle" | "submitting" | "success" | "error";
 

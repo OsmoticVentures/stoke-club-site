@@ -9,6 +9,7 @@ export type IconName =
   | "chevronDown"
   | "users"
   | "message"
+  | "bubble"
   | "check"
   | "close"
   | "instagram"
@@ -86,6 +87,15 @@ function Paths({ name }: { name: IconName }) {
     case "message":
       return (
         <path d="M4 5.5h16a1 1 0 011 1V16a1 1 0 01-1 1H9l-4.5 3.5V17H4a1 1 0 01-1-1V6.5a1 1 0 011-1z" />
+      );
+    case "bubble":
+      // Round, filled chat bubble with the tail low on the left, like iMessage.
+      return (
+        <path
+          d="M12 3.5c-5 0-9 3.4-9 7.6 0 2.3 1.2 4.3 3 5.7-.2 1.3-.9 2.5-2 3.4 2 .2 3.8-.4 5.1-1.5.9.2 1.9.3 2.9.3 5 0 9-3.4 9-7.9S17 3.5 12 3.5z"
+          fill="currentColor"
+          stroke="none"
+        />
       );
     case "check":
       return <path d="M5 12.5l4.5 4.5L19 7" />;
