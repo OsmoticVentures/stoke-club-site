@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Icon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -11,6 +12,16 @@ export default function Shows() {
       <h1 className="mb-12 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
         Shows
       </h1>
+
+      <div className="relative mb-12 aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl border border-white/10 sm:max-w-sm">
+        <Image
+          src="/img/backyard-rig.jpg"
+          alt="Stoke Club's backyard rig"
+          fill
+          sizes="(min-width: 640px) 384px, 320px"
+          className="object-cover"
+        />
+      </div>
 
       {/* Upcoming */}
       <section>

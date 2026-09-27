@@ -30,6 +30,27 @@ export default function About() {
         full of friends than an empty room anywhere else. This is us, the five of us, doing the
         thing we actually want to be doing. Come find us in Newport Beach.
       </p>
+
+      <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+        <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10">
+          <Image
+            src="/img/studio-session.jpg"
+            alt="Stoke Club in the studio"
+            fill
+            sizes="(min-width: 640px) 448px, 100vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10">
+          <Image
+            src="/img/rooftop-polaroid.jpg"
+            alt="Stoke Club on a rooftop, Polaroid release"
+            fill
+            sizes="(min-width: 640px) 448px, 100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
     </main>
   );
 }

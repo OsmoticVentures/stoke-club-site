@@ -1,7 +1,13 @@
+import fs from "node:fs";
+import path from "node:path";
 import Image from "next/image";
 import InertButton from "@/components/InertButton";
 import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
+
+// The Your Friends cover shows the moment its file is in public/img, and not before.
+const YOUR_FRIENDS_COVER = "cover-your-friends.jpg";
+const hasYourFriendsCover = fs.existsSync(path.join(process.cwd(), "public", "img", YOUR_FRIENDS_COVER));
 
 export default function Home() {
   return (
@@ -42,40 +48,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fold 2: real band photos, straight from the group chat's Instagram shares. */}
-      <section className="w-full bg-ink px-5 py-16 sm:px-8 sm:py-20">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
-          <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10">
-            <Image
-              src="/img/studio-session.jpg"
-              alt="Stoke Club in the studio"
-              fill
-              sizes="(min-width: 640px) 33vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10">
-            <Image
-              src="/img/rooftop-polaroid.jpg"
-              alt="Stoke Club on a rooftop, Polaroid release"
-              fill
-              sizes="(min-width: 640px) 33vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10">
-            <Image
-              src="/img/backyard-rig.jpg"
-              alt="Stoke Club's backyard rig"
-              fill
-              sizes="(min-width: 640px) 33vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Fold 3: listen to our songs, each single's Spotify Canvas loop.
+      {/* Fold 2: listen to our songs, each single's Spotify Canvas loop.
           Brand line folded in here as a one-line caption, not its own fold:
           identity copy shouldn't compete with the songs for a full scroll. */}
       <section className="relative w-full overflow-hidden bg-ink px-5 py-24 sm:px-8 sm:py-32">
@@ -102,11 +75,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fold 4: new releases, the visual highlight */}
+      {/* Fold 3: new releases, the visual highlight */}
       <section className="relative w-full overflow-hidden bg-ink px-5 py-24 sm:px-8 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.16),transparent_65%)]" />
 
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
+          {hasYourFriendsCover && (
+            <div className="relative aspect-square w-full max-w-[340px] overflow-hidden rounded-xl shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)]">
+              <Image
+                src={`/img/${YOUR_FRIENDS_COVER}`}
+                alt="Your Friends cover"
+                fill
+                sizes="340px"
+                className="object-cover"
+              />
+            </div>
+          )}
           <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
             New release
           </span>
@@ -125,7 +109,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fold 5: the phone-number magnet */}
+      {/* Fold 4: the phone-number magnet */}
       <section className="w-full bg-ink px-5 py-24 sm:px-8 sm:py-32">
         <div className="polaroid-frame mx-auto max-w-xl rounded-xl">
           <div className="flex flex-col items-center gap-4 rounded-md bg-ink-soft px-6 py-12 text-center sm:px-10 sm:py-16">
