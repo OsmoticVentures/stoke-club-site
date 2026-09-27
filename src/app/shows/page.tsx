@@ -36,7 +36,7 @@ export default function Shows() {
             <p className="mt-1 text-sm text-white/55">Saturday, November 7</p>
           </div>
         </div>
-        <SignupButton className="mt-6" />
+        <SignupButton className="mt-6" label="Ask for an invite" />
       </section>
     </main>
   );
