@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import Nav from "@/components/Nav";
 import SiteFooter from "@/components/SiteFooter";
+import StickyFooterBar from "@/components/StickyFooterBar";
 import { SignupModalProvider } from "@/components/signup/SignupModalContext";
 import SignupModal from "@/components/signup/SignupModal";
 import "./globals.css";
@@ -37,11 +38,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${hankenGrotesk.variable} ${bricolage.variable} h-full`}>
-      <body className="min-h-full">
+      <body className="min-h-full pb-12">
         <SignupModalProvider>
           <Nav />
           {children}
           <SiteFooter />
+          <StickyFooterBar />
           <SignupModal />
         </SignupModalProvider>
       </body>

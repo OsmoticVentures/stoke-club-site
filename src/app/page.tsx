@@ -1,12 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
 import Image from "next/image";
 import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
-
-// The Your Friends cover shows the moment its file is in public/img, and not before.
-const YOUR_FRIENDS_COVER = "cover-your-friends.jpg";
-const hasYourFriendsCover = fs.existsSync(path.join(process.cwd(), "public", "img", YOUR_FRIENDS_COVER));
 
 export default function Home() {
   return (
@@ -26,7 +20,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-ink/40" />
         </div>
 
-        <div className="relative mx-auto aspect-[3/2] w-full max-w-[calc((100svh-4rem)*1.5)]">
+        <div className="relative mx-auto aspect-[3/2] w-full max-w-[calc((100svh-7rem)*1.5)]">
           <Image
             src="/img/band-2400.jpg"
             alt="Stoke Club"
@@ -47,19 +41,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fold 2: listen to our songs, each single's Spotify Canvas loop.
-          Brand line folded in here as a one-line caption, not its own fold:
-          identity copy shouldn't compete with the songs for a full scroll. */}
+      {/* Fold 2: latest releases, each single's Spotify Canvas loop. Nothing but the
+          heading, the videos, and their buttons: no tagline competing for attention. */}
       <section className="relative w-full overflow-hidden bg-ink px-5 py-24 sm:px-8 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.10),transparent_65%)]" />
 
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-10 text-center">
-          <div className="flex flex-col items-center gap-3">
-            <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-              Listen to our songs
-            </h2>
-            <p className="text-sm text-white/50">Stoke: the good feeling before something good happens.</p>
-          </div>
+          <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+            Latest releases:
+          </h2>
 
           <div className="flex items-start justify-center gap-4 sm:gap-6">
             <CanvasCard
@@ -78,36 +68,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fold 3: new releases, the visual highlight */}
+      {/* Fold 3: who we are, then what's next. STOKE first, the new release under it. */}
       <section className="relative w-full overflow-hidden bg-ink px-5 py-24 sm:px-8 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(111,163,192,0.16),transparent_65%)]" />
 
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
-          {hasYourFriendsCover && (
-            <div className="relative aspect-square w-full max-w-[340px] overflow-hidden rounded-xl shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)]">
-              <Image
-                src={`/img/${YOUR_FRIENDS_COVER}`}
-                alt="Your Friends cover"
-                fill
-                sizes="340px"
-                className="object-cover"
-              />
-            </div>
-          )}
-          <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
-            New release
-          </span>
-          <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-            Your Friends
+        <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-3 text-center">
+          <h2 className="font-[family-name:var(--font-display)] text-5xl font-bold tracking-tight text-white sm:text-7xl">
+            STOKE
           </h2>
+          <p className="max-w-md text-lg leading-relaxed text-white/70 sm:text-xl">
+            Excitement.
+            <br />
+            The feeling you get when something good is about to happen.
+          </p>
 
-          <div className="flex flex-col items-center leading-none">
-            <span className="font-[family-name:var(--font-display)] text-[26vw] font-bold tracking-tighter text-[var(--color-stoke-blue)] sm:text-[13rem]">
-              05
+          <div className="mt-10 flex flex-col items-center gap-2">
+            <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
+              NEW RELEASE
             </span>
-            <span className="-mt-2 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white sm:text-4xl">
-              November 2026
-            </span>
+            <h3 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+              Your Friends
+            </h3>
+            <span className="text-base text-white/60 sm:text-lg">November 2026</span>
           </div>
         </div>
       </section>

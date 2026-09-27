@@ -32,3 +32,47 @@ export function AppleMusicLogo({ className }: BrandIconProps) {
     </svg>
   );
 }
+
+// The real Instagram mark: the warm gradient squircle with the white camera outline.
+export function InstagramLogo({ className }: BrandIconProps) {
+  return (
+    <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
+      <defs>
+        <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#FEDA75" />
+          <stop offset="30%" stopColor="#FA7E1E" />
+          <stop offset="60%" stopColor="#D62976" />
+          <stop offset="80%" stopColor="#962FBF" />
+          <stop offset="100%" stopColor="#4F5BD5" />
+        </linearGradient>
+      </defs>
+      <rect width="512" height="512" rx="115" fill="url(#instagram-gradient)" />
+      <rect
+        x="136"
+        y="136"
+        width="240"
+        height="240"
+        rx="64"
+        fill="none"
+        stroke="#fff"
+        strokeWidth="28"
+      />
+      <circle cx="256" cy="256" r="62" fill="none" stroke="#fff" strokeWidth="28" />
+      <circle cx="330" cy="182" r="16" fill="#fff" />
+    </svg>
+  );
+}
+
+// The real TikTok mark: black squircle, the layered cyan/magenta/white note.
+export function TikTokLogo({ className }: BrandIconProps) {
+  const note =
+    "M318 88c9 42 38 74 82 80v54c-30 0-57-9-82-26v138c0 74-60 134-134 134S50 408 50 334s60-134 134-134c7 0 15 .6 22 1.8v56c-7-1.6-14.4-2.4-22-2.4-42 0-76 34-76 77s34 77 76 77 76-34 76-77V88h58z";
+  return (
+    <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
+      <rect width="512" height="512" rx="115" fill="#000" />
+      <path d={note} fill="#25F4EE" transform="translate(-8,6)" />
+      <path d={note} fill="#FE2C55" transform="translate(8,-6)" />
+      <path d={note} fill="#fff" />
+    </svg>
+  );
+}
