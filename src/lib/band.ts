@@ -13,6 +13,12 @@ export const DEFINITION =
 
 export const GENRES = ["Surf rock", "Indie rock", "Indie surf rock"];
 
+export const EMAIL = "stokeclubband@gmail.com";
+
+// Writer credits and lyrics as the band published them on Musixmatch ("Verified by Artist"),
+// which also feeds Spotify. Change them there first.
+export const WRITERS = ["Eon Kounalakis", "Max Amiss", "Nicholas Kallins"];
+
 export const CREATOR = {
   name: "Juan Arenas Martin",
   url: "https://juanarenas.bio",
@@ -25,6 +31,7 @@ export type Release = {
   durationS: number; // from the released audio
   spotify: LinkKey;
   appleMusic: LinkKey;
+  lyrics: string[][]; // stanzas, each a list of lines
 };
 
 export const RELEASES: Release[] = [
@@ -35,6 +42,12 @@ export const RELEASES: Release[] = [
     durationS: 193,
     spotify: "spotifyPolaroid",
     appleMusic: "appleMusicPolaroid",
+    lyrics: [
+      ["Tell me your mystery", "I found something lost inside my old blue jeans", "So why am I thinking about these memories?", "Who's in this picture that's got me on my knees?"],
+      ["And I don't even know who's in this Polaroid in my pocket", "The man that I was before was living in another world", "And I just let her go, Ms. Polaroid in my pocket", "I had her just for show, what the hell did I know?"],
+      ["It's a damn shame that you and I", "We could have been something right", "And why should I complain of working all the time?", "I'm so damn tired of finding peace of mind"],
+      ["And I don't even know who's in this Polaroid in my pocket", "The man that I was before was living in another world", "And I just let her go, Ms. Polaroid in my pocket", "I had her just for show, what the hell did I know?"],
+    ],
   },
   {
     slug: "crocodile-tears",
@@ -43,6 +56,13 @@ export const RELEASES: Release[] = [
     durationS: 207,
     spotify: "spotifyCrocodileTears",
     appleMusic: "appleMusicCrocodileTears",
+    lyrics: [
+      ["I'm sailing with my eyes closed", "Dreaming about", "What we could be", "But my heart's lost at sea", "So here I am", "Should have been with you", "But instead", "I hear your voice in my head", "And your"],
+      ["Crocodile tears", "Lipstick on your pillow", "You've confirmed my fears", "Why'd you leave me low", "Should've fuckin known"],
+      ["My feverish delirious mind", "Leaves me blind", "With all the times I've tried", "You bring me in, kick me out, leave me hanging by your side", "I would be fine", "What for your"],
+      ["Crocodile tears", "Lipstick on your pillow", "You've confirmed my fears", "Why'd you leave me low"],
+      ["Crocodile tears", "Lipstick on your pillow", "You've confirmed my fears", "Why'd you leave me low"],
+    ],
   },
 ];
 
@@ -72,6 +92,13 @@ export const recordingLd = (r: Release) => ({
   genre: GENRES,
   image: `${SITE}/img/cover-${r.slug}.jpg`,
   sameAs: [LINKS[r.spotify], LINKS[r.appleMusic]].filter(Boolean),
+  recordingOf: {
+    "@type": "MusicComposition",
+    name: r.title,
+    composer: WRITERS.map((name) => ({ "@type": "Person", name })),
+    lyricist: WRITERS.map((name) => ({ "@type": "Person", name })),
+    lyrics: { "@type": "CreativeWork", text: r.lyrics.map((st) => st.join("\n")).join("\n\n") },
+  },
 });
 
 // The questions people and answer engines ask about the band, answered from the facts above.

@@ -92,7 +92,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-14 flex flex-col gap-1 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:justify-between">
-          <p>Newport Beach, California</p>
+          <p>Newport Beach, California · stokeclubband@gmail.com</p>
           <p>
             © {new Date().getFullYear()} Stoke Club · Website and SEO by{" "}
             <a href="https://juanarenas.bio" className="underline underline-offset-2 hover:text-white">

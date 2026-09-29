@@ -6,6 +6,7 @@ import { SpotifyLogo, AppleMusicLogo } from "@/components/BrandIcons";
 import { LINKS } from "@/lib/links";
 import {
   DEFINITION,
+  WRITERS,
   RELEASES,
   SITE,
   clockDuration,
@@ -25,7 +26,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const r = releaseBySlug((await params).slug);
   if (!r) return {};
-  const description = `${r.title} by Stoke Club, released ${longDate(r.date)}. ${DEFINITION} Stream ${r.title} on Spotify and Apple Music.`;
+  const description = `${r.title} by Stoke Club: lyrics, release date (${longDate(r.date)}) and where to stream it. ${DEFINITION}`;
   return {
     title: { absolute: `${r.title} by Stoke Club | Newport Beach surf rock` },
     description,
@@ -111,6 +112,22 @@ export default async function Song({ params }: Props) {
       <p className="mt-12 text-lg leading-relaxed text-white/80 sm:text-xl">
         {r.title} is a single by Stoke Club, released {longDate(r.date)}. {DEFINITION}
       </p>
+
+      <section className="mt-16">
+        <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+          {r.title} lyrics
+        </h2>
+        <div className="mt-6 space-y-6 text-lg leading-relaxed text-white/80">
+          {r.lyrics.map((stanza, i) => (
+            <p key={i}>
+              {stanza.map((line, j) => (
+                <span key={j} className="block">{line}</span>
+              ))}
+            </p>
+          ))}
+        </div>
+        <p className="mt-8 text-sm text-white/45">Written by {WRITERS.join(", ")}</p>
+      </section>
     </main>
   );
 }
