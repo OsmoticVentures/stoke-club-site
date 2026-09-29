@@ -8,7 +8,7 @@ type SignupButtonProps = {
   label?: string;
 };
 
-export default function SignupButton({ className = "", label = "Hear from us" }: SignupButtonProps) {
+export default function SignupButton({ className = "", label = "Join the club" }: SignupButtonProps) {
   const { openModal } = useSignupModal();
 
   return (

@@ -12,9 +12,7 @@ const OPT_INS = [
 // The popup reads as the first text in the thread you are signing up for.
 const BUBBLE =
   "max-w-[15rem] rounded-[1.25rem_1.25rem_1.25rem_0.375rem] bg-[var(--color-stoke-blue)] px-4 py-2.5 text-[15px] font-medium leading-snug text-[#0a0908]";
-const REPLY =
-  "max-w-[15rem] self-end rounded-[1.25rem_1.25rem_0.375rem_1.25rem] bg-[var(--color-paper)] px-4 py-2.5 text-[15px] font-medium leading-snug text-[#0a0908]";
-const OPENER = "hey it's Stoke Club. who's this?";
+const OPENER = "Join the club";
 const INPUT =
   "rounded-lg border border-white/15 bg-white/[0.04] px-4 py-2.5 text-base text-white outline-none focus:border-[var(--color-stoke-blue)] sm:text-sm";
 
@@ -156,11 +154,7 @@ export default function SignupModal() {
         <div className="flex flex-col rounded-md bg-[#0a0908] px-6 py-7 sm:px-7 sm:py-8">
           {status === "success" ? (
             <div role="status" className="flex flex-col items-start gap-2 py-1">
-              <p className={BUBBLE}>{OPENER}</p>
-              <p className={`${REPLY} thread-in`}>it&apos;s {firstName}</p>
-              <p className={`${BUBBLE} thread-in [animation-delay:600ms]`}>
-                you&apos;re in, {firstName}. stay stoked
-              </p>
+              <p className={`${BUBBLE} thread-in`}>you&apos;re in, {firstName}. stay stoked</p>
             </div>
           ) : (
             <>
@@ -208,7 +202,6 @@ export default function SignupModal() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className={INPUT}
-                    placeholder="(555) 555-5555"
                   />
                 </div>
 
