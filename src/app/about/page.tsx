@@ -3,7 +3,8 @@ import Link from "next/link";
 import PhotoCarousel from "@/components/PhotoCarousel";
 
 export const metadata: Metadata = {
-  title: "About, Stoke Club",
+  title: "About",
+  alternates: { canonical: "/about" },
 };
 
 export default function About() {

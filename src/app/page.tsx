@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
 import StokeFlipCard from "@/components/StokeFlipCard";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

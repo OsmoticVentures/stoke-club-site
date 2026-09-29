@@ -3,7 +3,8 @@ import Image from "next/image";
 import SignupButton from "@/components/signup/SignupButton";
 
 export const metadata: Metadata = {
-  title: "Shows, Stoke Club",
+  title: "Shows",
+  alternates: { canonical: "/shows" },
 };
 
 export default function Shows() {
