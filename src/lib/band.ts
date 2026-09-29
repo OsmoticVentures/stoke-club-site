@@ -79,26 +79,26 @@ export const FAQ: { q: string; a: string }[] = [
   { q: "Who is Stoke Club?", a: DEFINITION },
   {
     q: "Where is Stoke Club from?",
-    a: "Newport Beach, in Orange County, Southern California. We are a group of friends who started making music together at the University of Southern California and started the band in 2025.",
+    a: "Newport Beach, in Orange County. We're friends who started making music together at the University of Southern California, and we started the band in 2025.",
   },
   {
     q: "What kind of music does Stoke Club play?",
-    a: "Indie surf rock from the Southern California coast, much of it written in the Mixolydian mode. We write and produce our own records.",
+    a: "Indie surf rock from the Southern California coast, a lot of it written in the Mixolydian mode. We write and produce our own records.",
   },
   {
     q: "What is Stoke Club's most popular song?",
-    a: "Polaroid, released June 1, 2026. It is on Spotify and Apple Music, next to Crocodile Tears, released July 3, 2026.",
+    a: "Polaroid, which came out June 1, 2026. It's on Spotify and Apple Music, along with Crocodile Tears from July 3, 2026.",
   },
   {
     q: "What is the Mixolydian mode, and why does Stoke Club use it?",
-    a: "Mixolydian is a major scale with a lowered seventh note. It keeps the brightness of a major key but never quite lands home, which gives our songs their dreamy, floating, endless-summer feel.",
+    a: "It's the major scale with the seventh note lowered. It stays bright but never quite lands home, and that's where the dreamy, floating feel in our songs comes from.",
   },
   {
     q: "What is Stoke Club's next release?",
-    a: "Your Friends, coming November 6, 2026.",
+    a: "Your Friends, out November 6, 2026.",
   },
   {
     q: "How do I see Stoke Club live?",
-    a: "Upcoming shows are on stokeclubband.com/shows. Leave your number there to get invited.",
+    a: "Upcoming shows are at stokeclubband.com/shows. Leave your number there and we'll invite you.",
   },
 ];
