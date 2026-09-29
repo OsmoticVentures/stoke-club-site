@@ -15,6 +15,7 @@ const columns: {
       { label: "Music", href: "/music" },
       { label: "About", href: "/about" },
       { label: "Shows", href: "/shows" },
+      { label: "Song notes", href: "https://juanarenas.bio/stokeclubmusic" },
     ],
   },
   {

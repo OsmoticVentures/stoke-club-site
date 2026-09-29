@@ -59,18 +59,15 @@ export default function About() {
         </p>
       </div>
 
-      <section className="mt-20">
-        <h2 className="mb-8 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white sm:text-4xl">
-          Questions
-        </h2>
-        <dl className="divide-y divide-white/10 border-y border-white/10">
-          {FAQ.map(({ q, a }) => (
-            <div key={q} className="py-6">
-              <dt className="font-[family-name:var(--font-display)] text-lg font-semibold text-white sm:text-xl">{q}</dt>
-              <dd className="mt-2 text-base leading-relaxed text-white/70 sm:text-lg">{a}</dd>
-            </div>
-          ))}
-        </dl>
+      <section className="mt-40 border-t border-white/10 pt-6">
+        {FAQ.map(({ q, a }) => (
+          <details key={q} className="group border-b border-white/5 py-3">
+            <summary className="cursor-pointer list-none text-sm text-white/35 transition-colors hover:text-white/60">
+              {q}
+            </summary>
+            <p className="mt-2 text-sm leading-relaxed text-white/45">{a}</p>
+          </details>
+        ))}
       </section>
     </main>
   );

@@ -101,7 +101,7 @@ export default function Home() {
             <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
               Your Friends
             </h3>
-            <span className="mt-1 text-base text-white/45 sm:text-lg">November 2026</span>
+            <span className="mt-1 text-base text-white/45 sm:text-lg">November 6, 2026</span>
           </div>
         </div>
       </section>

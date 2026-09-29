@@ -46,6 +46,9 @@ export const RELEASES: Release[] = [
   },
 ];
 
+// Announced, not yet out. Its cover lives at /img/cover-<slug>.jpg.
+export const UPCOMING = { slug: "your-friends", title: "Your Friends", date: "2026-11-06" };
+
 export const releaseBySlug = (slug: string) => RELEASES.find((r) => r.slug === slug);
 
 export const isoDuration = (s: number) => `PT${Math.floor(s / 60)}M${s % 60}S`;
@@ -92,7 +95,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What is Stoke Club's next release?",
-    a: "Your Friends, coming November 2026.",
+    a: "Your Friends, coming November 6, 2026.",
   },
   {
     q: "How do I see Stoke Club live?",
