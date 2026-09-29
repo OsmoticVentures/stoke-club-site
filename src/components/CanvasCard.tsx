@@ -34,7 +34,7 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
 
   const spotifyHref = LINKS[spotifyLinkKey] ?? undefined;
   const appleMusicHref = LINKS[appleMusicLinkKey] ?? undefined;
-  const src = `/stokeclub/video/canvas-${slug}`;
+  const src = `/video/canvas-${slug}`;
 
   return (
     <div
@@ -78,7 +78,7 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
         {/* The single's cover, the way a player shows what's on */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={`/stokeclub/img/cover-${slug}.jpg`}
+          src={`/img/cover-${slug}.jpg`}
           alt=""
           loading="lazy"
           className="h-10 w-10 shrink-0 rounded-[5px] shadow-[0_4px_12px_-4px_rgba(0,0,0,0.6)] sm:h-12 sm:w-12"

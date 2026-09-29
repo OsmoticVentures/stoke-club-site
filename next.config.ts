@@ -1,11 +1,8 @@
 import type { NextConfig } from "next";
 
+// Served at the root of stokeclubband.com (Osmotic Ventures Vercel team).
+// juanarenas.bio/stokeclub redirects here from the portfolio's vercel.json.
 const nextConfig: NextConfig = {
-  // Served at juanarenas.bio/stokeclub via a Vercel rewrite from the
-  // portfolio project's vercel.json, proxying to this project's own
-  // deployment. basePath makes this app's routes and assets resolve under
-  // that subpath instead of root.
-  basePath: "/stokeclub",
   images: {
     formats: ["image/avif", "image/webp"],
   },

@@ -117,7 +117,7 @@ export default function SignupModal() {
 
     setStatus("submitting");
     try {
-      const res = await fetch("/stokeclub/api/signups", {
+      const res = await fetch("/api/signups", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, phone, optIns }),

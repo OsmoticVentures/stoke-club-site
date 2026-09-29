@@ -29,8 +29,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://stokeclubband.com"),
   title: "Stoke Club",
   description: "Newport Beach surf rock.",
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({
