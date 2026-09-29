@@ -16,6 +16,8 @@ export const LINKS = {
   polaroidVideo: null,
   instagram: "https://www.instagram.com/stokeclubband/",
   tiktok: "https://www.tiktok.com/@stokeclubband",
+  // The band's own channel (UCEOo1fP3BjlxMXofDl8Eseg); the songs also sit on the auto-generated Topic channel.
+  youtube: "https://www.youtube.com/@stokeclubband",
 } as const satisfies Record<string, string | null>;
 
 export type LinkKey = keyof typeof LINKS;

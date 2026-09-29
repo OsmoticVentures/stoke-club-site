@@ -31,6 +31,7 @@ const columns: {
     links: [
       { label: "Instagram", href: LINKS.instagram },
       { label: "TikTok", href: LINKS.tiktok },
+      { label: "YouTube", href: LINKS.youtube },
     ],
   },
 ];

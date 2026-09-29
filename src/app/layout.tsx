@@ -116,7 +116,7 @@ const JSON_LD = {
       location: NEWPORT_BEACH,
       image: [`${SITE}/img/band-2400.jpg`, `${SITE}/img/og-stoke-club.jpg`, `${SITE}/img/rooftop-polaroid.jpg`],
       logo: `${SITE}/img/stoke-club-logo-large.png`,
-      sameAs: [LINKS.spotify, LINKS.appleMusic, LINKS.instagram, LINKS.tiktok].filter(Boolean),
+      sameAs: [LINKS.spotify, LINKS.appleMusic, LINKS.youtube, LINKS.instagram, LINKS.tiktok].filter(Boolean),
       track: RELEASES.map((r) => ({ "@id": `${SITE}/music/${r.slug}#recording` })),
     },
     ...RELEASES.map(recordingLd),

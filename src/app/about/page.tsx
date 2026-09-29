@@ -42,8 +42,8 @@ export default function About() {
       <div className="mt-10 space-y-5 text-lg leading-relaxed text-white/80 sm:text-xl">
         <p>Friends of the Stoke Club, here&apos;s our story.</p>
         <p>
-          We are an indie surf rock band from Newport Beach, Southern California. A group of friends that lived together in
-          college and shared the love for music. We started the band in 2025 and have been writing
+          We are an indie surf rock band from Newport Beach, Southern California. A group of friends that lived together in college at USC
+          and shared the love for music. We started the band in 2025 and have been writing
           and producing our own records since. We make music to create an atmosphere that you can
           be part of.
         </p>

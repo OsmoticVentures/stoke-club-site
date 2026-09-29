@@ -79,7 +79,7 @@ export const FAQ: { q: string; a: string }[] = [
   { q: "Who is Stoke Club?", a: DEFINITION },
   {
     q: "Where is Stoke Club from?",
-    a: "Newport Beach, in Orange County, Southern California. We are a group of friends who lived together in college and started the band in 2025.",
+    a: "Newport Beach, in Orange County, Southern California. We are a group of friends who started making music together at the University of Southern California and started the band in 2025.",
   },
   {
     q: "What kind of music does Stoke Club play?",
