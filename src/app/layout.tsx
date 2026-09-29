@@ -6,6 +6,7 @@ import StickyFooterBar from "@/components/StickyFooterBar";
 import { SignupModalProvider } from "@/components/signup/SignupModalContext";
 import SignupModal from "@/components/signup/SignupModal";
 import { LINKS } from "@/lib/links";
+import { BAND_ID, CREATOR, DEFINITION, GENRES, RELEASES, SITE, recordingLd } from "@/lib/band";
 import "./globals.css";
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -29,53 +30,98 @@ export const viewport: Viewport = {
   themeColor: "#050506",
 };
 
-const DESCRIPTION =
-  "Stoke Club is a surf rock band from Newport Beach, California. Listen to Crocodile Tears and Polaroid, and come see us live.";
+const DESCRIPTION = DEFINITION;
+const TITLE = "Stoke Club | Indie surf rock band from Newport Beach, California";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://stokeclubband.com"),
-  title: { default: "Stoke Club | Newport Beach surf rock band", template: "%s | Stoke Club" },
+  metadataBase: new URL(SITE),
+  title: { default: TITLE, template: "%s | Stoke Club" },
   description: DESCRIPTION,
   applicationName: "Stoke Club",
+  keywords: [
+    "Stoke Club",
+    "Stoke Club band",
+    "Polaroid Stoke Club",
+    "Newport Beach band",
+    "Orange County surf rock",
+    "Southern California indie band",
+    "surf rock",
+    "indie surf rock",
+    "Mixolydian",
+  ],
+  authors: [{ name: "Stoke Club", url: SITE }],
+  creator: CREATOR.name,
   openGraph: {
     type: "website",
     siteName: "Stoke Club",
+    locale: "en_US",
     url: "/",
-    title: "Stoke Club | Newport Beach surf rock band",
+    title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: "/img/band-1600.jpg", alt: "Stoke Club, the five of us" }],
+    images: [{ url: "/img/og-stoke-club.jpg", width: 1200, height: 630, alt: "Stoke Club, the five of us" }],
   },
-  twitter: { card: "summary_large_image", images: ["/img/band-1600.jpg"] },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/img/og-stoke-club.jpg"],
+  },
+  robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  other: { "geo.region": "US-CA", "geo.placename": "Newport Beach" },
 };
 
-// Tells Google who the band is and ties the site to its music and social profiles.
-const JSON_LD = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Stoke Club",
-    alternateName: ["Stoke Club Band", "stokeclubband"],
-    url: "https://stokeclubband.com/",
+// Tells Google and AI answer engines who the band is, where it is from, what it released, and
+// which profiles are its own. One @id per entity so every page points at the same band.
+const NEWPORT_BEACH = {
+  "@type": "Place",
+  name: "Newport Beach, California",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Newport Beach",
+    addressRegion: "CA",
+    addressCountry: "US",
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    name: "Stoke Club",
-    alternateName: "Stoke Club Band",
-    url: "https://stokeclubband.com/",
-    description: DESCRIPTION,
-    genre: "Surf rock",
-    foundingDate: "2025",
-    foundingLocation: { "@type": "Place", name: "Newport Beach, California" },
-    image: "https://stokeclubband.com/img/band-1600.jpg",
-    logo: "https://stokeclubband.com/img/stoke-club-logo-large.png",
-    sameAs: [LINKS.spotify, LINKS.appleMusic, LINKS.instagram, LINKS.tiktok],
-    track: [
-      { "@type": "MusicRecording", name: "Crocodile Tears", url: LINKS.spotifyCrocodileTears },
-      { "@type": "MusicRecording", name: "Polaroid", url: LINKS.spotifyPolaroid },
-    ],
-  },
-];
+};
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      name: "Stoke Club",
+      alternateName: ["Stoke Club Band", "stokeclubband"],
+      url: `${SITE}/`,
+      inLanguage: "en-US",
+      about: { "@id": BAND_ID },
+      publisher: { "@id": BAND_ID },
+      creator: { "@id": `${CREATOR.url}/#person` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${CREATOR.url}/#person`,
+      name: CREATOR.name,
+      url: CREATOR.url,
+    },
+    {
+      "@type": "MusicGroup",
+      "@id": BAND_ID,
+      name: "Stoke Club",
+      alternateName: "Stoke Club Band",
+      url: `${SITE}/`,
+      description: DESCRIPTION,
+      genre: GENRES,
+      foundingDate: "2025",
+      foundingLocation: NEWPORT_BEACH,
+      location: NEWPORT_BEACH,
+      image: [`${SITE}/img/band-2400.jpg`, `${SITE}/img/og-stoke-club.jpg`, `${SITE}/img/rooftop-polaroid.jpg`],
+      logo: `${SITE}/img/stoke-club-logo-large.png`,
+      sameAs: [LINKS.spotify, LINKS.appleMusic, LINKS.instagram, LINKS.tiktok].filter(Boolean),
+      track: RELEASES.map((r) => ({ "@id": `${SITE}/music/${r.slug}#recording` })),
+    },
+    ...RELEASES.map(recordingLd),
+  ],
+};
 
 export default function RootLayout({
   children,

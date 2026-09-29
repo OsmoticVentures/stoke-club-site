@@ -12,6 +12,7 @@ const columns: {
     title: "Site",
     links: [
       { label: "Home", href: "/" },
+      { label: "Music", href: "/music" },
       { label: "About", href: "/about" },
       { label: "Shows", href: "/shows" },
     ],
@@ -90,7 +91,12 @@ export default function SiteFooter() {
 
         <div className="mt-14 flex flex-col gap-1 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:justify-between">
           <p>Newport Beach, California</p>
-          <p>© {new Date().getFullYear()} Stoke Club</p>
+          <p>
+            © {new Date().getFullYear()} Stoke Club · Website and SEO by{" "}
+            <a href="https://juanarenas.bio" className="underline underline-offset-2 hover:text-white">
+              Juan Arenas Martin
+            </a>
+          </p>
         </div>
       </div>
     </footer>

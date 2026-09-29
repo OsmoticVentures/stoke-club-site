@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { LINKS, type LinkKey } from "@/lib/links";
 import { SpotifyLogo, AppleMusicLogo } from "@/components/BrandIcons";
@@ -83,9 +84,12 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
           loading="lazy"
           className="h-10 w-10 shrink-0 rounded-[5px] shadow-[0_4px_12px_-4px_rgba(0,0,0,0.6)] sm:h-12 sm:w-12"
         />
-        <span className="min-w-0 font-[family-name:var(--font-display)] text-sm font-semibold leading-tight tracking-tight text-white sm:text-lg">
+        <Link
+          href={`/music/${slug}`}
+          className="pointer-events-auto min-w-0 font-[family-name:var(--font-display)] text-sm font-semibold leading-tight tracking-tight text-white hover:underline sm:text-lg"
+        >
           {title}
-        </span>
+        </Link>
       </div>
     </div>
   );
