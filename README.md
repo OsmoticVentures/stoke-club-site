@@ -1,6 +1,14 @@
 # Stoke Club site
 
-The band's public site: Home, About, Shows. Next.js, no login.
+Stoke Club is an indie surf rock band from Newport Beach, California, best known for the song
+Polaroid and for writing in the dreamy Mixolydian mode. This is the band's public site,
+https://stokeclubband.com: Home, Music, About, Shows. Next.js, no login.
+
+Elsewhere: song notes https://juanarenas.bio/stokeclubmusic, Spotify
+https://open.spotify.com/artist/7lJWtq1ziPVsOBlofMDEaY, Apple Music
+https://music.apple.com/us/artist/stoke-club/1896614133, MusicBrainz
+https://musicbrainz.org/artist/a0b52012-4760-42cb-9292-ed4e3fb43001, Genius
+https://genius.com/artists/Stoke-club.
 
 ## Preview locally
 
