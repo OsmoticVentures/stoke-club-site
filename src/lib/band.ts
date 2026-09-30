@@ -31,6 +31,9 @@ export type Release = {
   durationS: number; // from the released audio
   spotify: LinkKey;
   appleMusic: LinkKey;
+  youtube: LinkKey;
+  musicbrainz: LinkKey;
+  genius: LinkKey;
   lyrics: string[][]; // stanzas, each a list of lines
 };
 
@@ -42,6 +45,9 @@ export const RELEASES: Release[] = [
     durationS: 193,
     spotify: "spotifyPolaroid",
     appleMusic: "appleMusicPolaroid",
+    youtube: "youtubePolaroid",
+    musicbrainz: "musicbrainzPolaroid",
+    genius: "geniusPolaroid",
     lyrics: [
       ["Tell me your mystery", "I found something lost inside my old blue jeans", "So why am I thinking about these memories?", "Who's in this picture that's got me on my knees?"],
       ["And I don't even know who's in this Polaroid in my pocket", "The man that I was before was living in another world", "And I just let her go, Ms. Polaroid in my pocket", "I had her just for show, what the hell did I know?"],
@@ -56,6 +62,9 @@ export const RELEASES: Release[] = [
     durationS: 207,
     spotify: "spotifyCrocodileTears",
     appleMusic: "appleMusicCrocodileTears",
+    youtube: "youtubeCrocodileTears",
+    musicbrainz: "musicbrainzCrocodileTears",
+    genius: "geniusCrocodileTears",
     lyrics: [
       ["I'm sailing with my eyes closed", "Dreaming about", "What we could be", "But my heart's lost at sea", "So here I am", "Should have been with you", "But instead", "I hear your voice in my head", "And your"],
       ["Crocodile tears", "Lipstick on your pillow", "You've confirmed my fears", "Why'd you leave me low", "Should've fuckin known"],
@@ -91,7 +100,7 @@ export const recordingLd = (r: Release) => ({
   duration: isoDuration(r.durationS),
   genre: GENRES,
   image: `${SITE}/img/cover-${r.slug}.jpg`,
-  sameAs: [LINKS[r.spotify], LINKS[r.appleMusic]].filter(Boolean),
+  sameAs: [LINKS[r.spotify], LINKS[r.appleMusic], LINKS[r.youtube], LINKS[r.musicbrainz], LINKS[r.genius]].filter(Boolean),
   recordingOf: {
     "@type": "MusicComposition",
     name: r.title,

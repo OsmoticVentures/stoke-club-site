@@ -18,6 +18,16 @@ export const LINKS = {
   tiktok: "https://www.tiktok.com/@stokeclubband",
   // The band's own channel (UCEOo1fP3BjlxMXofDl8Eseg); the songs also sit on the auto-generated Topic channel.
   youtube: "https://www.youtube.com/@stokeclubband",
+  // Open databases the band filed itself on 2026-09-30 (projects/stoke-club-seo/facts.md).
+  musicbrainz: "https://musicbrainz.org/artist/a0b52012-4760-42cb-9292-ed4e3fb43001",
+  musicbrainzPolaroid: "https://musicbrainz.org/recording/9998a2b5-f460-43c0-a860-ad9b772134d2",
+  musicbrainzCrocodileTears: "https://musicbrainz.org/recording/b7ba5883-855e-4708-9b9c-f431a41fee82",
+  genius: "https://genius.com/artists/Stoke-club",
+  geniusPolaroid: "https://genius.com/Stoke-club-polaroid-lyrics",
+  geniusCrocodileTears: "https://genius.com/Stoke-club-crocodile-tears-lyrics",
+  // The auto-generated Topic channel's audio for each song.
+  youtubePolaroid: "https://www.youtube.com/watch?v=A0TqvjoblhE",
+  youtubeCrocodileTears: "https://www.youtube.com/watch?v=gCm-O6n6Ih8",
 } as const satisfies Record<string, string | null>;
 
 export type LinkKey = keyof typeof LINKS;
