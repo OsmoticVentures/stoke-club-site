@@ -12,6 +12,7 @@ import {
   clockDuration,
   longDate,
   recordingLd,
+  videoLd,
   releaseBySlug,
 } from "@/lib/band";
 
@@ -52,6 +53,7 @@ export default async function Song({ params }: Props) {
     "@context": "https://schema.org",
     "@graph": [
       recordingLd(r),
+      ...(videoLd(r) ? [videoLd(r)] : []),
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -111,7 +113,26 @@ export default async function Song({ params }: Props) {
 
       <p className="mt-12 text-lg leading-relaxed text-white/80 sm:text-xl">
         {r.title} is a single by Stoke Club, released {longDate(r.date)}. {DEFINITION}
+        {r.video && !r.video.youtubeId && (
+          <>
+            {" "}The official music video premieres {longDate(r.video.premiere)} on{" "}
+            <a href={LINKS.youtube} target="_blank" rel="noreferrer" className="underline decoration-white/30 underline-offset-4 hover:text-white">
+              YouTube
+            </a>
+            .
+          </>
+        )}
       </p>
+
+      {r.video?.youtubeId && (
+        <iframe
+          title={`${r.title} by Stoke Club, official music video`}
+          src={`https://www.youtube-nocookie.com/embed/${r.video.youtubeId}`}
+          loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          className="mt-12 aspect-video w-full rounded-xl border-0"
+        />
+      )}
 
       <section className="mt-16">
         <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white sm:text-3xl">

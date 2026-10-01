@@ -35,6 +35,9 @@ export type Release = {
   musicbrainz: LinkKey;
   genius: LinkKey;
   lyrics: string[][]; // stanzas, each a list of lines
+  // Official music video. Before the upload exists only the premiere date is known; once the
+  // YouTube id is set the page embeds it and states it as a VideoObject.
+  video?: { premiere: string; youtubeId?: string };
 };
 
 export const RELEASES: Release[] = [
@@ -48,6 +51,7 @@ export const RELEASES: Release[] = [
     youtube: "youtubePolaroid",
     musicbrainz: "musicbrainzPolaroid",
     genius: "geniusPolaroid",
+    video: { premiere: "2026-10-12" },
     lyrics: [
       ["Tell me your mystery", "I found something lost inside my old blue jeans", "So why am I thinking about these memories?", "Who's in this picture that's got me on my knees?"],
       ["And I don't even know who's in this Polaroid in my pocket", "The man that I was before was living in another world", "And I just let her go, Ms. Polaroid in my pocket", "I had her just for show, what the hell did I know?"],
@@ -89,6 +93,22 @@ export const longDate = (iso: string) =>
     year: "numeric",
     timeZone: "UTC",
   });
+
+export const videoLd = (r: Release) =>
+  r.video?.youtubeId
+    ? {
+        "@type": "VideoObject",
+        "@id": `${SITE}/music/${r.slug}#video`,
+        name: `${r.title} (Official Music Video)`,
+        description: `${r.title} by Stoke Club, the official music video. ${DEFINITION}`,
+        uploadDate: r.video.premiere,
+        thumbnailUrl: `https://i.ytimg.com/vi/${r.video.youtubeId}/maxresdefault.jpg`,
+        embedUrl: `https://www.youtube.com/embed/${r.video.youtubeId}`,
+        contentUrl: `https://www.youtube.com/watch?v=${r.video.youtubeId}`,
+        author: { "@id": BAND_ID },
+        about: { "@id": `${SITE}/music/${r.slug}#recording` },
+      }
+    : null;
 
 export const recordingLd = (r: Release) => ({
   "@type": "MusicRecording",
