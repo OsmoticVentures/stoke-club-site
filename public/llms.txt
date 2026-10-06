@@ -1,6 +1,6 @@
 # Stoke Club
 
-> Stoke Club is an indie surf rock band from Newport Beach, California, best known for the song Polaroid and for writing in the dreamy Mixolydian mode.
+> Stoke Club is a California surf rock band from Newport Beach, California, best known for the song Polaroid and for writing in the dreamy Mixolydian mode.
 
 A group of friends who started making music together at the University of Southern California (USC) and started the band in 2025. We write and produce our own records.
 
@@ -9,7 +9,7 @@ A group of friends who started making music together at the University of Southe
 - Name: Stoke Club (also written Stoke Club Band)
 - From: Newport Beach, Orange County, Southern California
 - Formed: 2025
-- Genre: indie surf rock, surf rock, indie rock
+- Genre: California surf rock, surf rock
 - Sound: much of our writing is in the Mixolydian mode, a major scale with a lowered seventh, which gives the songs a dreamy, open feel
 - Best known for: Polaroid (released June 1, 2026)
 - Also released: Crocodile Tears (released July 3, 2026)

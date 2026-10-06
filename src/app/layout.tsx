@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 };
 
 const DESCRIPTION = DEFINITION;
-const TITLE = "Stoke Club | Indie surf rock band from Newport Beach, California";
+const TITLE = "Stoke Club | California surf rock band from Newport Beach, California";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
     "Polaroid Stoke Club",
     "Newport Beach band",
     "Orange County surf rock",
-    "Southern California indie band",
+    "Southern California surf rock band",
     "surf rock",
-    "indie surf rock",
+    "California surf rock",
     "Mixolydian",
   ],
   authors: [{ name: "Stoke Club", url: SITE }],

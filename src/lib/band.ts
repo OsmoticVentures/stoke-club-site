@@ -9,9 +9,9 @@ export const BAND_ID = `${SITE}/#band`;
 // The one-sentence definition every profile repeats word for word, so search engines and AI
 // answer engines meet the same entity everywhere.
 export const DEFINITION =
-  "Stoke Club is an indie surf rock band from Newport Beach, California, best known for the song Polaroid and for writing in the dreamy Mixolydian mode.";
+  "Stoke Club is a California surf rock band from Newport Beach, California, best known for the song Polaroid and for writing in the dreamy Mixolydian mode.";
 
-export const GENRES = ["Surf rock", "Indie rock", "Indie surf rock"];
+export const GENRES = ["Surf rock", "California surf rock"];
 
 export const EMAIL = "stokeclubband@gmail.com";
 
@@ -139,7 +139,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What kind of music does Stoke Club play?",
-    a: "Indie surf rock from the Southern California coast, a lot of it written in the Mixolydian mode. We write and produce our own records.",
+    a: "California surf rock from the Southern California coast, a lot of it written in the Mixolydian mode. We write and produce our own records.",
   },
   {
     q: "What is Stoke Club's most popular song?",
