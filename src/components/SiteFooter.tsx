@@ -66,21 +66,11 @@ export default function SiteFooter() {
 
       <div className="relative mx-auto max-w-6xl px-5 pb-10 pt-64 sm:px-8 md:pt-24">
         <div className="md:max-w-[52%]">
-          <Link href="/" className="press inline-block" aria-label="Stoke Club, home">
-            <Image
-              src="/img/stoke-club-logo-mini.png"
-              alt="Stoke Club"
-              width={320}
-              height={136}
-              className="h-11 w-auto opacity-90 sm:h-12"
-            />
-          </Link>
-
-          <div className="mt-14 inline-block sm:mt-20">
+          <div className="inline-block">
             <h2 className="font-[family-name:var(--font-display)] text-5xl font-semibold tracking-[-0.025em] text-white sm:text-6xl">
               Stoke Club
             </h2>
-            <p className="mt-3 text-center text-lg text-white/55 sm:text-xl">Indie surf rock</p>
+            <p className="mt-3 text-center text-lg text-white/55 sm:text-xl">California surf rock</p>
           </div>
 
           <div className="mt-10 sm:mt-14">
