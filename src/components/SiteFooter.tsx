@@ -76,26 +76,23 @@ export default function SiteFooter() {
             />
           </Link>
 
-          <h2 className="mt-14 font-[family-name:var(--font-display)] text-5xl font-semibold tracking-[-0.025em] text-white sm:mt-20 sm:text-6xl">
-            Contact
-          </h2>
+          <div className="mt-14 inline-block sm:mt-20">
+            <h2 className="font-[family-name:var(--font-display)] text-5xl font-semibold tracking-[-0.025em] text-white sm:text-6xl">
+              Stoke Club
+            </h2>
+            <p className="mt-3 text-center text-lg text-white/55 sm:text-xl">Indie surf rock</p>
+          </div>
 
-          <div className="mt-10 grid grid-cols-[0.85fr_1.15fr] gap-x-6 gap-y-3 sm:mt-14 sm:max-w-md sm:grid-cols-2 sm:gap-x-16">
-            <div className="flex flex-col gap-3">
-              <h3 className="text-xs font-medium tracking-[0.01em] text-white/80">Based in</h3>
-              <p className="text-sm leading-relaxed text-white/55">Newport Beach, California</p>
-            </div>
-            <div className="flex min-w-0 flex-col gap-1">
-              <h3 className="text-xs font-medium tracking-[0.01em] text-white/80">Get in touch</h3>
-              <div className="flex flex-col">
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="press block w-fit break-words py-3 text-sm leading-relaxed text-white/85 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white hover:decoration-white/60 sm:py-1.5"
-                >
-                  {EMAIL}
-                </a>
-                <FooterTextsLink className={`${linkClass} text-left`} />
-              </div>
+          <div className="mt-10 sm:mt-14">
+            <h3 className="text-xs font-medium tracking-[0.01em] text-white/80">Contact</h3>
+            <div className="mt-1 flex flex-col">
+              <a
+                href={`mailto:${EMAIL}`}
+                className="press block w-fit break-words py-3 text-xl leading-relaxed text-white/85 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white hover:decoration-white/60 sm:py-1.5 sm:text-2xl"
+              >
+                {EMAIL}
+              </a>
+              <FooterTextsLink className="press block w-fit py-3 text-left text-xl text-white/65 transition-colors hover:text-white sm:py-1.5 sm:text-2xl" />
             </div>
           </div>
 
