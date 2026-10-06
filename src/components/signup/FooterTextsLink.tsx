@@ -7,7 +7,7 @@ export default function FooterTextsLink({ className = "" }: { className?: string
 
   return (
     <button type="button" onClick={openModal} className={className}>
-      iMessage
+      Join the club
     </button>
   );
 }

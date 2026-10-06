@@ -14,6 +14,8 @@ export const LINKS = {
   appleMusicPolaroid: "https://music.apple.com/us/album/polaroid/6769295859?i=6769296073",
   music: null,
   polaroidVideo: null,
+  // Juan's song-by-song notes page for the band, on his own site.
+  songNotes: "https://juanarenas.bio/stokeclubmusic",
   instagram: "https://www.instagram.com/stokeclubband/",
   tiktok: "https://www.tiktok.com/@stokeclubband",
   // The band's own channel (UCEOo1fP3BjlxMXofDl8Eseg); the songs also sit on the auto-generated Topic channel.
