@@ -13,7 +13,8 @@ export const LINKS = {
   appleMusicCrocodileTears: "https://music.apple.com/us/album/crocodile-tears/6789880531?i=6789880532",
   appleMusicPolaroid: "https://music.apple.com/us/album/polaroid/6769295859?i=6769296073",
   music: null,
-  polaroidVideo: null,
+  // The official music video on the band's own channel, live 2026-10-12.
+  polaroidVideo: "https://www.youtube.com/watch?v=BKjTfKqHPAI",
   // Juan's song-by-song notes page for the band, on his own site.
   songNotes: "https://juanarenas.bio/stokeclubmusic",
   instagram: "https://www.instagram.com/stokeclubband/",

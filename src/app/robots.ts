@@ -15,6 +15,12 @@ const AI_CRAWLERS = [
   "Bingbot",
   "CCBot",
   "meta-externalagent",
+  "Applebot",
+  "Amazonbot",
+  "DuckAssistBot",
+  "YouBot",
+  "MistralAI-User",
+  "Google-CloudVertexBot",
 ];
 
 export default function robots(): MetadataRoute.Robots {

@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import SignupButton from "@/components/signup/SignupButton";
+import { SHOWS, eventLd } from "@/lib/band";
 
 export const metadata: Metadata = {
   title: "Shows",
+  description:
+    "Upcoming Stoke Club shows in Southern California: Manhattan Beach house party on November 7, 2026. Leave your number and we'll invite you.",
   alternates: { canonical: "/shows" },
+};
+
+const SHOWS_LD = {
+  "@context": "https://schema.org",
+  "@graph": SHOWS.map(eventLd),
 };
 
 export default function Shows() {
   return (
     <main className="mx-auto max-w-4xl px-5 pt-28 pb-24 sm:px-8 sm:pt-36 sm:pb-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SHOWS_LD) }} />
       <h1 className="mb-12 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
         Shows
       </h1>

@@ -9,9 +9,9 @@ export const BAND_ID = `${SITE}/#band`;
 // The one-sentence definition every profile repeats word for word, so search engines and AI
 // answer engines meet the same entity everywhere.
 export const DEFINITION =
-  "Stoke Club is a California surf rock band from Newport Beach, California, best known for the song Polaroid and for writing in the dreamy Mixolydian mode.";
+  "Stoke Club is an indie surf rock band from Newport Beach, Southern California, known for composing in the Mixolydian mode and for the song Polaroid.";
 
-export const GENRES = ["Surf rock", "California surf rock"];
+export const GENRES = ["Indie surf rock", "Surf rock", "Indie rock"];
 
 export const EMAIL = "stokeclubband@gmail.com";
 
@@ -24,6 +24,40 @@ export const CREATOR = {
   url: "https://juanarenas.bio",
 };
 
+// Rights and release line as the stores print it (Spotify track page, read 2026-09-29).
+export const LABEL = "Stoke Club LLC";
+
+// Where the band started and where it is from, the two places AI engines are asked about.
+export const COLLEGE = "University of Southern California";
+
+// The shows the public site lists. Only a booked show with a stated city and date goes here;
+// it mirrors knowledge/calendar.md, which is the one home for dates. A venue or address that
+// nobody stated stays absent.
+export type Show = { slug: string; name: string; date: string; city: string; region: string; time?: string };
+export const SHOWS: Show[] = [
+  { slug: "manhattan-beach-2026-11-07", name: "Manhattan Beach house party", date: "2026-11-07", city: "Manhattan Beach", region: "CA" },
+];
+export const upcomingShows = (today = new Date().toISOString().slice(0, 10)) => SHOWS.filter((s) => s.date >= today);
+
+export const eventLd = (s: Show) => ({
+  "@type": "MusicEvent",
+  "@id": `${SITE}/shows#${s.slug}`,
+  name: `Stoke Club live: ${s.name}`,
+  startDate: s.time ? `${s.date}T${s.time}` : s.date,
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  location: {
+    "@type": "Place",
+    name: s.name,
+    address: { "@type": "PostalAddress", addressLocality: s.city, addressRegion: s.region, addressCountry: "US" },
+  },
+  performer: { "@id": BAND_ID },
+  organizer: { "@id": BAND_ID },
+  url: `${SITE}/shows`,
+  image: `${SITE}/img/og-stoke-club.jpg`,
+  description: `Stoke Club plays ${s.name} in ${s.city}, California. Sign up at stokeclubband.com/shows to get invited.`,
+});
+
 export type Release = {
   slug: string;
   title: string;
@@ -35,6 +69,10 @@ export type Release = {
   musicbrainz: LinkKey;
   genius: LinkKey;
   lyrics: string[][]; // stanzas, each a list of lines
+  // Catalog identifiers as the stores list them (projects/stoke-club-seo/facts.md, read through
+  // the iTunes, Spotify and Deezer catalogs 2026-09-30). The ISRC names the recording, the UPC the single.
+  isrc?: string;
+  upc?: string;
   // Official music video. Before the upload exists only the premiere date is known; once the
   // YouTube id is set the page embeds it and states it as a VideoObject.
   video?: { premiere: string; youtubeId?: string };
@@ -51,7 +89,9 @@ export const RELEASES: Release[] = [
     youtube: "youtubePolaroid",
     musicbrainz: "musicbrainzPolaroid",
     genius: "geniusPolaroid",
-    video: { premiere: "2026-10-12" },
+    video: { premiere: "2026-10-12", youtubeId: "BKjTfKqHPAI" },
+    isrc: "QT6642665862",
+    upc: "859738044844",
     lyrics: [
       ["Tell me your mystery", "I found something lost inside my old blue jeans", "So why am I thinking about these memories?", "Who's in this picture that's got me on my knees?"],
       ["And I don't even know who's in this Polaroid in my pocket", "The man that I was before was living in another world", "And I just let her go, Ms. Polaroid in my pocket", "I had her just for show, what the hell did I know?"],
@@ -69,6 +109,8 @@ export const RELEASES: Release[] = [
     youtube: "youtubeCrocodileTears",
     musicbrainz: "musicbrainzCrocodileTears",
     genius: "geniusCrocodileTears",
+    isrc: "QT6672617028",
+    upc: "859742284717",
     lyrics: [
       ["I'm sailing with my eyes closed", "Dreaming about", "What we could be", "But my heart's lost at sea", "So here I am", "Should have been with you", "But instead", "I hear your voice in my head", "And your"],
       ["Crocodile tears", "Lipstick on your pillow", "You've confirmed my fears", "Why'd you leave me low", "Should've fuckin known"],
@@ -121,6 +163,27 @@ export const recordingLd = (r: Release) => ({
   genre: GENRES,
   image: `${SITE}/img/cover-${r.slug}.jpg`,
   sameAs: [LINKS[r.spotify], LINKS[r.appleMusic], LINKS[r.youtube], LINKS[r.musicbrainz], LINKS[r.genius]].filter(Boolean),
+  ...(r.isrc ? { isrcCode: r.isrc } : {}),
+  inAlbum: {
+    "@type": "MusicAlbum",
+    name: r.title,
+    albumReleaseType: "https://schema.org/SingleRelease",
+    albumProductionType: "https://schema.org/StudioAlbum",
+    byArtist: { "@id": BAND_ID },
+    datePublished: r.date,
+    image: `${SITE}/img/cover-${r.slug}.jpg`,
+    ...(r.upc
+      ? {
+          albumRelease: {
+            "@type": "MusicRelease",
+            name: r.title,
+            datePublished: r.date,
+            recordLabel: { "@type": "Organization", name: LABEL },
+            identifier: { "@type": "PropertyValue", propertyID: "UPC", value: r.upc },
+          },
+        }
+      : {}),
+  },
   recordingOf: {
     "@type": "MusicComposition",
     name: r.title,
@@ -139,7 +202,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What kind of music does Stoke Club play?",
-    a: "California surf rock from the Southern California coast, a lot of it written in the Mixolydian mode. We write and produce our own records.",
+    a: "Indie surf rock from Southern California, composing in the Mixolydian mode. We write and produce our own records.",
   },
   {
     q: "What is Stoke Club's most popular song?",
@@ -152,6 +215,14 @@ export const FAQ: { q: string; a: string }[] = [
   {
     q: "What is Stoke Club's next release?",
     a: "Your Friends, out November 6, 2026.",
+  },
+  {
+    q: "Who writes Stoke Club's songs?",
+    a: "Eon Kounalakis, Max Amiss and Nicholas Kallins are credited as the writers of Polaroid and Crocodile Tears. We write and produce our own records, released through Stoke Club LLC.",
+  },
+  {
+    q: "Is there a Polaroid music video?",
+    a: "Yes. The official Polaroid music video premiered October 12, 2026 on the Stoke Club YouTube channel.",
   },
   {
     q: "How do I see Stoke Club live?",

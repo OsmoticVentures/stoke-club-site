@@ -70,7 +70,7 @@ export default function SiteFooter() {
             <h2 className="font-[family-name:var(--font-display)] text-5xl font-semibold tracking-[-0.025em] text-white sm:text-6xl">
               Stoke Club
             </h2>
-            <p className="mt-3 text-center text-lg text-white/55 sm:text-xl">California surf rock</p>
+            <p className="mt-3 text-center text-lg text-white/55 sm:text-xl">Indie surf rock</p>
           </div>
 
           <div className="mt-10 sm:mt-14">
