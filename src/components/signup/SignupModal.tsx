@@ -29,6 +29,8 @@ export default function SignupModal() {
   const nameRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+  // One key per sign-up attempt: a double tap or a retry after a dropped reply files once.
+  const keyRef = useRef<string>("");
 
   function reset() {
     setStatus("idle");
@@ -50,6 +52,7 @@ export default function SignupModal() {
   useEffect(() => {
     if (!open) return;
     returnFocusRef.current = document.activeElement as HTMLElement;
+    keyRef.current = crypto.randomUUID();
     const raf = requestAnimationFrame(() => setVisible(true));
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -117,7 +120,7 @@ export default function SignupModal() {
     try {
       const res = await fetch("/api/signups", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Idempotency-Key": keyRef.current },
         body: JSON.stringify({ name, phone, optIns }),
       });
       const data = await res.json().catch(() => ({}));
@@ -135,7 +138,7 @@ export default function SignupModal() {
 
   return (
     <div
-      className={`fixed inset-0 z-[70] flex items-center justify-center bg-black/70 px-5 transition-opacity duration-200 ${
+      className={`fixed inset-0 z-[70] flex items-center justify-center bg-black/70 px-[max(1.25rem,env(safe-area-inset-left))] py-[max(1rem,env(safe-area-inset-top))] transition-opacity duration-200 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
       onMouseDown={(e) => {
@@ -151,7 +154,7 @@ export default function SignupModal() {
           visible ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-[0.96] opacity-0"
         }`}
       >
-        <div className="flex flex-col rounded-md bg-[#0a0908] px-6 py-7 sm:px-7 sm:py-8">
+        <div className="flex flex-col polaroid-inner bg-[#0a0908] px-6 py-7 sm:px-7 sm:py-8">
           {status === "success" ? (
             <div role="status" className="flex flex-col items-start gap-2 py-1">
               <p className={`${BUBBLE} thread-in`}>you&apos;re in, {firstName}. stay stoked</p>
@@ -180,6 +183,7 @@ export default function SignupModal() {
                   <input
                     ref={nameRef}
                     id="signup-name"
+                    name="given-name"
                     type="text"
                     required
                     autoComplete="given-name"
@@ -195,6 +199,7 @@ export default function SignupModal() {
                   </label>
                   <input
                     id="signup-phone"
+                    name="tel"
                     type="tel"
                     inputMode="tel"
                     autoComplete="tel"

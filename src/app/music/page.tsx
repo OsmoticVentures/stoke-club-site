@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { blur } from "@/lib/blur";
 import Link from "next/link";
 import { RELEASES, UPCOMING, clockDuration, longDate } from "@/lib/band";
 
@@ -21,6 +22,7 @@ export default function Music() {
           <div className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
             <Image
               src={`/img/cover-${UPCOMING.slug}.jpg`}
+              {...blur(`/img/cover-${UPCOMING.slug}.jpg`)}
               alt={`${UPCOMING.title} by Stoke Club, cover art`}
               width={400}
               height={400}
@@ -44,6 +46,7 @@ export default function Music() {
             >
               <Image
                 src={`/img/cover-${r.slug}.jpg`}
+              {...blur(`/img/cover-${r.slug}.jpg`)}
                 alt={`${r.title} by Stoke Club, cover art`}
                 width={400}
                 height={400}

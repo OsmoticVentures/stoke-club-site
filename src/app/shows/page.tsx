@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { blur } from "@/lib/blur";
 import SignupButton from "@/components/signup/SignupButton";
 import { SHOWS, eventLd } from "@/lib/band";
 
@@ -26,6 +27,7 @@ export default function Shows() {
       <div className="relative mb-12 aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl border border-white/10 sm:max-w-sm">
         <Image
           src="/img/backyard-rig.jpg"
+            {...blur("/img/backyard-rig.jpg")}
           alt="Stoke Club's backyard rig"
           fill
           sizes="(min-width: 640px) 384px, 320px"

@@ -125,3 +125,43 @@ body {
     mask-composite: intersect;
   }
 }
+
+/* UX details: tabular numbers, balanced headlines, continuous corners */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+p, li {
+  text-wrap: pretty;
+}
+body {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Concentric radii: the inner radius is the outer radius minus the frame padding. */
+.polaroid-frame {
+  border-radius: 0.75rem;
+}
+.polaroid-inner {
+  border-radius: max(0.125rem, calc(0.75rem - 0.6rem));
+}
+@supports (corner-shape: squircle) {
+  [class*="rounded-"]:not(.rounded-full),
+  .polaroid-frame,
+  .polaroid-inner {
+    corner-shape: squircle;
+  }
+}
+
+/* Native transitions: the page crossfades on route change; instant under reduced motion. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

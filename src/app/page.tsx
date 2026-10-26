@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { blur } from "@/lib/blur";
 import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
 import StokeFlipCard from "@/components/StokeFlipCard";
@@ -20,6 +21,7 @@ export default function Home() {
         <div className="absolute inset-0 top-16" aria-hidden="true">
           <Image
             src="/img/band-960.jpg"
+            {...blur("/img/band-960.jpg")}
             alt=""
             fill
             sizes="100vw"
@@ -31,6 +33,7 @@ export default function Home() {
         <div className="relative mx-auto h-[calc(100svh-7rem)] w-full landscape:aspect-[3/2] landscape:h-auto landscape:max-w-[calc((100svh-7rem)*1.5)]">
           <Image
             src="/img/band-3200.jpg"
+            {...blur("/img/band-3200.jpg")}
             alt="Stoke Club"
             fill
             priority
@@ -41,6 +44,7 @@ export default function Home() {
           <h1 className="sr-only">Stoke Club</h1>
           <Image
             src="/img/stoke-club-logo-small.png"
+            {...blur("/img/stoke-club-logo-small.png")}
             alt=""
             width={660}
             height={280}
@@ -89,6 +93,7 @@ export default function Home() {
             <div className="relative aspect-square w-[78%] max-w-[420px] overflow-hidden rounded-xl shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)]">
               <Image
                 src="/img/cover-your-friends.jpg"
+            {...blur("/img/cover-your-friends.jpg")}
                 alt="Your Friends cover"
                 fill
                 sizes="(min-width: 640px) 420px, 78vw"
@@ -109,9 +114,10 @@ export default function Home() {
       {/* Fold 4: the phone-number magnet */}
       <section className="w-full bg-ink px-5 py-24 sm:px-8 sm:py-32">
         <div className="polaroid-frame mx-auto max-w-xl rounded-xl">
-          <div className="flex flex-col items-center gap-6 rounded-md bg-ink-soft px-6 py-10 text-center sm:px-10 sm:py-14">
+          <div className="flex flex-col items-center gap-6 polaroid-inner bg-ink-soft px-6 py-10 text-center sm:px-10 sm:py-14">
             <Image
               src="/img/show-text.jpg"
+            {...blur("/img/show-text.jpg")}
               alt="A text from Stoke Club: we're playing this Friday at 10 in Manhattan Beach"
               width={1064}
               height={590}

@@ -1,3 +1,4 @@
+import { ViewTransition } from "react";
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import Nav from "@/components/Nav";
@@ -136,7 +137,7 @@ export default function RootLayout({
         />
         <SignupModalProvider>
           <Nav />
-          {children}
+          <ViewTransition>{children}</ViewTransition>
           <SiteFooter />
           <StickyFooterBar />
           <SignupModal />

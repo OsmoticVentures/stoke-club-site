@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { blur } from "@/lib/blur";
 
 type Photo = {
   src: string;
@@ -56,6 +57,7 @@ export default function PhotoCarousel({
           key={photo.src}
           src={photo.src}
           alt={photo.alt}
+          {...blur(photo.src)}
           fill
           sizes="(min-width: 640px) 448px, 100vw"
           className={`object-cover transition-opacity duration-700 ease-out ${

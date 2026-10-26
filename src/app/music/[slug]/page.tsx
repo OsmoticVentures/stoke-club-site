@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { blur } from "@/lib/blur";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SpotifyLogo, AppleMusicLogo } from "@/components/BrandIcons";
@@ -71,6 +72,7 @@ export default async function Song({ params }: Props) {
       <div className="flex flex-col gap-10 sm:flex-row sm:items-end">
         <Image
           src={`/img/cover-${r.slug}.jpg`}
+              {...blur(`/img/cover-${r.slug}.jpg`)}
           alt={`${r.title} by Stoke Club, cover art`}
           width={400}
           height={400}

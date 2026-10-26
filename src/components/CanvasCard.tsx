@@ -60,7 +60,7 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
           target="_blank"
           rel="noreferrer"
           aria-label={`${title} on Spotify`}
-          className="press block h-10 w-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:h-12 sm:w-12"
+          className="press block h-11 w-11 drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:h-12 sm:w-12"
         >
           <SpotifyLogo className="h-full w-full" />
         </a>
@@ -69,7 +69,7 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
           target="_blank"
           rel="noreferrer"
           aria-label={`${title} on Apple Music`}
-          className="press block h-10 w-10 overflow-hidden rounded-[22%] drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:h-12 sm:w-12"
+          className="press block h-11 w-11 overflow-hidden rounded-[22%] drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:h-12 sm:w-12"
         >
           <AppleMusicLogo className="h-full w-full" />
         </a>
@@ -86,7 +86,7 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
         />
         <Link
           href={`/music/${slug}`}
-          className="pointer-events-auto min-w-0 font-[family-name:var(--font-display)] text-sm font-semibold leading-tight tracking-tight text-white hover:underline sm:text-lg"
+          className="pointer-events-auto -my-3.5 py-3.5 min-w-0 font-[family-name:var(--font-display)] text-sm font-semibold leading-tight tracking-tight text-white hover:underline sm:text-lg"
         >
           {title}
         </Link>

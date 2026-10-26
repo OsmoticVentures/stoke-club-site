@@ -15,9 +15,9 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link href="/" className="press flex items-center" aria-label="Stoke Club, home">
+    <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-black/40 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:px-8">
+        <Link href="/" className="press flex min-h-11 min-w-11 items-center" aria-label="Stoke Club, home">
           <Image
             src="/img/stoke-club-logo-mini.png"
             alt="Stoke Club"
@@ -27,14 +27,14 @@ export default function Nav() {
             priority
           />
         </Link>
-        <nav className="flex items-center gap-5 sm:gap-8">
+        <nav className="flex items-center gap-1 sm:gap-4">
           {items.map((item) => {
             const active = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`press text-[13px] sm:text-sm font-medium transition-colors ${
+                className={`press flex min-h-11 min-w-11 items-center justify-center px-2.5 text-[13px] sm:px-3 sm:text-sm font-medium transition-colors ${
                   active ? "text-white" : "text-white/55 hover:text-white/85"
                 }`}
               >

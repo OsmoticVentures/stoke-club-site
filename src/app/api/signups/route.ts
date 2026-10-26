@@ -3,7 +3,27 @@ import { appendSheetRow } from "@/lib/gsheets";
 
 const OPT_IN_KEYS = ["shows", "newMusic"] as const;
 
+// Idempotency: a repeated key inside this window answers ok without a second sheet row.
+// Held per warm server instance, which covers a double tap or an immediate retry.
+const SEEN = new Map<string, number>();
+const SEEN_TTL_MS = 10 * 60 * 1000;
+const SEEN_MAX = 500;
+
+function seenRecently(key: string): boolean {
+  const now = Date.now();
+  for (const [k, t] of SEEN) if (now - t > SEEN_TTL_MS) SEEN.delete(k);
+  return SEEN.has(key);
+}
+
+function remember(key: string) {
+  if (SEEN.size >= SEEN_MAX) SEEN.delete(SEEN.keys().next().value as string);
+  SEEN.set(key, Date.now());
+}
+
 export async function POST(request: Request) {
+  const key = (request.headers.get("idempotency-key") ?? "").slice(0, 64);
+  if (key && seenRecently(key)) return NextResponse.json({ ok: true });
+
   const body = await request.json().catch(() => null);
 
   const name = typeof body?.name === "string" ? body.name.trim() : "";
@@ -34,5 +54,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Could not save. Try again." }, { status: 500 });
   }
 
+  if (key) remember(key);
   return NextResponse.json({ ok: true });
 }

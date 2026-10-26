@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { blur } from "@/lib/blur";
 import Link from "next/link";
 import FooterTextsLink from "@/components/signup/FooterTextsLink";
 import { CREATOR, EMAIL } from "@/lib/band";
@@ -40,7 +41,7 @@ const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 const linkClass =
-  "press block w-fit py-3 text-sm text-white/65 transition-colors hover:text-white sm:py-1.5";
+  "press block min-w-11 w-fit py-3 text-sm text-white/65 transition-colors hover:text-white";
 
 export default function SiteFooter() {
   return (
@@ -57,6 +58,7 @@ export default function SiteFooter() {
       >
         <Image
           src="/img/footer-rig.webp"
+            {...blur("/img/footer-rig.webp")}
           alt=""
           fill
           sizes="(min-width: 768px) 46vw, 100vw"
@@ -64,7 +66,7 @@ export default function SiteFooter() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-5 pb-10 pt-64 sm:px-8 md:pt-24">
+      <div className="relative mx-auto max-w-6xl px-5 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-64 sm:px-8 md:pt-24">
         <div className="md:max-w-[52%]">
           <div className="inline-block">
             <h2 className="font-[family-name:var(--font-display)] text-5xl font-semibold tracking-[-0.025em] text-white sm:text-6xl">
