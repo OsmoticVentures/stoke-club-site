@@ -141,7 +141,7 @@ export const DINO: FeaturedArtist = {
   name: "Dino",
   photo: "/img/dino-hero.jpg",
   photoAlt: "Dino, lit in blue",
-  spotifyArtistId: null,
+  spotifyArtistId: "4KVu07UQyxS32BDU4QzJe4",
   instagram: null,
 };
 
