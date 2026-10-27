@@ -33,7 +33,8 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
     return () => observer.disconnect();
   }, []);
 
-  const spotifyHref = LINKS[spotifyLinkKey] ?? undefined;
+  // Through the counting redirect, so a Spotify click shows up in the funnel.
+  const spotifyHref = LINKS[spotifyLinkKey] ? `/listen/${slug}` : undefined;
   const appleMusicHref = LINKS[appleMusicLinkKey] ?? undefined;
   const src = `/video/canvas-${slug}`;
 

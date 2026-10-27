@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
+import { countFunnel, sourceFromCookie } from "@/lib/funnel";
 import { appendSheetRow } from "@/lib/gsheets";
 
 const OPT_IN_KEYS = ["shows", "newMusic"] as const;
@@ -41,6 +42,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Signups aren't connected yet. Try again soon." }, { status: 503 });
   }
 
+  // Where this person first came from (an entry link like /ig or the show QR), or "direct".
+  const source = sourceFromCookie(request.headers.get("cookie"));
+
   try {
     await appendSheetRow(sheetId, tab, [
       name,
@@ -48,6 +52,7 @@ export async function POST(request: Request) {
       new Date().toISOString(),
       optIns.includes(OPT_IN_KEYS[0]) ? "yes" : "",
       optIns.includes(OPT_IN_KEYS[1]) ? "yes" : "",
+      source,
     ]);
   } catch (err) {
     console.error("Stoke Club signup sheet write failed:", err);
@@ -55,5 +60,6 @@ export async function POST(request: Request) {
   }
 
   if (key) remember(key);
+  after(() => countFunnel("signup", source));
   return NextResponse.json({ ok: true });
 }

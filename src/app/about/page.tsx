@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import FeaturedArtist from "@/components/FeaturedArtist";
 import PhotoCarousel from "@/components/PhotoCarousel";
-import { FAQ } from "@/lib/band";
+import { DINO, FAQ } from "@/lib/band";
 
 export const metadata: Metadata = {
   title: "About",
@@ -59,7 +60,9 @@ export default function About() {
         </p>
       </div>
 
-      <section className="mt-40 border-t border-white/10 pt-6">
+      <FeaturedArtist artist={DINO} />
+
+      <section className="mt-24 border-t border-white/10 pt-6 sm:mt-32">
         {FAQ.map(({ q, a }) => (
           <details key={q} className="group border-b border-white/5 py-3">
             <summary className="cursor-pointer list-none text-sm text-white/35 transition-colors hover:text-white/60">

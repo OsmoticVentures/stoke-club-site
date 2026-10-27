@@ -124,6 +124,27 @@ export const RELEASES: Release[] = [
 // Announced, not yet out. Its cover lives at /img/cover-<slug>.jpg.
 export const UPCOMING = { slug: "your-friends", title: "Your Friends", date: "2026-11-06" };
 
+// A friend of the club with his own music, shown under About. His section renders only once
+// spotifyArtistId is his confirmed Spotify artist id; every other value comes from his own
+// profiles, and a link nobody confirmed stays null and renders absent.
+export type FeaturedArtist = {
+  slug: string;
+  name: string;
+  photo: string;
+  photoAlt: string;
+  spotifyArtistId: string | null;
+  instagram: string | null;
+};
+
+export const DINO: FeaturedArtist = {
+  slug: "dino",
+  name: "Dino",
+  photo: "/img/dino-hero.jpg",
+  photoAlt: "Dino, lit in blue",
+  spotifyArtistId: null,
+  instagram: null,
+};
+
 export const releaseBySlug = (slug: string) => RELEASES.find((r) => r.slug === slug);
 
 export const isoDuration = (s: number) => `PT${Math.floor(s / 60)}M${s % 60}S`;

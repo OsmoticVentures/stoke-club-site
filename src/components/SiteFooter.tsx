@@ -22,7 +22,7 @@ const columns: {
   {
     title: "Listen",
     links: [
-      { label: "Spotify", href: LINKS.spotify },
+      { label: "Spotify", href: "/listen" },
       { label: "Apple Music", href: LINKS.appleMusic },
     ],
   },
@@ -94,7 +94,8 @@ export default function SiteFooter() {
                 <h3 className="text-xs font-medium tracking-[0.01em] text-white/80">{col.title}</h3>
                 <ul className="flex flex-col">
                   {col.links.map((link) => {
-                    const external = link.href.startsWith("http");
+                    // /listen is a counting redirect out to Spotify: a plain new-tab link, never prefetched.
+                    const external = link.href.startsWith("http") || link.href === "/listen";
                     return (
                       <li key={link.label}>
                         {external ? (
