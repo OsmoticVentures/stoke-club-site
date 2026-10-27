@@ -33,9 +33,9 @@ export const COLLEGE = "University of Southern California";
 // The shows the public site lists. Only a booked show with a stated city and date goes here;
 // it mirrors knowledge/calendar.md, which is the one home for dates. A venue or address that
 // nobody stated stays absent.
-export type Show = { slug: string; name: string; date: string; city: string; region: string; time?: string };
+export type Show = { slug: string; name: string; date: string; city: string; region: string; time?: string; url?: string };
 export const SHOWS: Show[] = [
-  { slug: "boca-raton-2026-12-06", name: "Outback Concert", date: "2026-12-06", city: "Boca Raton", region: "FL" },
+  { slug: "boca-raton-2026-12-06", name: "Outheback Concert", date: "2026-12-06", city: "Boca Raton", region: "FL", url: "https://outheback.com" },
 ];
 export const showDate = (iso: string) =>
   new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
@@ -153,7 +153,7 @@ export const DINO: FeaturedArtist = {
   photoAlt: "Dino, lit in blue",
   wordmark: "/img/dino-wordmark.svg",
   wordmarkRatio: 1136 / 1092,
-  intro: "Originals from our synth wizard",
+  intro: "Synth wizard",
   spotifyArtistId: "4KVu07UQyxS32BDU4QzJe4",
   instagram: null,
 };

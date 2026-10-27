@@ -32,6 +32,7 @@ export default function About() {
       <PhotoCarousel
         className="w-full"
         aspectClassName="aspect-[3/2]"
+        sizes="(min-width: 896px) 832px, 100vw"
         photos={[
           { src: "/img/band-2400.jpg", alt: "Stoke Club, the five of us" },
           { src: "/img/studio-session.jpg", alt: "Stoke Club in the studio" },
