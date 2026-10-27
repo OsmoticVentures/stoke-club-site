@@ -164,6 +164,19 @@ function Section({ artist, id }: { artist: Artist; id: string }) {
           />
         </div>
 
+        {artist.website ? (
+          <div className="mt-2 flex items-center">
+            <a
+              href={artist.website}
+              target="_blank"
+              rel="noreferrer"
+              className="press flex min-h-11 items-center text-sm text-white/70 underline-offset-4 hover:text-white hover:underline"
+            >
+              {artist.website.replace(/^https?:\/\//, "")}
+            </a>
+          </div>
+        ) : null}
+
         {artist.instagram ? (
           <div className="mt-2 flex items-center">
             <a

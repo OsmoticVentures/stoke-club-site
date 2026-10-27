@@ -144,6 +144,7 @@ export type FeaturedArtist = {
   intro: string; // the line above his name, in Juan's words
   spotifyArtistId: string | null;
   instagram: string | null;
+  website: string | null;
 };
 
 export const DINO: FeaturedArtist = {
@@ -156,6 +157,7 @@ export const DINO: FeaturedArtist = {
   intro: "Synth wizard",
   spotifyArtistId: "4KVu07UQyxS32BDU4QzJe4",
   instagram: null,
+  website: "https://dinoradio.com",
 };
 
 export const releaseBySlug = (slug: string) => RELEASES.find((r) => r.slug === slug);
