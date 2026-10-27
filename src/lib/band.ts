@@ -35,8 +35,15 @@ export const COLLEGE = "University of Southern California";
 // nobody stated stays absent.
 export type Show = { slug: string; name: string; date: string; city: string; region: string; time?: string };
 export const SHOWS: Show[] = [
-  { slug: "manhattan-beach-2026-11-07", name: "Manhattan Beach house party", date: "2026-11-07", city: "Manhattan Beach", region: "CA" },
+  { slug: "boca-raton-2026-12-06", name: "Outback Concert", date: "2026-12-06", city: "Boca Raton", region: "FL" },
 ];
+export const showDate = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
 export const upcomingShows = (today = new Date().toISOString().slice(0, 10)) => SHOWS.filter((s) => s.date >= today);
 
 export const eventLd = (s: Show) => ({
@@ -55,7 +62,7 @@ export const eventLd = (s: Show) => ({
   organizer: { "@id": BAND_ID },
   url: `${SITE}/shows`,
   image: `${SITE}/img/og-stoke-club.jpg`,
-  description: `Stoke Club plays ${s.name} in ${s.city}, California. Sign up at stokeclubband.com/shows to get invited.`,
+  description: `Stoke Club plays ${s.name} in ${s.city}, ${s.region}. Sign up at stokeclubband.com/shows to get invited.`,
 });
 
 export type Release = {
@@ -132,15 +139,21 @@ export type FeaturedArtist = {
   name: string;
   photo: string;
   photoAlt: string;
+  wordmark: string | null; // his own logo from his Spotify artist image, white on transparent
+  wordmarkRatio: number; // width / height of the wordmark, so it reserves its space
+  intro: string; // the line above his name, in Juan's words
   spotifyArtistId: string | null;
   instagram: string | null;
 };
 
 export const DINO: FeaturedArtist = {
   slug: "dino",
-  name: "Dino",
+  name: "dino.",
   photo: "/img/dino-hero.jpg",
   photoAlt: "Dino, lit in blue",
+  wordmark: "/img/dino-wordmark.svg",
+  wordmarkRatio: 1136 / 1092,
+  intro: "Originals from our synth wizard",
   spotifyArtistId: "4KVu07UQyxS32BDU4QzJe4",
   instagram: null,
 };
