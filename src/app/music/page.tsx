@@ -19,7 +19,10 @@ export default function Music() {
       </h1>
       <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <li>
-          <div className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+          <Link
+            href={`/music/${UPCOMING.slug}`}
+            className="press group flex items-center gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-colors hover:bg-white/[0.06]"
+          >
             <Image
               src={`/img/cover-${UPCOMING.slug}.jpg`}
               {...blur(`/img/cover-${UPCOMING.slug}.jpg`)}
@@ -36,7 +39,7 @@ export default function Music() {
               </h2>
               <p className="mt-1 text-sm text-white/55">{longDate(UPCOMING.date)}</p>
             </div>
-          </div>
+          </Link>
         </li>
         {RELEASES.map((r) => (
           <li key={r.slug}>

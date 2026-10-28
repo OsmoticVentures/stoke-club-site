@@ -66,10 +66,10 @@ export default function About() {
       <section className="mt-24 border-t border-white/10 pt-6 sm:mt-32">
         {FAQ.map(({ q, a }) => (
           <details key={q} className="group border-b border-white/5 py-3">
-            <summary className="cursor-pointer list-none text-sm text-white/35 transition-colors hover:text-white/60">
+            <summary className="cursor-pointer list-none text-base text-white/65 transition-colors hover:text-white">
               {q}
             </summary>
-            <p className="mt-2 text-sm leading-relaxed text-white/45">{a}</p>
+            <p className="mt-2 text-base leading-relaxed text-white/60">{a}</p>
           </details>
         ))}
       </section>

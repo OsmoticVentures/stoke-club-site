@@ -83,6 +83,14 @@ export type Release = {
   // Official music video. Before the upload exists only the premiere date is known; once the
   // YouTube id is set the page embeds it and states it as a VideoObject.
   video?: { premiere: string; youtubeId?: string };
+  // How the song is built, from the band's own song maps (artifacts/song-maps.html) and the app's
+  // song record (key, studio BPM). Chords only where the map marks them confirmed.
+  key: string;
+  bpm: number;
+  form: string[];
+  chords?: { part: string; chords: string }[];
+  producer?: string; // as the band published it in the video credits
+  notes?: { chords: string; mixolydian: string }; // the song-notes articles
 };
 
 export const RELEASES: Release[] = [
@@ -97,6 +105,18 @@ export const RELEASES: Release[] = [
     musicbrainz: "musicbrainzPolaroid",
     genius: "geniusPolaroid",
     video: { premiere: "2026-10-12", youtubeId: "BKjTfKqHPAI" },
+    key: "A",
+    bpm: 125,
+    form: ["Intro", "Verse", "Prechorus", "Chorus", "Verse", "Prechorus", "Pause", "Chorus", "Solo"],
+    chords: [
+      { part: "Verse and solo", chords: "A, F#m, B, then E, D, C#, B" },
+      { part: "Chorus", chords: "A, C#, B, E" },
+    ],
+    producer: "Max Amiss",
+    notes: {
+      chords: "https://juanarenas.bio/stokeclubmusic/polaroid-chords",
+      mixolydian: "https://juanarenas.bio/stokeclubmusic/polaroid-mixolydian",
+    },
     isrc: "QT6642665862",
     upc: "859738044844",
     lyrics: [
@@ -116,6 +136,13 @@ export const RELEASES: Release[] = [
     youtube: "youtubeCrocodileTears",
     musicbrainz: "musicbrainzCrocodileTears",
     genius: "geniusCrocodileTears",
+    key: "G",
+    bpm: 93,
+    form: ["Intro", "Verse", "Chorus", "Verse", "Chorus", "Solo", "Chorus", "Hits"],
+    notes: {
+      chords: "https://juanarenas.bio/stokeclubmusic/crocodile-tears-chords",
+      mixolydian: "https://juanarenas.bio/stokeclubmusic/crocodile-tears-mixolydian",
+    },
     isrc: "QT6672617028",
     upc: "859742284717",
     lyrics: [
@@ -129,7 +156,7 @@ export const RELEASES: Release[] = [
 ];
 
 // Announced, not yet out. Its cover lives at /img/cover-<slug>.jpg.
-export const UPCOMING = { slug: "your-friends", title: "Your Friends", date: "2026-11-06" };
+export const UPCOMING = { slug: "your-friends", title: "Your Friends", date: "2026-11-06", key: "E", bpm: 148 };
 
 // A friend of the club with his own music, shown under About. His section renders only once
 // spotifyArtistId is his confirmed Spotify artist id; every other value comes from his own
@@ -223,6 +250,7 @@ export const recordingLd = (r: Release) => ({
   recordingOf: {
     "@type": "MusicComposition",
     name: r.title,
+    musicalKey: `${r.key} major`,
     composer: WRITERS.map((name) => ({ "@type": "Person", name })),
     lyricist: WRITERS.map((name) => ({ "@type": "Person", name })),
     lyrics: { "@type": "CreativeWork", text: r.lyrics.map((st) => st.join("\n")).join("\n\n") },

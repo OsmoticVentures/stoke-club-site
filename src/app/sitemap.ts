@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { RELEASES, SITE, type Release } from "@/lib/band";
+import { RELEASES, SITE, UPCOMING, type Release } from "@/lib/band";
 
 // A video sitemap entry for each official video, so Google can list it as a video result.
 const videos = (r: Release) =>
@@ -36,5 +36,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [`${SITE}/img/cover-${r.slug}.jpg`],
     videos: videos(r),
   }));
-  return [...pages, ...songs];
+  const upcoming: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE}/music/${UPCOMING.slug}`,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      images: [`${SITE}/img/cover-${UPCOMING.slug}.jpg`],
+    },
+  ];
+  return [...pages, ...upcoming, ...songs];
 }

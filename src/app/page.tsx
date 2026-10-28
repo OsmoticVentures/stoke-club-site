@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { blur } from "@/lib/blur";
 import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
@@ -141,7 +142,9 @@ export default function Home() {
               NEW RELEASE
             </span>
             <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-              Your Friends
+              <Link href="/music/your-friends" className="hover:text-white/80">
+                Your Friends
+              </Link>
             </h3>
             <span className="mt-1 text-base text-white/45 sm:text-lg">November 6, 2026</span>
           </div>
