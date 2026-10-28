@@ -41,7 +41,6 @@ export default function Home() {
             sizes="384px"
             quality={60}
             loading="eager"
-            fetchPriority="low"
             className="scale-110 object-cover opacity-45 blur-2xl"
           />
           <div className="absolute inset-0 bg-ink/40" />
