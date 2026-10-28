@@ -38,7 +38,10 @@ export default function Home() {
             {...blur("/img/band-960.jpg")}
             alt=""
             fill
-            sizes="100vw"
+            sizes="384px"
+            quality={60}
+            loading="eager"
+            fetchPriority="low"
             className="scale-110 object-cover opacity-45 blur-2xl"
           />
           <div className="absolute inset-0 bg-ink/40" />
@@ -51,7 +54,7 @@ export default function Home() {
             alt="Stoke Club"
             fill
             priority
-            quality={90}
+            quality={75}
             sizes="100vw"
             className="object-cover object-[52%_50%] landscape:object-center"
           />
