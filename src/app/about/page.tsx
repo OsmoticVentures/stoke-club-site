@@ -7,7 +7,7 @@ import { DINO, FAQ } from "@/lib/band";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Stoke Club is a group of friends from USC playing indie surf rock out of Newport Beach, California. Our story, our sound, and where to hear us.",
+    "Stoke Club is a Southern California indie surf rock band, a group of friends from USC. Our story, our sound, and where to hear us.",
   alternates: { canonical: "/about" },
 };
 

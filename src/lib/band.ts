@@ -9,7 +9,7 @@ export const BAND_ID = `${SITE}/#band`;
 // The one-sentence definition every profile repeats word for word, so search engines and AI
 // answer engines meet the same entity everywhere.
 export const DEFINITION =
-  "Stoke Club is an indie surf rock band from Newport Beach, Southern California, known for composing in the Mixolydian mode and for the song Polaroid.";
+  "Stoke Club is a Southern California indie surf rock band, known for the song Polaroid.";
 
 export const GENRES = ["Indie surf rock", "Surf rock", "Indie rock"];
 
@@ -83,14 +83,7 @@ export type Release = {
   // Official music video. Before the upload exists only the premiere date is known; once the
   // YouTube id is set the page embeds it and states it as a VideoObject.
   video?: { premiere: string; youtubeId?: string };
-  // How the song is built, from the band's own song maps (artifacts/song-maps.html) and the app's
-  // song record (key, studio BPM). Chords only where the map marks them confirmed.
-  key: string;
-  bpm: number;
-  form: string[];
-  chords?: { part: string; chords: string }[];
   producer?: string; // as the band published it in the video credits
-  notes?: { chords: string; mixolydian: string }; // the song-notes articles
 };
 
 export const RELEASES: Release[] = [
@@ -105,18 +98,7 @@ export const RELEASES: Release[] = [
     musicbrainz: "musicbrainzPolaroid",
     genius: "geniusPolaroid",
     video: { premiere: "2026-10-12", youtubeId: "BKjTfKqHPAI" },
-    key: "A",
-    bpm: 125,
-    form: ["Intro", "Verse", "Prechorus", "Chorus", "Verse", "Prechorus", "Pause", "Chorus", "Solo"],
-    chords: [
-      { part: "Verse and solo", chords: "A, F#m, B, then E, D, C#, B" },
-      { part: "Chorus", chords: "A, C#, B, E" },
-    ],
     producer: "Max Amiss",
-    notes: {
-      chords: "https://juanarenas.bio/stokeclubmusic/polaroid-chords",
-      mixolydian: "https://juanarenas.bio/stokeclubmusic/polaroid-mixolydian",
-    },
     isrc: "QT6642665862",
     upc: "859738044844",
     lyrics: [
@@ -136,13 +118,6 @@ export const RELEASES: Release[] = [
     youtube: "youtubeCrocodileTears",
     musicbrainz: "musicbrainzCrocodileTears",
     genius: "geniusCrocodileTears",
-    key: "G",
-    bpm: 93,
-    form: ["Intro", "Verse", "Chorus", "Verse", "Chorus", "Solo", "Chorus", "Hits"],
-    notes: {
-      chords: "https://juanarenas.bio/stokeclubmusic/crocodile-tears-chords",
-      mixolydian: "https://juanarenas.bio/stokeclubmusic/crocodile-tears-mixolydian",
-    },
     isrc: "QT6672617028",
     upc: "859742284717",
     lyrics: [
@@ -156,7 +131,7 @@ export const RELEASES: Release[] = [
 ];
 
 // Announced, not yet out. Its cover lives at /img/cover-<slug>.jpg.
-export const UPCOMING = { slug: "your-friends", title: "Your Friends", date: "2026-11-06", key: "E", bpm: 148 };
+export const UPCOMING = { slug: "your-friends", title: "Your Friends", date: "2026-11-06" };
 
 // A friend of the club with his own music, shown under About. His section renders only once
 // spotifyArtistId is his confirmed Spotify artist id; every other value comes from his own
@@ -250,7 +225,6 @@ export const recordingLd = (r: Release) => ({
   recordingOf: {
     "@type": "MusicComposition",
     name: r.title,
-    musicalKey: `${r.key} major`,
     composer: WRITERS.map((name) => ({ "@type": "Person", name })),
     lyricist: WRITERS.map((name) => ({ "@type": "Person", name })),
     lyrics: { "@type": "CreativeWork", text: r.lyrics.map((st) => st.join("\n")).join("\n\n") },
@@ -262,19 +236,19 @@ export const FAQ: { q: string; a: string }[] = [
   { q: "Who is Stoke Club?", a: DEFINITION },
   {
     q: "Where is Stoke Club from?",
-    a: "Newport Beach, in Orange County. We're friends who started making music together at the University of Southern California, and we started the band in 2025.",
+    a: "Southern California, out of Newport Beach in Orange County. We're friends who started making music together at the University of Southern California, and we started the band in 2025.",
   },
   {
     q: "What kind of music does Stoke Club play?",
-    a: "Indie surf rock from Southern California, composing in the Mixolydian mode. We write and produce our own records.",
+    a: "Southern California indie surf rock: surf rock with indie rock in it. We write and produce our own records.",
   },
   {
     q: "What is Stoke Club's most popular song?",
     a: "Polaroid, which came out June 1, 2026. It's on Spotify and Apple Music, along with Crocodile Tears from July 3, 2026.",
   },
   {
-    q: "What is the Mixolydian mode, and why does Stoke Club use it?",
-    a: "It's the major scale with the seventh note lowered. It stays bright but never quite lands home, and that's where the dreamy, floating feel in our songs comes from.",
+    q: "Does Stoke Club write in the Mixolydian mode?",
+    a: "Often, yes. It keeps the songs bright and a little dreamy. The sound is Southern California indie surf rock first.",
   },
   {
     q: "What is Stoke Club's next release?",

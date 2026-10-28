@@ -34,8 +34,8 @@ export const viewport: Viewport = {
 // What a search result shows under the title: what the band is, then what a visitor can do here.
 // The schema below keeps DEFINITION, the one line every profile repeats word for word.
 const DESCRIPTION =
-  "Stoke Club is an indie surf rock band from Newport Beach, California. Stream Polaroid and Crocodile Tears, watch the Polaroid music video, and catch us live.";
-const TITLE = "Stoke Club | Indie surf rock band from Newport Beach, Southern California";
+  "Stoke Club is a Southern California indie surf rock band. Stream Polaroid and Crocodile Tears, watch the Polaroid music video, and catch us live.";
+const TITLE = "Stoke Club | Southern California indie surf rock band";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   applicationName: "Stoke Club",
   keywords: [
+    "Southern California indie rock",
+    "indie surf rock",
+    "surf rock",
+    "Southern California surf rock band",
     "Stoke Club",
     "Stoke Club band",
     "Polaroid Stoke Club",
-    "Newport Beach band",
     "Orange County surf rock",
-    "Southern California indie surf rock band",
-    "surf rock",
-    "indie surf rock",
     "Mixolydian",
   ],
   authors: [{ name: "Stoke Club", url: SITE }],

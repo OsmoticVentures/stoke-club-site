@@ -8,7 +8,7 @@ const videos = (r: Release) =>
         {
           title: `${r.title} by Stoke Club (Official Music Video)`,
           thumbnail_loc: `https://i.ytimg.com/vi/${r.video.youtubeId}/maxresdefault.jpg`,
-          description: `The official music video for ${r.title} by Stoke Club, an indie surf rock band from Newport Beach, California.`,
+          description: `The official music video for ${r.title} by Stoke Club, a Southern California indie surf rock band.`,
           player_loc: `https://www.youtube.com/embed/${r.video.youtubeId}`,
           publication_date: r.video.premiere,
         },

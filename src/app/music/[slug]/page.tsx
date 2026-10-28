@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { blur } from "@/lib/blur";
@@ -30,9 +29,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const r = releaseBySlug((await params).slug);
   if (!r) return {};
-  const description = `${r.title} by Stoke Club, indie surf rock from Newport Beach, California. ${r.video?.youtubeId ? "Lyrics, the official music video, and" : "Lyrics and"} where to stream it.`;
+  const description = `${r.title} by Stoke Club, Southern California indie surf rock. ${r.video?.youtubeId ? "Lyrics, the official music video, and" : "Lyrics and"} where to stream it.`;
   return {
-    title: { absolute: `${r.title} by Stoke Club | Newport Beach surf rock` },
+    title: { absolute: `${r.title} by Stoke Club | Southern California surf rock` },
     description,
     alternates: { canonical: `/music/${r.slug}` },
     openGraph: {
@@ -131,39 +130,6 @@ export default async function Song({ params }: Props) {
       {r.video?.youtubeId && (
         <YouTubeVideo id={r.video.youtubeId} title={`${r.title} by Stoke Club (Official Music Video)`} className="mt-12" />
       )}
-
-      <section className="mt-16">
-        <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-          How {r.title} is built
-        </h2>
-        <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 text-lg leading-relaxed">
-          <dt className="text-white/45">Key</dt>
-          <dd className="text-white/80">{r.key} major</dd>
-          <dt className="text-white/45">Tempo</dt>
-          <dd className="text-white/80">{r.bpm} BPM</dd>
-          <dt className="text-white/45">Form</dt>
-          <dd className="text-white/80">{r.form.join(", ")}</dd>
-          {r.chords?.map((c) => (
-            <Fragment key={c.part}>
-              <dt className="text-white/45">{c.part}</dt>
-              <dd className="text-white/80">{c.chords}</dd>
-            </Fragment>
-          ))}
-        </dl>
-        {r.notes && (
-          <p className="mt-6 text-lg leading-relaxed text-white/80">
-            Play it yourself with the{" "}
-            <a href={r.notes.chords} className="underline decoration-white/30 underline-offset-4 hover:text-white">
-              {r.title} chords
-            </a>
-            , and read{" "}
-            <a href={r.notes.mixolydian} className="underline decoration-white/30 underline-offset-4 hover:text-white">
-              how {r.title} uses the Mixolydian mode
-            </a>
-            .
-          </p>
-        )}
-      </section>
 
       <section className="mt-16">
         <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white sm:text-3xl">

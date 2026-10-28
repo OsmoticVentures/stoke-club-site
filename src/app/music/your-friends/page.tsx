@@ -6,9 +6,9 @@ import SignupButton from "@/components/signup/SignupButton";
 import { BAND_ID, SITE, UPCOMING, longDate } from "@/lib/band";
 
 // The next single's page, live before release day so the URL is already indexed when people
-// search for it. Holds only what is announced: title, date, cover, key and tempo.
+// search for it. Holds only what is announced: title, date, cover.
 const title = UPCOMING.title;
-const description = `${title} is the new single from Stoke Club, indie surf rock from Newport Beach, California. Out ${longDate(UPCOMING.date)}.`;
+const description = `${title} is the new single from Stoke Club, Southern California indie surf rock. Out ${longDate(UPCOMING.date)}.`;
 
 export const metadata: Metadata = {
   title: { absolute: `${title} by Stoke Club | New single, ${longDate(UPCOMING.date)}` },
@@ -34,7 +34,6 @@ const LD = {
       byArtist: { "@id": BAND_ID },
       datePublished: UPCOMING.date,
       image: `${SITE}/img/cover-${UPCOMING.slug}.jpg`,
-      recordingOf: { "@type": "MusicComposition", name: title, musicalKey: `${UPCOMING.key} major` },
     },
     {
       "@type": "BreadcrumbList",
@@ -74,8 +73,7 @@ export default function YourFriends() {
       </div>
 
       <p className="mt-12 text-lg leading-relaxed text-white/80 sm:text-xl">
-        {title} is the next single from Stoke Club, out {longDate(UPCOMING.date)} on Spotify and Apple Music. It sits in{" "}
-        {UPCOMING.key} major at {UPCOMING.bpm} BPM.
+        {title} is the next single from Stoke Club, out {longDate(UPCOMING.date)} on Spotify and Apple Music.
       </p>
 
       <div className="mt-12 flex flex-col items-start gap-4">

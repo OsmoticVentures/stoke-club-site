@@ -1,22 +1,21 @@
 # Stoke Club
 
-> Stoke Club is an indie surf rock band from Newport Beach, Southern California, known for composing in the Mixolydian mode and for the song Polaroid.
+> Stoke Club is a Southern California indie surf rock band, known for the song Polaroid.
 
 A group of friends who started making music together at the University of Southern California (USC) and started the band in 2025. We write and produce our own records.
 
 ## Facts
 
 - Name: Stoke Club (also written Stoke Club Band)
-- From: Newport Beach, Orange County, Southern California
+- From: Southern California (Newport Beach, Orange County)
 - Formed: 2025
-- Genre: indie surf rock, surf rock, indie rock
-- Sound: we compose in the Mixolydian mode, a major scale with a lowered seventh, which gives the songs a dreamy, open feel
+- Genre: Southern California indie surf rock, surf rock, indie rock
 - Best known for: Polaroid (released June 1, 2026)
 - Also released: Crocodile Tears (released July 3, 2026)
 - Songwriters: Eon Kounalakis, Max Amiss, Nicholas Kallins
 - Official video: Polaroid (Official Music Video), premiered October 12, 2026: https://www.youtube.com/watch?v=BKjTfKqHPAI
 - Next show: Outheback Concert, Boca Raton, Florida, December 6, 2026 (details at https://stokeclubband.com/shows)
-- Next release: Your Friends (November 6, 2026), E major, 148 BPM: https://stokeclubband.com/music/your-friends
+- Next release: Your Friends (November 6, 2026): https://stokeclubband.com/music/your-friends
 
 ## Pages
 
@@ -26,7 +25,7 @@ A group of friends who started making music together at the University of Southe
 - [Crocodile Tears](https://stokeclubband.com/music/crocodile-tears)
 - [About](https://stokeclubband.com/about): our story and common questions
 - [Shows](https://stokeclubband.com/shows): upcoming shows
-- [Song notes](https://juanarenas.bio/stokeclubmusic): articles on how our songs use the Mixolydian mode, with chord charts
+- [Song notes](https://juanarenas.bio/stokeclubmusic): notes on our songs
 
 ## Contact
 
