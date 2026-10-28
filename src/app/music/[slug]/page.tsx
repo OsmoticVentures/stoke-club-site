@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SpotifyLogo, AppleMusicLogo } from "@/components/BrandIcons";
 import { LINKS } from "@/lib/links";
+import YouTubeVideo from "@/components/YouTubeVideo";
 import {
   DEFINITION,
   WRITERS,
@@ -28,7 +29,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const r = releaseBySlug((await params).slug);
   if (!r) return {};
-  const description = `${r.title} by Stoke Club: lyrics, release date (${longDate(r.date)}) and where to stream it. ${DEFINITION}`;
+  const description = `${r.title} by Stoke Club, indie surf rock from Newport Beach, California. ${r.video?.youtubeId ? "Lyrics, the official music video, and" : "Lyrics and"} where to stream it.`;
   return {
     title: { absolute: `${r.title} by Stoke Club | Newport Beach surf rock` },
     description,
@@ -127,13 +128,7 @@ export default async function Song({ params }: Props) {
       </p>
 
       {r.video?.youtubeId && (
-        <iframe
-          title={`${r.title} by Stoke Club, official music video`}
-          src={`https://www.youtube-nocookie.com/embed/${r.video.youtubeId}`}
-          loading="lazy"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-          className="mt-12 aspect-video w-full rounded-xl border-0"
-        />
+        <YouTubeVideo id={r.video.youtubeId} title={`${r.title} by Stoke Club (Official Music Video)`} className="mt-12" />
       )}
 
       <section className="mt-16">

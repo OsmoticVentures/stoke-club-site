@@ -7,7 +7,7 @@ import { RELEASES, UPCOMING, clockDuration, longDate } from "@/lib/band";
 export const metadata: Metadata = {
   title: "Music",
   description:
-    "Every Stoke Club release: Polaroid and Crocodile Tears, with Your Friends coming November 6, 2026. Indie surf rock from Newport Beach, Southern California.",
+    "Stream Stoke Club, indie surf rock from Newport Beach, California: Polaroid, Crocodile Tears, and the Polaroid music video. Your Friends is out November 6, 2026.",
   alternates: { canonical: "/music" },
 };
 

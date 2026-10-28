@@ -4,14 +4,27 @@ import { blur } from "@/lib/blur";
 import CanvasCard from "@/components/CanvasCard";
 import SignupButton from "@/components/signup/SignupButton";
 import StokeFlipCard from "@/components/StokeFlipCard";
+import YouTubeVideo from "@/components/YouTubeVideo";
+import { LINKS } from "@/lib/links";
+import { RELEASES, videoLd } from "@/lib/band";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+// The newest official video, shown on the home page and stated as a VideoObject here too, so a
+// search for the band can surface the video from stokeclubband.com, not only from YouTube.
+const LATEST_VIDEO = RELEASES.filter((r) => r.video?.youtubeId).sort((a, b) =>
+  b.video!.premiere.localeCompare(a.video!.premiere),
+)[0];
+const VIDEO_LD = LATEST_VIDEO && { "@context": "https://schema.org", ...videoLd(LATEST_VIDEO) };
+
 export default function Home() {
   return (
     <main>
+      {VIDEO_LD && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_LD) }} />
+      )}
       {/* Fold 1: hero. Keyed to screen shape, not width, so every size lands right. On a
           portrait screen (a phone, a tablet upright, a narrow window) the photo fills the whole
           fold between the nav and the sticky bar, cropped to the five faces, with the logo large
@@ -80,6 +93,30 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Fold 2b: the newest official music video, poster first, the player on tap. */}
+      {LATEST_VIDEO && (
+        <section className="relative w-full overflow-hidden bg-ink px-5 pb-24 sm:px-8 sm:pb-32">
+          <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+              {LATEST_VIDEO.title}, the video
+            </h2>
+            <YouTubeVideo
+              id={LATEST_VIDEO.video!.youtubeId!}
+              title={`${LATEST_VIDEO.title} by Stoke Club (Official Music Video)`}
+              className="shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)]"
+            />
+            <a
+              href={LINKS.youtube}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-medium text-white/60 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white"
+            >
+              Stoke Club on YouTube
+            </a>
+          </div>
+        </section>
+      )}
 
       {/* Fold 3: who we are, then what's next. STOKE first, a white flip card (the question
           in scrawl, the answer on the back), well clear of the new release under it. */}

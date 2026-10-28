@@ -6,7 +6,7 @@ import { SHOWS, eventLd, showDate, upcomingShows } from "@/lib/band";
 export const metadata: Metadata = {
   title: "Shows",
   description:
-    "Upcoming Stoke Club shows: Outheback Concert in Boca Raton, Florida on December 6, 2026. Leave your number and we'll invite you.",
+    "See Stoke Club live. Next show: Outheback Concert in Boca Raton, Florida, December 6, 2026. Leave your number and we'll invite you.",
   alternates: { canonical: "/shows" },
 };
 
