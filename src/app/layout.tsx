@@ -72,6 +72,8 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   other: { "geo.region": "US-CA", "geo.placename": "Newport Beach" },
+  // Bing Webmaster Tools ownership (ChatGPT search and Copilot read the Bing index).
+  verification: { other: { "msvalidate.01": "A0EB623A316B268600B787DDBF1FF9CF" } },
 };
 
 // Tells Google and AI answer engines who the band is, where it is from, what it released, and
