@@ -63,7 +63,6 @@ const body = () => {
     ...rest.map((r) => `- [${r.title}](${songUrl(r.slug)})`),
     `- [About](${SITE}/about): our story and common questions`,
     `- [Shows](${SITE}/shows): upcoming shows`,
-    `- [Song notes](${LINKS.songNotes}): notes on our songs`,
     "",
     "## Contact",
     "",

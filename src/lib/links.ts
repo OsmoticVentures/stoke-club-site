@@ -15,8 +15,6 @@ export const LINKS = {
   music: null,
   // The official music video on the band's own channel, live 2026-10-12.
   polaroidVideo: "https://www.youtube.com/watch?v=BKjTfKqHPAI",
-  // Juan's song-by-song notes page for the band, on his own site.
-  songNotes: "https://juanarenas.bio/stokeclubmusic",
   instagram: "https://www.instagram.com/stokeclubband/",
   tiktok: "https://www.tiktok.com/@stokeclubband",
   // The band's own channel (UCEOo1fP3BjlxMXofDl8Eseg); the songs also sit on the auto-generated Topic channel.
