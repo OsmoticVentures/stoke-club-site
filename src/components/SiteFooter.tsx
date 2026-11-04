@@ -2,7 +2,7 @@ import Image from "next/image";
 import { blur } from "@/lib/blur";
 import Link from "next/link";
 import FooterTextsLink from "@/components/signup/FooterTextsLink";
-import { CREATOR, EMAIL } from "@/lib/band";
+import { CREATOR, DEFINITION, EMAIL } from "@/lib/band";
 import { LINKS } from "@/lib/links";
 
 const columns: {
@@ -117,6 +117,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-16 border-t border-white/10 pt-6 text-xs leading-relaxed text-white/55 sm:mt-24">
+          <p className="mb-2">{DEFINITION}</p>
           <p>
             © {new Date().getFullYear()} Stoke Club · Website and SEO by{" "}
             <a

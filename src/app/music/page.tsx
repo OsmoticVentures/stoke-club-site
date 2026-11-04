@@ -2,18 +2,37 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { blur } from "@/lib/blur";
 import Link from "next/link";
-import { RELEASES, UPCOMING, clockDuration, longDate } from "@/lib/band";
+import { DEFINITION, RELEASES, SITE, UPCOMING, clockDuration, isOut, longDate } from "@/lib/band";
 
-export const metadata: Metadata = {
-  title: "Music",
-  description:
-    "Stream Stoke Club, Southern California indie surf rock: Polaroid, Crocodile Tears, and the Polaroid music video. Your Friends is out November 6, 2026.",
-  alternates: { canonical: "/music" },
+export const revalidate = 3600;
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "Music",
+    description: isOut(UPCOMING.date)
+      ? `Stream Stoke Club, Southern California indie surf rock: ${UPCOMING.title}, Polaroid, Crocodile Tears, and the Polaroid music video.`
+      : `Stream Stoke Club, Southern California indie surf rock: Polaroid, Crocodile Tears, and the Polaroid music video. ${UPCOMING.title} is out ${longDate(UPCOMING.date)}.`,
+    alternates: { canonical: "/music" },
+  };
+}
+
+// The list a search engine reads, in the order the page shows it.
+const LIST_LD = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Stoke Club releases",
+  itemListElement: [UPCOMING, ...RELEASES].map((r, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: r.title,
+    url: `${SITE}/music/${r.slug}`,
+  })),
 };
 
 export default function Music() {
   return (
     <main className="mx-auto max-w-4xl px-5 pt-28 pb-24 sm:px-8 sm:pt-36 sm:pb-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(LIST_LD) }} />
       <h1 className="mb-12 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
         Music
       </h1>
@@ -33,7 +52,9 @@ export default function Music() {
               className="h-24 w-24 shrink-0 rounded-lg"
             />
             <div className="min-w-0">
-              <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">Coming soon</span>
+              <span className="text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
+                {isOut(UPCOMING.date) ? "New single" : "Coming soon"}
+              </span>
               <h2 className="font-[family-name:var(--font-display)] text-xl font-semibold tracking-tight text-white sm:text-2xl">
                 {UPCOMING.title}
               </h2>
@@ -68,6 +89,7 @@ export default function Music() {
           </li>
         ))}
       </ul>
+      <p className="mt-12 text-lg leading-relaxed text-white/80 sm:text-xl">{DEFINITION}</p>
     </main>
   );
 }

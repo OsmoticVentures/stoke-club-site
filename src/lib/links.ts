@@ -26,6 +26,11 @@ export const LINKS = {
   musicbrainzPolaroid: "https://musicbrainz.org/recording/9998a2b5-f460-43c0-a860-ad9b772134d2",
   musicbrainzCrocodileTears: "https://musicbrainz.org/recording/b7ba5883-855e-4708-9b9c-f431a41fee82",
   genius: "https://genius.com/artists/Stoke-club",
+  // Other catalog pages for the same artist, each read and confirmed 2026-11-03.
+  deezer: "https://www.deezer.com/artist/390873251",
+  lastfm: "https://www.last.fm/music/Stoke+Club",
+  musixmatch: "https://www.musixmatch.com/artist/Stoke-Club",
+  youtubeTopic: "https://www.youtube.com/channel/UCqavPi0mMHsQZlXGocLH1_g",
   geniusPolaroid: "https://genius.com/Stoke-club-polaroid-lyrics",
   geniusCrocodileTears: "https://genius.com/Stoke-club-crocodile-tears-lyrics",
   // The auto-generated Topic channel's audio for each song.

@@ -7,11 +7,13 @@ import SignupButton from "@/components/signup/SignupButton";
 import StokeFlipCard from "@/components/StokeFlipCard";
 import YouTubeVideo from "@/components/YouTubeVideo";
 import { LINKS } from "@/lib/links";
-import { RELEASES, videoLd } from "@/lib/band";
+import { RELEASES, UPCOMING, isOut, videoLd } from "@/lib/band";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
+
+export const revalidate = 3600;
 
 // The newest official video, shown on the home page and stated as a VideoObject here too, so a
 // search for the band can surface the video from stokeclubband.com, not only from YouTube.
@@ -141,7 +143,7 @@ export default function Home() {
               />
             </div>
             <span className="mt-5 text-xs font-medium tracking-wide text-[var(--color-stoke-blue)]">
-              NEW RELEASE
+              {isOut(UPCOMING.date) ? "OUT NOW" : "NEW RELEASE"}
             </span>
             <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
               <Link href="/music/your-friends" className="hover:text-white/80">

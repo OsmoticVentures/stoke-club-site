@@ -37,6 +37,12 @@ export type Show = { slug: string; name: string; date: string; city: string; reg
 export const SHOWS: Show[] = [
   { slug: "boca-raton-2026-12-06", name: "Outheback Concert", date: "2026-12-06", city: "Boca Raton", region: "FL", url: "https://outheback.com" },
 ];
+export const REGION: Record<string, string> = { CA: "California", FL: "Florida" };
+
+// Today in the band's own time zone. Release and show dates turn over at midnight in California.
+export const today = () => new Date().toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" });
+export const isOut = (date: string) => today() >= date;
+
 export const showDate = (iso: string) =>
   new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
     weekday: "long",
@@ -44,7 +50,7 @@ export const showDate = (iso: string) =>
     day: "numeric",
     timeZone: "UTC",
   });
-export const upcomingShows = (today = new Date().toISOString().slice(0, 10)) => SHOWS.filter((s) => s.date >= today);
+export const upcomingShows = () => SHOWS.filter((s) => s.date >= today());
 
 export const eventLd = (s: Show) => ({
   "@type": "MusicEvent",
@@ -130,7 +136,9 @@ export const RELEASES: Release[] = [
   },
 ];
 
-// Announced, not yet out. Its cover lives at /img/cover-<slug>.jpg.
+// The newest single. Pages read isOut(UPCOMING.date) and revalidate hourly, so its copy turns over on
+// release day with no redeploy. Store links stay absent until they are on file. Its cover lives at
+// /img/cover-<slug>.jpg.
 export const UPCOMING = { slug: "your-friends", title: "Your Friends", date: "2026-11-06" };
 
 // A friend of the club with his own music, shown under About. His section renders only once
@@ -232,7 +240,7 @@ export const recordingLd = (r: Release) => ({
 });
 
 // The questions people and answer engines ask about the band, answered from the facts above.
-export const FAQ: { q: string; a: string }[] = [
+export const faq = (): { q: string; a: string }[] => [
   { q: "Who is Stoke Club?", a: DEFINITION },
   {
     q: "Where is Stoke Club from?",
@@ -250,10 +258,15 @@ export const FAQ: { q: string; a: string }[] = [
     q: "Does Stoke Club write in the Mixolydian mode?",
     a: "Often, yes. It keeps the songs bright and a little dreamy. The sound is Southern California indie surf rock first.",
   },
-  {
-    q: "What is Stoke Club's next release?",
-    a: "Your Friends, out November 6, 2026.",
-  },
+  isOut(UPCOMING.date)
+    ? {
+        q: "What is Stoke Club's newest release?",
+        a: `${UPCOMING.title}, released ${longDate(UPCOMING.date)}.`,
+      }
+    : {
+        q: "What is Stoke Club's next release?",
+        a: `${UPCOMING.title}, out ${longDate(UPCOMING.date)}.`,
+      },
   {
     q: "Who writes Stoke Club's songs?",
     a: "Eon Kounalakis, Max Amiss and Nicholas Kallins are credited as the writers of Polaroid and Crocodile Tears. We write and produce our own records, released through Stoke Club LLC.",

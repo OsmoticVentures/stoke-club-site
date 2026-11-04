@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import PhotoCarousel from "@/components/PhotoCarousel";
 import SignupButton from "@/components/signup/SignupButton";
-import { SHOWS, eventLd, showDate, upcomingShows } from "@/lib/band";
+import { DEFINITION, REGION, SHOWS, eventLd, longDate, showDate, upcomingShows } from "@/lib/band";
 
-export const metadata: Metadata = {
-  title: "Shows",
-  description:
-    "See Stoke Club live. Next show: Outheback Concert in Boca Raton, Florida, December 6, 2026. Leave your number and we'll invite you.",
-  alternates: { canonical: "/shows" },
-};
+export const revalidate = 3600;
 
-const REGION: Record<string, string> = { CA: "California", FL: "Florida" };
+export function generateMetadata(): Metadata {
+  const next = upcomingShows()[0];
+  return {
+    title: "Shows",
+    description: next
+      ? `See Stoke Club live. Next show: ${next.name} in ${next.city}, ${REGION[next.region] ?? next.region}, ${longDate(next.date)}. Leave your number and we'll invite you.`
+      : "See Stoke Club live. Leave your number and we'll invite you.",
+    alternates: { canonical: "/shows" },
+  };
+}
 
 // The instruments, then the band live. Portraits are cropped toward the faces.
 const PHOTOS = [
@@ -39,6 +43,8 @@ export default function Shows() {
         sizes="(min-width: 896px) 832px, 100vw"
         photos={PHOTOS}
       />
+
+      <p className="mb-12 text-lg leading-relaxed text-white/80 sm:text-xl">{DEFINITION}</p>
 
       {/* Upcoming */}
       <section>

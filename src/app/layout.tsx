@@ -7,7 +7,7 @@ import StickyFooterBar from "@/components/StickyFooterBar";
 import { SignupModalProvider } from "@/components/signup/SignupModalContext";
 import SignupModal from "@/components/signup/SignupModal";
 import { LINKS } from "@/lib/links";
-import { BAND_ID, CREATOR, DEFINITION, EMAIL, GENRES, RELEASES, SITE, recordingLd } from "@/lib/band";
+import { BAND_ID, CREATOR, DEFINITION, EMAIL, GENRES, RELEASES, SITE, UPCOMING } from "@/lib/band";
 import "./globals.css";
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -77,7 +77,8 @@ export const metadata: Metadata = {
 };
 
 // Tells Google and AI answer engines who the band is, where it is from, what it released, and
-// which profiles are its own. One @id per entity so every page points at the same band.
+// which profiles are its own. One @id per entity so every page points at the same band. Each song's
+// full record, lyrics included, lives on that song's own page; here a track is only its name and address.
 const NEWPORT_BEACH = {
   "@type": "Place",
   name: "Newport Beach, California",
@@ -123,10 +124,26 @@ const JSON_LD = {
       image: [`${SITE}/img/band-2400.jpg`, `${SITE}/img/og-stoke-club.jpg`, `${SITE}/img/rooftop-polaroid.jpg`],
       logo: `${SITE}/img/stoke-club-logo-large.png`,
       email: EMAIL,
-      sameAs: [LINKS.spotify, LINKS.appleMusic, LINKS.youtube, LINKS.instagram, LINKS.tiktok, LINKS.musicbrainz, LINKS.genius].filter(Boolean),
-      track: RELEASES.map((r) => ({ "@id": `${SITE}/music/${r.slug}#recording` })),
+      sameAs: [
+        LINKS.spotify,
+        LINKS.appleMusic,
+        LINKS.youtube,
+        LINKS.youtubeTopic,
+        LINKS.instagram,
+        LINKS.tiktok,
+        LINKS.musicbrainz,
+        LINKS.genius,
+        LINKS.musixmatch,
+        LINKS.lastfm,
+        LINKS.deezer,
+      ].filter(Boolean),
+      track: [UPCOMING, ...RELEASES].map((r) => ({
+        "@type": "MusicRecording",
+        "@id": `${SITE}/music/${r.slug}#recording`,
+        name: r.title,
+        url: `${SITE}/music/${r.slug}`,
+      })),
     },
-    ...RELEASES.map(recordingLd),
   ],
 };
 

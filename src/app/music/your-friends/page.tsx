@@ -3,25 +3,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { blur } from "@/lib/blur";
 import SignupButton from "@/components/signup/SignupButton";
-import { BAND_ID, SITE, UPCOMING, longDate } from "@/lib/band";
+import { BAND_ID, SITE, UPCOMING, isOut, longDate } from "@/lib/band";
 
-// The next single's page, live before release day so the URL is already indexed when people
-// search for it. Holds only what is announced: title, date, cover.
+// The newest single's page, live before release day so the URL is already indexed when people
+// search for it. Holds only what is announced: title, date, cover. Its copy turns over on release
+// day; store links join once they are on file.
 const title = UPCOMING.title;
-const description = `${title} is the new single from Stoke Club, Southern California indie surf rock. Out ${longDate(UPCOMING.date)}.`;
+const date = longDate(UPCOMING.date);
 
-export const metadata: Metadata = {
-  title: { absolute: `${title} by Stoke Club | New single, ${longDate(UPCOMING.date)}` },
-  description,
-  alternates: { canonical: `/music/${UPCOMING.slug}` },
-  openGraph: {
-    type: "music.song",
-    title: `${title} by Stoke Club`,
+export const revalidate = 3600;
+
+export function generateMetadata(): Metadata {
+  const description = isOut(UPCOMING.date)
+    ? `${title} is the new single from Stoke Club, Southern California indie surf rock. Released ${date}.`
+    : `${title} is the new single from Stoke Club, Southern California indie surf rock. Out ${date}.`;
+  return {
+    title: { absolute: `${title} by Stoke Club | New single, ${date}` },
     description,
-    url: `/music/${UPCOMING.slug}`,
-    images: [{ url: `/img/cover-${UPCOMING.slug}.jpg`, width: 400, height: 400, alt: `${title} cover art` }],
-  },
-};
+    alternates: { canonical: `/music/${UPCOMING.slug}` },
+    openGraph: {
+      type: "music.song",
+      title: `${title} by Stoke Club`,
+      description,
+      url: `/music/${UPCOMING.slug}`,
+      images: [{ url: `/img/cover-${UPCOMING.slug}.jpg`, width: 400, height: 400, alt: `${title} cover art` }],
+    },
+  };
+}
 
 const LD = {
   "@context": "https://schema.org",
@@ -47,6 +55,7 @@ const LD = {
 };
 
 export default function YourFriends() {
+  const out = isOut(UPCOMING.date);
   return (
     <main className="mx-auto max-w-4xl px-5 pt-28 pb-24 sm:px-8 sm:pt-36 sm:pb-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(LD) }} />
@@ -67,13 +76,15 @@ export default function YourFriends() {
             {title}
           </h1>
           <p className="mt-2 text-lg text-white/55">
-            <Link href="/about" className="hover:text-white">Stoke Club</Link> · Out {longDate(UPCOMING.date)}
+            <Link href="/about" className="hover:text-white">Stoke Club</Link> · {out ? date : `Out ${date}`}
           </p>
         </div>
       </div>
 
       <p className="mt-12 text-lg leading-relaxed text-white/80 sm:text-xl">
-        {title} is the next single from Stoke Club, out {longDate(UPCOMING.date)} on Spotify and Apple Music.
+        {out
+          ? `${title} is the newest single from Stoke Club, released ${date}.`
+          : `${title} is the next single from Stoke Club, out ${date} on Spotify and Apple Music.`}
       </p>
 
       <div className="mt-12 flex flex-col items-start gap-4">

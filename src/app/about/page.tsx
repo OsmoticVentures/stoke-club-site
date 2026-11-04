@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FeaturedArtist from "@/components/FeaturedArtist";
 import PhotoCarousel from "@/components/PhotoCarousel";
-import { DINO, FAQ } from "@/lib/band";
+import { DINO, faq } from "@/lib/band";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,17 +11,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-const FAQ_LD = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQ.map(({ q, a }) => ({
-    "@type": "Question",
-    name: q,
-    acceptedAnswer: { "@type": "Answer", text: a },
-  })),
-};
+export const revalidate = 3600;
 
 export default function About() {
+  const questions = faq();
+  const FAQ_LD = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: questions.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
   return (
     <main className="mx-auto max-w-4xl px-5 pt-28 pb-24 sm:px-8 sm:pt-36 sm:pb-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
@@ -64,7 +66,7 @@ export default function About() {
       <FeaturedArtist artist={DINO} />
 
       <section className="mt-24 border-t border-white/10 pt-6 sm:mt-32">
-        {FAQ.map(({ q, a }) => (
+        {questions.map(({ q, a }) => (
           <details key={q} className="group border-b border-white/5 py-3">
             <summary className="cursor-pointer list-none text-base text-white/65 transition-colors hover:text-white">
               {q}
