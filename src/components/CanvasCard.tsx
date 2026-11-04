@@ -81,7 +81,7 @@ export default function CanvasCard({ title, slug, spotifyLinkKey, appleMusicLink
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`/img/cover-${slug}.jpg`}
-          alt=""
+          alt={`${title} cover`}
           loading="lazy"
           className="h-10 w-10 shrink-0 rounded-[5px] shadow-[0_4px_12px_-4px_rgba(0,0,0,0.6)] sm:h-12 sm:w-12"
         />

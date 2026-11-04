@@ -59,7 +59,7 @@ export default function SiteFooter() {
         <Image
           src="/img/footer-rig.webp"
             {...blur("/img/footer-rig.webp")}
-          alt=""
+          alt="Stoke Club guitars, amps and drums set up on a lawn"
           fill
           sizes="(min-width: 768px) 46vw, 100vw"
           className="object-cover object-[50%_42%] opacity-60 md:object-[50%_30%]"

@@ -20,7 +20,7 @@ export function SpotifyLogo({ className }: BrandIconProps) {
 // The real Apple Music app icon: Apple's own App Store artwork, not a redraw. The anchor
 // around it rounds the corners the way iOS masks it.
 export function AppleMusicLogo({ className }: BrandIconProps) {
-  return <Image src={appleMusicIcon} alt="" aria-hidden="true" sizes="48px" className={className} />;
+  return <Image src={appleMusicIcon} alt="Apple Music" aria-hidden="true" sizes="48px" className={className} />;
 }
 
 // The real Instagram mark: the warm gradient squircle with the white camera outline.

@@ -29,7 +29,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const r = releaseBySlug((await params).slug);
   if (!r) return {};
-  const description = `${r.title} by Stoke Club, Southern California indie surf rock. ${r.video?.youtubeId ? "Lyrics, the official music video, and" : "Lyrics and"} where to stream it.`;
+  const description = `${r.title} by Stoke Club, a Southern California indie surf rock band. ${r.video?.youtubeId ? "Lyrics, the official music video, and" : "Lyrics and"} where to stream it on Spotify and Apple Music.`;
   return {
     title: { absolute: `${r.title} by Stoke Club | Southern California surf rock` },
     description,

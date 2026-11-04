@@ -15,8 +15,8 @@ export const revalidate = 3600;
 
 export function generateMetadata(): Metadata {
   const description = isOut(UPCOMING.date)
-    ? `${title} is the new single from Stoke Club, Southern California indie surf rock. Released ${date}.`
-    : `${title} is the new single from Stoke Club, Southern California indie surf rock. Out ${date}.`;
+    ? `${title} is the new single from Stoke Club, a Southern California indie surf rock band known for the song Polaroid. Released ${date}.`
+    : `${title} is the new single from Stoke Club, a Southern California indie surf rock band known for the song Polaroid. Out ${date}.`;
   return {
     title: { absolute: `${title} by Stoke Club | New single, ${date}` },
     description,

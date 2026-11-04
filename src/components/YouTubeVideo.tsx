@@ -33,7 +33,7 @@ export default function YouTubeVideo({ id, title, className = "" }: YouTubeVideo
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`}
-            alt=""
+            alt={title}
             loading="lazy"
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"

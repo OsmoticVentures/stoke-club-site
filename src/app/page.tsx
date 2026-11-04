@@ -38,7 +38,7 @@ export default function Home() {
           <Image
             src="/img/band-960.jpg"
             {...blur("/img/band-960.jpg")}
-            alt=""
+            alt="Stoke Club band photo"
             fill
             sizes="384px"
             quality={60}
@@ -63,7 +63,7 @@ export default function Home() {
           <Image
             src="/img/stoke-club-logo-small.png"
             {...blur("/img/stoke-club-logo-small.png")}
-            alt=""
+            alt="Stoke Club logo"
             width={660}
             height={280}
             priority
