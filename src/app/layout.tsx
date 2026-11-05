@@ -35,7 +35,7 @@ export const viewport: Viewport = {
 // The schema below keeps DEFINITION, the one line every profile repeats word for word.
 const DESCRIPTION =
   "Stoke Club is a Southern California indie surf rock band. Stream Polaroid and Crocodile Tears, watch the Polaroid music video, and catch us live.";
-const TITLE = "Stoke Club | Southern California indie surf rock band";
+const TITLE = "Stoke Club | Official Band Website";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

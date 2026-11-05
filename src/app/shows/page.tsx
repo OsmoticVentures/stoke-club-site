@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PhotoCarousel from "@/components/PhotoCarousel";
 import SignupButton from "@/components/signup/SignupButton";
-import { DEFINITION, REGION, SHOWS, eventLd, longDate, showDate, upcomingShows } from "@/lib/band";
+import { REGION, SHOWS, eventLd, longDate, showDate, upcomingShows } from "@/lib/band";
 
 export const revalidate = 3600;
 
@@ -21,7 +21,6 @@ const PHOTOS = [
   { src: "/img/backyard-rig.webp", alt: "Stoke Club's backyard rig", position: "50% 55%" },
   { src: "/img/live-house-party.webp", alt: "Stoke Club playing a house party in blue and red light" },
   { src: "/img/live-guitar-bass.webp", alt: "Stoke Club's guitarist and bassist singing together on stage" },
-  { src: "/img/live-bass.webp", alt: "Stoke Club's bassist laughing mid-song under a wood ceiling", position: "50% 30%" },
 ];
 
 const SHOWS_LD = {
@@ -43,8 +42,6 @@ export default function Shows() {
         sizes="(min-width: 896px) 832px, 100vw"
         photos={PHOTOS}
       />
-
-      <p className="mb-12 text-lg leading-relaxed text-white/80 sm:text-xl">{DEFINITION}</p>
 
       {/* Upcoming */}
       <section>
