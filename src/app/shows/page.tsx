@@ -10,7 +10,7 @@ export function generateMetadata(): Metadata {
   return {
     title: "Shows",
     description: next
-      ? `See Stoke Club live. Next show: ${next.name} in ${next.city}, ${REGION[next.region] ?? next.region}, ${longDate(next.date)}. Leave your number and we'll invite you.`
+      ? `See Stoke Club live. Next show: ${next.name}${next.venue ? ` at ${next.venue}` : ""} in ${next.city}, ${REGION[next.region] ?? next.region}, ${longDate(next.date)}. Leave your number and we'll invite you.`
       : "See Stoke Club live. Leave your number and we'll invite you.",
     alternates: { canonical: "/shows" },
   };
@@ -66,7 +66,7 @@ export default function Shows() {
               )}
             </h2>
             <p className="mt-1 text-sm text-white/55">
-              {show.city}, {REGION[show.region] ?? show.region} · {showDate(show.date)}
+              {show.venue ? `${show.venue}, ` : ""}{show.city}, {REGION[show.region] ?? show.region} · {showDate(show.date)}
             </p>
           </div>
         ))}

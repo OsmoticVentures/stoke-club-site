@@ -48,7 +48,7 @@ const body = () => {
       ? [`- Official video: ${video.title} (Official Music Video), premiered ${longDate(video.video!.premiere)}: https://www.youtube.com/watch?v=${video.video!.youtubeId}`]
       : []),
     ...(nextShow
-      ? [`- Next show: ${nextShow.name}, ${nextShow.city}, ${REGION[nextShow.region] ?? nextShow.region}, ${longDate(nextShow.date)} (details at ${SITE}/shows)`]
+      ? [`- Next show: ${nextShow.name}, ${nextShow.venue ? `${nextShow.venue}, ` : ""}${nextShow.city}, ${REGION[nextShow.region] ?? nextShow.region}, ${longDate(nextShow.date)} (details at ${SITE}/shows)`]
       : []),
     out
       ? `- Latest release: ${UPCOMING.title} (released ${longDate(UPCOMING.date)}): ${songUrl(UPCOMING.slug)}`

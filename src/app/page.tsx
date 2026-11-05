@@ -159,15 +159,6 @@ export default function Home() {
       <section className="w-full bg-ink px-5 py-24 sm:px-8 sm:py-32">
         <div className="polaroid-frame mx-auto max-w-xl rounded-xl">
           <div className="flex flex-col items-center gap-6 polaroid-inner bg-ink-soft px-6 py-10 text-center sm:px-10 sm:py-14">
-            <Image
-              src="/img/show-text.jpg"
-            {...blur("/img/show-text.jpg")}
-              alt="A text from Stoke Club: we're playing this Friday at 10 in Manhattan Beach"
-              width={1064}
-              height={590}
-              sizes="(min-width: 640px) 496px, 100vw"
-              className="h-auto w-full rounded-lg"
-            />
             <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Never miss a show
             </h2>
