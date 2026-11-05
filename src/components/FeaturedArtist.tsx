@@ -16,7 +16,7 @@ export default function FeaturedArtist({ artist }: { artist: Artist }) {
 function Section({ artist, id }: { artist: Artist; id: string }) {
   const hero = useRef<HTMLDivElement>(null);
   const photo = useRef<HTMLDivElement>(null);
-  const name = useRef<HTMLHeadingElement>(null);
+  const name = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
   // The player fades in once it has loaded; if the load event never reaches us, show it anyway.
@@ -77,9 +77,12 @@ function Section({ artist, id }: { artist: Artist; id: string }) {
         frame = 0;
       }
     };
-    const near = new IntersectionObserver(([entry]) => listen(entry.isIntersecting), {
-      rootMargin: "100px",
-    });
+    const near = new IntersectionObserver(
+      ([entry]) => listen(entry.isIntersecting),
+      {
+        rootMargin: "100px",
+      },
+    );
     near.observe(el);
 
     return () => {
@@ -91,105 +94,112 @@ function Section({ artist, id }: { artist: Artist; id: string }) {
 
   return (
     <section
-      className="mt-24 grid gap-6 sm:mt-32 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-end sm:gap-8"
-      aria-labelledby="featured-artist-name"
+      className="mt-24 sm:mt-32"
+      aria-labelledby="featured-artist-heading"
     >
-      <div
-        ref={hero}
-        className="relative -mx-5 aspect-[2/3] overflow-hidden bg-[var(--color-ink)] sm:mx-0 sm:rounded-2xl"
+      <h2
+        id="featured-artist-heading"
+        className="mb-6 font-[family-name:var(--font-display)] text-3xl font-semibold leading-[1.1] tracking-tight text-white sm:mb-8 sm:text-4xl"
       >
-        <div ref={photo} className="absolute inset-0 will-change-transform [transform:scale(1.03)]">
-          <Image
-            src={artist.photo}
-            alt={artist.photoAlt}
-            fill
-            sizes="(min-width: 896px) 432px, (min-width: 640px) 50vw, 100vw"
-            className="object-cover"
-            {...blur(artist.photo)}
-          />
-        </div>
-
-        {/* The photo's blue meets the site's stoke blue; only the foot of the frame fades to ground. */}
+        {artist.intro} <span className="sr-only">{artist.name}</span>
+      </h2>
+      <div className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-end sm:gap-8">
         <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[var(--color-stoke-blue)] opacity-[0.14] mix-blend-soft-light"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,9,8,0.55)_0%,transparent_30%,transparent_78%,var(--color-ink)_100%)] sm:bg-[linear-gradient(to_bottom,rgba(10,9,8,0.55)_0%,transparent_30%)]"
-        />
-
-        {/* His own wordmark sits in the dark at top left; its long stem falls down the shadow side. */}
-        <h2
-          id="featured-artist-name"
-          ref={name}
-          className="absolute top-6 left-5 w-[46%] transition-[opacity,transform] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] sm:top-8 sm:left-7 data-[state=hidden]:translate-y-3 data-[state=hidden]:opacity-0"
+          ref={hero}
+          className="relative -mx-5 aspect-[2/3] overflow-hidden bg-[var(--color-ink)] sm:mx-0 sm:rounded-2xl"
         >
-          <span className="block text-[0.95rem] font-medium leading-snug tracking-[-0.01em] text-white/80 [text-wrap:balance] sm:text-base">
-            {artist.intro}
-            <span className="sr-only">: </span>
-          </span>
-          {artist.wordmark ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={artist.wordmark}
-              alt={artist.name}
-              width={1136}
-              height={1092}
-              className="mt-4 block h-auto w-full"
-              style={{ aspectRatio: artist.wordmarkRatio }}
+          <div
+            ref={photo}
+            className="absolute inset-0 will-change-transform [transform:scale(1.03)]"
+          >
+            <Image
+              src={artist.photo}
+              alt={artist.photoAlt}
+              fill
+              sizes="(min-width: 896px) 432px, (min-width: 640px) 50vw, 100vw"
+              className="object-cover"
+              {...blur(artist.photo)}
             />
-          ) : (
-            <span className="mt-3 block font-[family-name:var(--font-display)] text-6xl font-semibold text-white">
-              {artist.name}
-            </span>
-          )}
-        </h2>
-      </div>
+          </div>
 
-      <div>
-        <div className="h-[352px] overflow-hidden rounded-[12px] bg-white/[0.04]">
-          <iframe
-            src={`https://open.spotify.com/embed/artist/${encodeURIComponent(id)}?utm_source=generator&theme=0`}
-            title={`${artist.name} on Spotify`}
-            width="100%"
-            height="352"
-            frameBorder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            onLoad={() => setLoaded(true)}
-            className={`block w-full rounded-[12px] transition-opacity duration-200 ease-out motion-reduce:transition-none ${
-              loaded ? "opacity-100" : "opacity-0"
-            }`}
+          {/* The photo's blue meets the site's stoke blue; only the foot of the frame fades to ground. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[var(--color-stoke-blue)] opacity-[0.14] mix-blend-soft-light"
           />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,9,8,0.55)_0%,transparent_30%,transparent_78%,var(--color-ink)_100%)] sm:bg-[linear-gradient(to_bottom,rgba(10,9,8,0.55)_0%,transparent_30%)]"
+          />
+
+          {/* His own wordmark sits in the dark at top left, finishing the heading above; its long stem falls down the shadow side. */}
+          <div
+            ref={name}
+            aria-hidden="true"
+            className="absolute top-6 left-5 w-[46%] transition-[opacity,transform] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] sm:top-8 sm:left-7 data-[state=hidden]:translate-y-3 data-[state=hidden]:opacity-0"
+          >
+            {artist.wordmark ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={artist.wordmark}
+                alt=""
+                width={1136}
+                height={1092}
+                className="block h-auto w-full"
+                style={{ aspectRatio: artist.wordmarkRatio }}
+              />
+            ) : (
+              <span className="block font-[family-name:var(--font-display)] text-6xl font-semibold text-white">
+                {artist.name}
+              </span>
+            )}
+          </div>
         </div>
 
-        {artist.website ? (
-          <div className="mt-2 flex items-center">
-            <a
-              href={artist.website}
-              target="_blank"
-              rel="noreferrer"
-              className="press flex min-h-11 items-center text-sm text-white/70 underline-offset-4 hover:text-white hover:underline"
-            >
-              {artist.website.replace(/^https?:\/\//, "")}
-            </a>
+        <div>
+          <div className="h-[352px] overflow-hidden rounded-[12px] bg-white/[0.04]">
+            <iframe
+              src={`https://open.spotify.com/embed/artist/${encodeURIComponent(id)}?utm_source=generator&theme=0`}
+              title={`${artist.name} on Spotify`}
+              width="100%"
+              height="352"
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              onLoad={() => setLoaded(true)}
+              className={`block w-full rounded-[12px] transition-opacity duration-200 ease-out motion-reduce:transition-none ${
+                loaded ? "opacity-100" : "opacity-0"
+              }`}
+            />
           </div>
-        ) : null}
 
-        {artist.instagram ? (
-          <div className="mt-2 flex items-center">
-            <a
-              href={artist.instagram}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${artist.name} on Instagram`}
-              className="press flex h-11 w-11 items-center justify-center"
-            >
-              <InstagramLogo className="h-7 w-7" />
-            </a>
-          </div>
-        ) : null}
+          {artist.website ? (
+            <div className="mt-2 flex items-center">
+              <a
+                href={artist.website}
+                target="_blank"
+                rel="noreferrer"
+                className="press flex min-h-11 items-center text-sm text-white/70 underline-offset-4 hover:text-white hover:underline"
+              >
+                {artist.website.replace(/^https?:\/\//, "")}
+              </a>
+            </div>
+          ) : null}
+
+          {artist.instagram ? (
+            <div className="mt-2 flex items-center">
+              <a
+                href={artist.instagram}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${artist.name} on Instagram`}
+                className="press flex h-11 w-11 items-center justify-center"
+              >
+                <InstagramLogo className="h-7 w-7" />
+              </a>
+            </div>
+          ) : null}
+        </div>
       </div>
     </section>
   );

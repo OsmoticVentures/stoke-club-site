@@ -7,7 +7,7 @@ import SignupButton from "@/components/signup/SignupButton";
 import StokeFlipCard from "@/components/StokeFlipCard";
 import YouTubeVideo from "@/components/YouTubeVideo";
 import { LINKS } from "@/lib/links";
-import { RELEASES, UPCOMING, isOut, videoLd } from "@/lib/band";
+import { DEFINITION, REGION, RELEASES, UPCOMING, isOut, monthDay, upcomingShows, videoLd } from "@/lib/band";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -22,7 +22,11 @@ const LATEST_VIDEO = RELEASES.filter((r) => r.video?.youtubeId).sort((a, b) =>
 )[0];
 const VIDEO_LD = LATEST_VIDEO && { "@context": "https://schema.org", ...videoLd(LATEST_VIDEO) };
 
+const INLINE_LINK = "underline decoration-white/30 underline-offset-4 hover:text-white";
+
 export default function Home() {
+  const out = isOut(UPCOMING.date);
+  const show = upcomingShows()[0];
   return (
     <main>
       {VIDEO_LD && (
@@ -70,6 +74,27 @@ export default function Home() {
             className="rise absolute left-1/2 top-1/2 h-auto w-[64%] max-w-[300px] -translate-x-1/2 -translate-y-1/2 opacity-95 drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)] landscape:top-[2.5%] landscape:w-[20%] landscape:max-w-none landscape:translate-y-0 landscape:opacity-85 landscape:drop-shadow-[0_2px_10px_rgba(0,0,0,0.18)]"
           />
         </div>
+      </section>
+
+      {/* Intro: one paragraph, third person. The band's definition, its start, what is out, the next show. */}
+      <section className="w-full bg-ink px-5 pt-20 sm:px-8 sm:pt-28">
+        <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-white/75 sm:text-xl">
+          {DEFINITION} The band started in 2025 with friends making music together at USC. Newport Beach is home.{" "}
+          {out
+            ? "Your Friends, Crocodile Tears and Polaroid are out now."
+            : <>Crocodile Tears and Polaroid are out now, and Your Friends is out <span className="whitespace-nowrap">{monthDay(UPCOMING.date)}</span>.</>}
+          {show ? (
+            <>
+              {" "}
+              The next show is{" "}
+              <Link href="/shows" className={INLINE_LINK}>
+                <span className="whitespace-nowrap">{monthDay(show.date)}</span>
+                {show.venue ? ` at ${show.venue}` : ""}
+              </Link>{" "}
+              in {show.city}, {REGION[show.region] ?? show.region}.
+            </>
+          ) : null}
+        </p>
       </section>
 
       {/* Fold 2: latest releases, each single's Spotify Canvas loop. Nothing but the

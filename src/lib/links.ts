@@ -13,6 +13,9 @@ export const LINKS = {
   appleMusicCrocodileTears: "https://music.apple.com/us/album/crocodile-tears/6789880531?i=6789880532",
   appleMusicPolaroid: "https://music.apple.com/us/album/polaroid/6769295859?i=6769296073",
   music: null,
+  // Your Friends is out 2026-11-06. Paste each store URL here and its icon appears on /music.
+  spotifyYourFriends: null,
+  appleMusicYourFriends: null,
   // The official music video on the band's own channel, live 2026-10-12.
   polaroidVideo: "https://www.youtube.com/watch?v=BKjTfKqHPAI",
   instagram: "https://www.instagram.com/stokeclubband/",
@@ -37,3 +40,10 @@ export const LINKS = {
 } as const satisfies Record<string, string | null>;
 
 export type LinkKey = keyof typeof LINKS;
+
+// The band's public TikTok videos the /music page plays. Add an id and its player appears.
+export const TIKTOK_VIDEO_IDS = [
+  "7704430598831508750",
+  "7703703931007814926",
+  "7703345923245477133",
+] as const;

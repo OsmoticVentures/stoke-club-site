@@ -66,3 +66,17 @@ export function TikTokLogo({ className }: BrandIconProps) {
     </svg>
   );
 }
+
+// The real YouTube mark: the red rounded play button with the white triangle.
+export function YouTubeLogo({ className }: BrandIconProps) {
+  return (
+    <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
+      <rect width="512" height="512" rx="115" fill="#0a0908" />
+      <path
+        fill="#FF0000"
+        d="M456 160c-5-19-20-34-39-39-34-9-161-9-161-9s-127 0-161 9c-19 5-34 20-39 39-9 34-9 96-9 96s0 62 9 96c5 19 20 34 39 39 34 9 161 9 161 9s127 0 161-9c19-5 34-20 39-39 9-34 9-96 9-96s0-62-9-96z"
+      />
+      <path fill="#fff" d="M212 322V190l114 66z" />
+    </svg>
+  );
+}

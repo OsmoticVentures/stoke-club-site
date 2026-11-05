@@ -11,13 +11,18 @@ const items = [
   { href: "/shows", label: "Shows" },
 ];
 
+const itemClass = (active: boolean, hideBelow390 = false) =>
+  `${hideBelow390 ? "hidden min-[390px]:flex" : "flex"} press min-h-11 min-w-11 items-center justify-center px-2 text-[13px] sm:px-3 sm:text-sm font-medium transition-colors ${
+    active ? "text-white" : "text-white/55 hover:text-white/85"
+  }`;
+
 export default function Nav() {
   const pathname = usePathname();
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-black/40 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:px-8">
-        <Link href="/" className="press flex min-h-11 min-w-11 items-center" aria-label="Stoke Club, home">
+        <Link href="/" className="press flex min-h-11 min-w-11 shrink-0 items-center" aria-label="Stoke Club, home">
           <Image
             src="/img/stoke-club-logo-mini.png"
             alt="Stoke Club"
@@ -34,14 +39,15 @@ export default function Nav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`press flex min-h-11 min-w-11 items-center justify-center px-2.5 text-[13px] sm:px-3 sm:text-sm font-medium transition-colors ${
-                  active ? "text-white" : "text-white/55 hover:text-white/85"
-                }`}
+                className={itemClass(active, item.href === "/")}
               >
                 {item.label}
               </Link>
             );
           })}
+          <a href="#site-footer" className={itemClass(false)}>
+            Contact
+          </a>
         </nav>
       </div>
     </header>

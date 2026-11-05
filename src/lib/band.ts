@@ -50,6 +50,8 @@ export const showDate = (iso: string) =>
     day: "numeric",
     timeZone: "UTC",
   });
+export const monthDay = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", { month: "long", day: "numeric", timeZone: "UTC" });
 export const upcomingShows = () => SHOWS.filter((s) => s.date >= today());
 
 export const eventLd = (s: Show) => ({
@@ -139,7 +141,13 @@ export const RELEASES: Release[] = [
 // The newest single. Pages read isOut(UPCOMING.date) and revalidate hourly, so its copy turns over on
 // release day with no redeploy. Store links stay absent until they are on file. Its cover lives at
 // /img/cover-<slug>.jpg.
-export const UPCOMING = { slug: "your-friends", title: "Your Friends", date: "2026-11-06" };
+export const UPCOMING: { slug: string; title: string; date: string; spotify: LinkKey; appleMusic: LinkKey } = {
+  slug: "your-friends",
+  title: "Your Friends",
+  date: "2026-11-06",
+  spotify: "spotifyYourFriends",
+  appleMusic: "appleMusicYourFriends",
+};
 
 // A friend of the club with his own music, shown under About. His section renders only once
 // spotifyArtistId is his confirmed Spotify artist id; every other value comes from his own
@@ -151,7 +159,7 @@ export type FeaturedArtist = {
   photoAlt: string;
   wordmark: string | null; // his own logo from his Spotify artist image, white on transparent
   wordmarkRatio: number; // width / height of the wordmark, so it reserves its space
-  intro: string; // the line above his name, in Juan's words
+  intro: string; // the heading words above his photo, in Juan's words; his wordmark finishes the sentence
   spotifyArtistId: string | null;
   instagram: string | null;
   website: string | null;
@@ -164,7 +172,7 @@ export const DINO: FeaturedArtist = {
   photoAlt: "Dino, lit in blue",
   wordmark: "/img/dino-wordmark.svg",
   wordmarkRatio: 1136 / 1092,
-  intro: "Synth wizard",
+  intro: "Showcasing our Synth Wizard:",
   spotifyArtistId: "4KVu07UQyxS32BDU4QzJe4",
   instagram: null,
   website: "https://dinoradio.com",
