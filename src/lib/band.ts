@@ -35,7 +35,7 @@ export const COLLEGE = "University of Southern California";
 // nobody stated stays absent.
 export type Show = { slug: string; name: string; date: string; city: string; region: string; time?: string; url?: string };
 export const SHOWS: Show[] = [
-  { slug: "boca-raton-2026-12-06", name: "Outheback Concert", date: "2026-12-06", city: "Boca Raton", region: "FL", url: "https://outheback.com" },
+  { slug: "boca-raton-2026-12-05", name: "Outheback Concert", date: "2026-12-05", city: "Boca Raton", region: "FL", url: "https://outheback.com" },
 ];
 export const REGION: Record<string, string> = { CA: "California", FL: "Florida" };
 
