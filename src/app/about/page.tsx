@@ -36,7 +36,7 @@ export default function About() {
         aspectClassName="aspect-[3/2]"
         sizes="(min-width: 896px) 832px, 100vw"
         photos={[
-          { src: "/img/band-2400.jpg", alt: "Stoke Club, the five of us" },
+          { src: "/img/hero-pink-1508.jpg", alt: "Stoke Club, the five of us jumping in front of a pink building" }, { src: "/img/band-2400.jpg", alt: "Stoke Club, the five of us" },
           { src: "/img/studio-session.jpg", alt: "Stoke Club in the studio" },
           { src: "/img/rooftop-polaroid.jpg", alt: "Stoke Club on a rooftop, Polaroid release" },
           { src: "/img/band-jump.jpg", alt: "Stoke Club, jumping on the marsh trail" },
@@ -46,10 +46,16 @@ export default function About() {
       <div className="mt-10 space-y-5 text-lg leading-relaxed text-white/80 sm:text-xl">
         <p>Friends of the Stoke Club, here&apos;s our story.</p>
         <p>
-          We are an indie surf rock band from Newport Beach, Southern California. A group of friends that lived together in college at USC
-          and shared the love for music. We started the band in 2025 and have been writing
-          and producing our own records since. We make music to create an atmosphere that you can
-          be part of.
+          We are an indie rock band based out of Newport Beach, California. We&apos;ve been close friends since childhood and
+          started making music together while attending the University of Southern California. Our music comes from a shared
+          love of jamming, brotherhood, and the artists who have inspired us, both iconic and underground. Blending
+          alternative and indie rock with Southern California surf influences, our sound is rooted in the music we grew up
+          on while bringing something of our own to it.
+        </p>
+        <p>
+          In collaboration with our USC film school friends, we recently released a music video shot on Kodak VISION3 16mm
+          and Super 8 motion picture film that was featured on the @kodak_shootfilm main insta page. We have an album set to
+          release in 2027 and are fired up on what&apos;s ahead!!
         </p>
         <p>
           Share the stoke. Come see us live in one of our{" "}

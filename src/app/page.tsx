@@ -29,37 +29,27 @@ export default function Home() {
       {VIDEO_LD && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_LD) }} />
       )}
-      {/* Fold 1: hero. Keyed to screen shape, not width, so every size lands right. On a
-          portrait screen (a phone, a tablet upright, a narrow window) the photo fills the whole
-          fold between the nav and the sticky bar, cropped to the five faces, with the logo large
-          in the center. On a landscape screen it is the whole photo, never cropped, sized to the
-          screen height with a blurred copy filling any side space, and the logo small in the sky. */}
+      {/* Fold 1: hero. The whole photo, never cropped, so all five faces always show. On a
+          portrait screen (a phone, a tablet upright) the logo sits above the photo on a blurred
+          copy of it that fills the fold. On a landscape screen the photo is sized to the screen
+          height, the same blurred copy fills any side space, and the logo sits low on the
+          doormat, clear of every face. */}
       <section className="relative w-full overflow-hidden bg-ink pt-16">
         <div className="absolute inset-0 top-16" aria-hidden="true">
           <Image
-            src="/img/band-960.jpg"
-            {...blur("/img/band-960.jpg")}
-            alt="Stoke Club band photo"
+            src="/img/hero-pink-960.jpg"
+            {...blur("/img/hero-pink-960.jpg")}
+            alt=""
             fill
             sizes="384px"
             quality={60}
             loading="eager"
-            className="scale-110 object-cover opacity-45 blur-2xl"
+            className="scale-110 object-cover opacity-55 blur-2xl"
           />
-          <div className="absolute inset-0 bg-ink/40" />
+          <div className="absolute inset-0 bg-ink/35" />
         </div>
 
-        <div className="relative mx-auto h-[calc(100svh-7rem)] w-full landscape:aspect-[3/2] landscape:h-auto landscape:max-w-[calc((100svh-7rem)*1.5)]">
-          <Image
-            src="/img/band-3200.jpg"
-            {...blur("/img/band-3200.jpg")}
-            alt="Stoke Club"
-            fill
-            priority
-            quality={75}
-            sizes="100vw"
-            className="object-cover object-[52%_50%] landscape:object-center"
-          />
+        <div className="relative mx-auto flex h-[calc(100svh-7rem)] w-full flex-col items-center justify-center gap-7 landscape:block landscape:aspect-[1508/1043] landscape:h-auto landscape:max-w-[calc((100svh-7rem)*1.446)]">
           <h1 className="sr-only">Stoke Club</h1>
           <Image
             src="/img/stoke-club-logo-small.png"
@@ -68,8 +58,20 @@ export default function Home() {
             width={660}
             height={280}
             priority
-            className="rise absolute left-1/2 top-1/2 h-auto w-[64%] max-w-[300px] -translate-x-1/2 -translate-y-1/2 opacity-95 drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)] landscape:top-[2.5%] landscape:w-[20%] landscape:max-w-none landscape:translate-y-0 landscape:opacity-85 landscape:drop-shadow-[0_2px_10px_rgba(0,0,0,0.18)]"
+            className="rise relative z-10 h-auto w-[56%] max-w-[260px] opacity-95 drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)] landscape:absolute landscape:bottom-[2.5%] landscape:left-1/2 landscape:w-[17%] landscape:max-w-none landscape:-translate-x-1/2 landscape:drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
           />
+          <div className="relative aspect-[1508/1043] w-full landscape:absolute landscape:inset-0">
+            <Image
+              src="/img/hero-pink-1508.jpg"
+              {...blur("/img/hero-pink-1508.jpg")}
+              alt="Stoke Club, the five of us jumping in front of a pink building"
+              fill
+              priority
+              quality={80}
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -79,8 +81,8 @@ export default function Home() {
         <p className="mx-auto max-w-3xl text-balance! text-center text-lg leading-relaxed text-white/75 sm:text-xl">
           Stoke Club is an indie surf rock band from Newport Beach, California, started in 2025 by friends at USC.{" "}
           {out
-            ? "Your Friends, Polaroid and Crocodile Tears are out now."
-            : <>Polaroid and Crocodile Tears are out now, and Your Friends comes out <span className="whitespace-nowrap">{monthDay(UPCOMING.date)}</span>.</>}
+            ? "Your Friends, Polaroid and Crocodile Tears are out now. Our album is set for 2027."
+            : <>Polaroid and Crocodile Tears are out now, and Your Friends comes out <span className="whitespace-nowrap">{monthDay(UPCOMING.date)}</span>. Our album is set for 2027.</>}
         </p>
       </section>
 
