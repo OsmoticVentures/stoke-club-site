@@ -33,9 +33,9 @@ export const COLLEGE = "University of Southern California";
 // The shows the public site lists. Only a booked show with a stated city and date goes here;
 // it mirrors knowledge/calendar.md, which is the one home for dates. A venue or address that
 // nobody stated stays absent.
-export type Show = { slug: string; name: string; date: string; city: string; region: string; venue?: string; time?: string; url?: string };
+export type Show = { slug: string; name: string; date: string; city: string; region: string; venue?: string; time?: string; url?: string; inviteOnly?: boolean };
 export const SHOWS: Show[] = [
-  { slug: "boca-raton-2026-12-05", name: "Outheback Concert", date: "2026-12-05", venue: "Outheback Warehouse", city: "Boca Raton", region: "FL", url: "https://outheback.com" },
+  { slug: "boca-raton-2026-12-05", name: "Outheback Concert", date: "2026-12-05", venue: "Outheback Warehouse", city: "Boca Raton", region: "FL", url: "https://outheback.com", inviteOnly: true },
 ];
 export const REGION: Record<string, string> = { CA: "California", FL: "Florida" };
 
@@ -70,7 +70,7 @@ export const eventLd = (s: Show) => ({
   organizer: { "@id": BAND_ID },
   url: `${SITE}/shows`,
   image: `${SITE}/img/og-stoke-club.jpg`,
-  description: `Stoke Club plays ${s.name}${s.venue ? ` at ${s.venue}` : ""} in ${s.city}, ${s.region}. Sign up at stokeclubband.com/shows to get invited.`,
+  description: `Stoke Club plays ${s.name}${s.venue ? ` at ${s.venue}` : ""} in ${s.city}, ${s.region}. ${s.inviteOnly ? "Invite only." : "Sign up at stokeclubband.com/shows to get invited."}`,
 });
 
 export type Release = {
