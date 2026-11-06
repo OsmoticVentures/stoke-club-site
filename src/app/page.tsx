@@ -96,7 +96,16 @@ export default function Home() {
             Latest releases:
           </h2>
 
-          <div className="flex items-start justify-center gap-4 sm:gap-6">
+          <div className="flex flex-wrap items-start justify-center gap-4 sm:gap-6">
+            {isOut(UPCOMING.date) && (
+              <CanvasCard
+                title={UPCOMING.title}
+                slug={UPCOMING.slug}
+                spotifyLinkKey={UPCOMING.spotify}
+                appleMusicLinkKey={UPCOMING.appleMusic}
+                hasCanvas={false}
+              />
+            )}
             <CanvasCard
               title="Crocodile Tears"
               slug="crocodile-tears"

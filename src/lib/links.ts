@@ -14,8 +14,9 @@ export const LINKS = {
   appleMusicPolaroid: "https://music.apple.com/us/album/polaroid/6769295859?i=6769296073",
   music: null,
   // Your Friends is out 2026-11-06. Paste each store URL here and its icon appears on /music.
-  // Apple's public catalog lists it (itunes.apple.com lookup, read 2026-11-06). Spotify not on file yet.
-  spotifyYourFriends: null,
+  // Apple's public catalog lists it (itunes.apple.com lookup, read 2026-11-06). Spotify read from the
+  // artist's public track list and confirmed on the track's own page, 2026-11-06.
+  spotifyYourFriends: "https://open.spotify.com/track/0b3AjhN3KCaQqAmh2fFBvy",
   appleMusicYourFriends: "https://music.apple.com/us/album/your-friends/6815198449?i=6815198665",
   // The official music video on the band's own channel, live 2026-10-12.
   polaroidVideo: "https://www.youtube.com/watch?v=BKjTfKqHPAI",
