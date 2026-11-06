@@ -130,7 +130,7 @@ export default function Home() {
         <section className="relative w-full overflow-hidden bg-ink px-5 pb-24 sm:px-8 sm:pb-32">
           <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
             <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-              {LATEST_VIDEO.title}, the video
+              Watch {LATEST_VIDEO.title} Official Music Video
             </h2>
             <YouTubeVideo
               id={LATEST_VIDEO.video!.youtubeId!}
