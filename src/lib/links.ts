@@ -43,7 +43,7 @@ export type LinkKey = keyof typeof LINKS;
 
 // The band's public TikTok videos the /music page plays. Add an id and its player appears.
 export const TIKTOK_VIDEO_IDS = [
-  "7704430598831508750",
   "7703703931007814926",
-  "7703345923245477133",
+  "7699979272802323725",
+  "7696593587198332174",
 ] as const;
