@@ -7,7 +7,7 @@ import SignupButton from "@/components/signup/SignupButton";
 import StokeFlipCard from "@/components/StokeFlipCard";
 import YouTubeVideo from "@/components/YouTubeVideo";
 import { LINKS } from "@/lib/links";
-import { DEFINITION, REGION, RELEASES, UPCOMING, isOut, monthDay, upcomingShows, videoLd } from "@/lib/band";
+import { REGION, RELEASES, UPCOMING, isOut, monthDay, upcomingShows, videoLd } from "@/lib/band";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -76,13 +76,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Intro: one paragraph, third person. The band's definition, its start, what is out, the next show. */}
+      {/* Intro: one paragraph, third person, written to be read. Who the band is, what is out, the next show.
+          DEFINITION, the line every profile repeats, stays in the footer and the schema. */}
       <section className="w-full bg-ink px-5 pt-20 sm:px-8 sm:pt-28">
-        <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-white/75 sm:text-xl">
-          {DEFINITION} The band started in 2025 with friends making music together at USC. Newport Beach is home.{" "}
+        <p className="mx-auto max-w-3xl text-balance text-center text-lg leading-relaxed text-white/75 sm:text-xl">
+          Stoke Club is an indie surf rock band from Newport Beach, California, started in 2025 by friends at USC.{" "}
           {out
-            ? "Your Friends, Crocodile Tears and Polaroid are out now."
-            : <>Crocodile Tears and Polaroid are out now, and Your Friends is out <span className="whitespace-nowrap">{monthDay(UPCOMING.date)}</span>.</>}
+            ? "Your Friends, Polaroid and Crocodile Tears are out now."
+            : <>Polaroid and Crocodile Tears are out now, and Your Friends comes out <span className="whitespace-nowrap">{monthDay(UPCOMING.date)}</span>.</>}
           {show ? (
             <>
               {" "}
