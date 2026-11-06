@@ -1,6 +1,6 @@
 import { ViewTransition } from "react";
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import Nav from "@/components/Nav";
 import SiteFooter from "@/components/SiteFooter";
 import StickyFooterBar from "@/components/StickyFooterBar";
@@ -10,17 +10,19 @@ import { LINKS } from "@/lib/links";
 import { BAND_ID, CREATOR, DEFINITION, EMAIL, GENRES, RELEASES, SITE, UPCOMING } from "@/lib/band";
 import "./globals.css";
 
-const hankenGrotesk = Hanken_Grotesk({
+// Both fonts live in the repo, so a build never depends on a font download and the site loads them
+// from its own domain. Latin subset, variable weight, SIL Open Font License (src/fonts).
+const hankenGrotesk = localFont({
+  src: "../fonts/hanken-grotesk-latin-wght-normal.woff2",
   variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "100 900",
   display: "swap",
 });
 
-const bricolage = Bricolage_Grotesque({
+const bricolage = localFont({
+  src: "../fonts/bricolage-grotesque-latin-wght-normal.woff2",
   variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: "200 800",
   display: "swap",
 });
 

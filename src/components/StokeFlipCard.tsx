@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Reenie_Beanie } from "next/font/google";
+import localFont from "next/font/local";
 
-const scrawl = Reenie_Beanie({ subsets: ["latin"], weight: "400", display: "swap" });
+const scrawl = localFont({ src: "../fonts/reenie-beanie-latin-400-normal.woff2", weight: "400", display: "swap" });
 
 // The STOKE card. Front is a scrawled question around the word, back is the answer.
 // A mouse flips it on hover or click. On a phone any touch flips it, a tap or a scroll that
