@@ -7,7 +7,7 @@ import SignupButton from "@/components/signup/SignupButton";
 import StokeFlipCard from "@/components/StokeFlipCard";
 import YouTubeVideo from "@/components/YouTubeVideo";
 import { LINKS } from "@/lib/links";
-import { REGION, RELEASES, UPCOMING, isOut, monthDay, upcomingShows, videoLd } from "@/lib/band";
+import { RELEASES, UPCOMING, isOut, monthDay, videoLd } from "@/lib/band";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -22,11 +22,8 @@ const LATEST_VIDEO = RELEASES.filter((r) => r.video?.youtubeId).sort((a, b) =>
 )[0];
 const VIDEO_LD = LATEST_VIDEO && { "@context": "https://schema.org", ...videoLd(LATEST_VIDEO) };
 
-const INLINE_LINK = "underline decoration-white/30 underline-offset-4 hover:text-white";
-
 export default function Home() {
   const out = isOut(UPCOMING.date);
-  const show = upcomingShows()[0];
   return (
     <main>
       {VIDEO_LD && (
@@ -76,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Intro: one paragraph, third person, written to be read. Who the band is, what is out, the next show.
+      {/* Intro: one paragraph, third person, written to be read. Who the band is and what is out. No show dates here.
           DEFINITION, the line every profile repeats, stays in the footer and the schema. */}
       <section className="w-full bg-ink px-5 pt-20 sm:px-8 sm:pt-28">
         <p className="mx-auto max-w-3xl text-balance! text-center text-lg leading-relaxed text-white/75 sm:text-xl">
@@ -84,17 +81,6 @@ export default function Home() {
           {out
             ? "Your Friends, Polaroid and Crocodile Tears are out now."
             : <>Polaroid and Crocodile Tears are out now, and Your Friends comes out <span className="whitespace-nowrap">{monthDay(UPCOMING.date)}</span>.</>}
-          {show ? (
-            <>
-              {" "}
-              The next show is{" "}
-              <Link href="/shows" className={INLINE_LINK}>
-                <span className="whitespace-nowrap">{monthDay(show.date)}</span>
-                {show.venue ? ` at ${show.venue}` : ""}
-              </Link>{" "}
-              in <span className="whitespace-nowrap">{show.city}, {REGION[show.region] ?? show.region}</span>.
-            </>
-          ) : null}
         </p>
       </section>
 
