@@ -79,7 +79,7 @@ export default function Home() {
       {/* Intro: one paragraph, third person, written to be read. Who the band is, what is out, the next show.
           DEFINITION, the line every profile repeats, stays in the footer and the schema. */}
       <section className="w-full bg-ink px-5 pt-20 sm:px-8 sm:pt-28">
-        <p className="mx-auto max-w-3xl text-balance text-center text-lg leading-relaxed text-white/75 sm:text-xl">
+        <p className="mx-auto max-w-3xl text-balance! text-center text-lg leading-relaxed text-white/75 sm:text-xl">
           Stoke Club is an indie surf rock band from Newport Beach, California, started in 2025 by friends at USC.{" "}
           {out
             ? "Your Friends, Polaroid and Crocodile Tears are out now."
@@ -92,7 +92,7 @@ export default function Home() {
                 <span className="whitespace-nowrap">{monthDay(show.date)}</span>
                 {show.venue ? ` at ${show.venue}` : ""}
               </Link>{" "}
-              in {show.city}, {REGION[show.region] ?? show.region}.
+              in <span className="whitespace-nowrap">{show.city}, {REGION[show.region] ?? show.region}</span>.
             </>
           ) : null}
         </p>
