@@ -53,7 +53,6 @@ export const metadata: Metadata = {
     "Stoke Club band",
     "Polaroid Stoke Club",
     "Orange County surf rock",
-    "Mixolydian",
   ],
   authors: [{ name: "Stoke Club", url: SITE }],
   creator: CREATOR.name,

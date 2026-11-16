@@ -10,8 +10,8 @@ export function generateMetadata(): Metadata {
   return {
     title: "Shows",
     description: next
-      ? `See Stoke Club live. Next show: ${next.name}${next.venue ? ` at ${next.venue}` : ""} in ${next.city}, ${REGION[next.region] ?? next.region}, ${longDate(next.date)}.${next.inviteOnly ? " Invite only." : ""} Leave your number and we'll invite you.`
-      : "See Stoke Club live. Leave your number and we'll invite you.",
+      ? `Stoke Club live. Next show: ${next.name}${next.venue ? ` at ${next.venue}` : ""} in ${next.city}, ${REGION[next.region] ?? next.region}, ${longDate(next.date)}.${next.inviteOnly ? " Invite only." : ""} Leave your number to get invited.`
+      : "Stoke Club live. Leave your number to get invited.",
     alternates: { canonical: "/shows" },
   };
 }
